@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "0.0.0",
+    "version": "1.0.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -11,8 +11,8 @@
   },
   "tags": [
     {
-      "name": "Example",
-      "description": "Example endpoints"
+      "name": "Chapter Definitions",
+      "description": "Endpoints for chapter definitions"
     }
   ],
   "servers": [
@@ -26,9 +26,9 @@
     }
   ],
   "paths": {
-    "/example": {
+    "/accounts/{account_id}/chapter_definitions": {
       "get": {
-        "summary": "Example endpoint",
+        "summary": "Fetches chapter definitions for an account to be used for an asset",
         "security": [
           {
             "userSessionKey": []
@@ -37,27 +37,28 @@
             "chillipharmSession": []
           }
         ],
-        "operationId": "getExample",
-        "description": "This is an example endpoint",
+        "operationId": "getAccountChapterDefinitions",
+        "description": "Fetches chapter definitions for an account",
         "parameters": [
           {
-            "name": "example",
-            "in": "query",
-            "description": "Example parameter",
+            "name": "account_id",
+            "in": "path",
+            "description": "The account id",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "1"
             }
           }
         ],
-        "tags": ["Example"],
+        "tags": ["Chapter Definitions"],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExampleResponse"
+                  "$ref": "#/components/schemas/ChapterDefinitions"
                 }
               }
             }
@@ -66,7 +67,13 @@
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
           },
           "409": {
             "$ref": "#/components/responses/Conflict"
@@ -94,24 +101,64 @@
       }
     },
     "schemas": {
-      "ExampleResponse": {
+      "ChapterDefinitions": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ChapterDefinition"
+        }
+      },
+      "ChapterDefinition": {
+        "description": "A chapter definition",
         "type": "object",
         "properties": {
-          "example": {
-            "type": "string"
+          "id": {
+            "type": "number",
+            "description": "The id of chapter definition",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of chapter definition",
+            "example": "pre"
+          },
+          "color": {
+            "type": "string",
+            "description": "The color of chapter definition",
+            "example": "#ccc"
+          },
+          "position": {
+            "type": "number",
+            "description": "The position of chapter definition",
+            "example": 1
           }
-        }
+        },
+        "additionalProperties": false,
+        "required": ["id", "name", "color"]
       },
       "Error": {
         "description": "An error",
         "type": "object",
         "properties": {
-          "message": {
-            "type": "string",
-            "description": "The error message",
-            "example": "Bad request. Missing or invalid input parameters."
+          "errors": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "description": "The error message",
+                "example": "Bad request. Missing or invalid input parameters."
+              },
+              "fields": {
+                "description": "The error fields",
+                "type": "object",
+                "example": {
+                  "name": ["can't be blank"],
+                  "color": ["can't be blank"]
+                }
+              }
+            }
           }
-        }
+        },
+        "additionalProperties": false,
+        "required": ["errors"]
       }
     },
     "responses": {
@@ -125,12 +172,63 @@
           }
         }
       },
-      "Unauthorized": {
-        "description": "Unauthorized. Missing or invalid authentication credentials.",
+      "NotFound": {
+        "description": "Not found. The requested resource was not found.",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Error"
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "The error message",
+                  "example": "Not found",
+                  "enum": ["Not found"]
+                }
+              },
+              "additionalProperties": false,
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "Unauthorised": {
+        "description": "Unauthorised. Missing or invalid authentication credentials.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "The error message",
+                  "example": "Unauthorised",
+                  "enum": ["Unauthorised"]
+                }
+              },
+              "additionalProperties": false,
+              "required": ["error"]
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Forbidden. The request was valid, but the server is refusing action.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "The error message",
+                  "example": "You do not have sufficient permission to perform this action",
+                  "enum": [
+                    "You do not have sufficient permission to perform this action",
+                    "Forbidden"
+                  ]
+                }
+              }
             }
           }
         }
