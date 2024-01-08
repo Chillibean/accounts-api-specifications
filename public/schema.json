@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -51,7 +51,9 @@
             }
           }
         ],
-        "tags": ["Chapter Definitions"],
+        "tags": [
+          "Chapter Definitions"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -133,7 +135,11 @@
           }
         },
         "additionalProperties": false,
-        "required": ["id", "name", "color"]
+        "required": [
+          "id",
+          "name",
+          "color"
+        ]
       },
       "Error": {
         "description": "An error",
@@ -150,15 +156,21 @@
                 "description": "The error fields",
                 "type": "object",
                 "example": {
-                  "name": ["can't be blank"],
-                  "color": ["can't be blank"]
+                  "name": [
+                    "can't be blank"
+                  ],
+                  "color": [
+                    "can't be blank"
+                  ]
                 }
               }
             }
           }
         },
         "additionalProperties": false,
-        "required": ["errors"]
+        "required": [
+          "errors"
+        ]
       }
     },
     "responses": {
@@ -183,11 +195,15 @@
                   "type": "string",
                   "description": "The error message",
                   "example": "Not found",
-                  "enum": ["Not found"]
+                  "enum": [
+                    "Not found"
+                  ]
                 }
               },
               "additionalProperties": false,
-              "required": ["error"]
+              "required": [
+                "error"
+              ]
             }
           }
         }
@@ -203,11 +219,15 @@
                   "type": "string",
                   "description": "The error message",
                   "example": "Unauthorised",
-                  "enum": ["Unauthorised"]
+                  "enum": [
+                    "Unauthorised"
+                  ]
                 }
               },
               "additionalProperties": false,
-              "required": ["error"]
+              "required": [
+                "error"
+              ]
             }
           }
         }
