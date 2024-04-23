@@ -83,6 +83,98 @@
           }
         }
       }
+    },
+    "/accounts/{account_id}/form_templates/{id}": {
+      "get": {
+        "summary": "Get an account form template",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getAccountFormTemplate",
+        "description": "Get account form template",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The account id"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The form template id"
+          }
+        ],
+        "tags": ["Form Templates"],
+        "requestBody": {
+          "content": {}
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "The form template id",
+                      "example": 1
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "The form template title",
+                      "example": "Form template title"
+                    },
+                    "fields": {
+                      "type": "array",
+                      "description": "The form template fields",
+                      "items": {
+                        "$ref": "#/components/schemas/FormTemplateField"
+                      }
+                    }
+                  },
+                  "required": ["id", "title", "fields"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -101,6 +193,119 @@
       }
     },
     "schemas": {
+      "FormTemplateField": {
+        "description": "Form template field",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The field id",
+            "example": "1"
+          },
+          "title": {
+            "type": "string",
+            "description": "The field title",
+            "example": "Field title"
+          },
+          "type": {
+            "type": "string",
+            "description": "The field type",
+            "example": "single_line"
+          },
+          "input_guidance": {
+            "type": "string",
+            "description": "The field input guidance",
+            "example": "guidance",
+            "nullable": true
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the field is enabled",
+            "example": true
+          },
+          "other_enabled": {
+            "type": "boolean",
+            "description": "Whether other types are enabled",
+            "example": false
+          },
+          "value": {
+            "oneOf": [
+              {
+                "type": "string",
+                "example": ""
+              },
+              {
+                "type": "array",
+                "description": "The field value",
+                "example": []
+              }
+            ]
+          },
+          "validations": {
+            "type": "object",
+            "properties": {
+              "required": {
+                "type": "boolean",
+                "description": "Whether the field is required",
+                "example": true
+              },
+              "input_format": {
+                "type": "string",
+                "description": "regex format for input",
+                "example": "[a-zA-Z]{1}[a-zA-Z]{1}-\\d{1}\\d{1}\\d{1}\\d{1}\\d{1}",
+                "nullable": true
+              },
+              "character_limit": {
+                "type": "integer",
+                "description": "The maximum characters",
+                "example": 10,
+                "nullable": true
+              },
+              "character_restriction": {
+                "type": "string",
+                "description": "restricted character type",
+                "example": "letters_and_numbers",
+                "nullable": true
+              }
+            },
+            "required": [
+              "required",
+              "input_format",
+              "character_limit",
+              "character_restriction"
+            ],
+            "additionalProperties": false
+          },
+          "options": {
+            "type": "array",
+            "description": "The field options",
+            "items": {
+              "type": "string",
+              "example": "option1"
+            }
+          },
+          "comments": {
+            "type": "array",
+            "description": "The field comments",
+            "items": {
+              "type": "string",
+              "example": "comment1"
+            },
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "type",
+          "enabled",
+          "other_enabled",
+          "value",
+          "validations",
+          "options"
+        ],
+        "additionalProperties": false
+      },
       "ChapterDefinitions": {
         "type": "array",
         "items": {
