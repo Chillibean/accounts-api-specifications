@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.1.5",
+    "version": "1.2.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -26,6 +26,102 @@
     }
   ],
   "paths": {
+    "/accounts/{account_id}": {
+      "get": {
+        "summary": "Get an account",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getAccount",
+        "description": "Get account",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The account id"
+          }
+        ],
+        "tags": ["Accounts"],
+        "requestBody": {
+          "content": {}
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "The account id",
+                      "example": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "The account name",
+                      "example": "test1"
+                    },
+                    "permissions": {
+                      "$ref": "#/components/schemas/Permissions"
+                    },
+                    "plan_options": {
+                      "$ref": "#/components/schemas/PlanOptions"
+                    },
+                    "subject_id_settings": {
+                      "$ref": "#/components/schemas/SubjectIdSettings"
+                    },
+                    "timezone": {
+                      "type": "string",
+                      "description": "The account timezone",
+                      "example": "Etc/UTC"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "permissions",
+                    "plan_options",
+                    "subject_id_settings",
+                    "timezone"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
     "/accounts/{account_id}/chapter_definitions": {
       "get": {
         "summary": "Fetches chapter definitions for an account to be used for an asset",
@@ -51,9 +147,7 @@
             }
           }
         ],
-        "tags": [
-          "Chapter Definitions"
-        ],
+        "tags": ["Chapter Definitions"],
         "responses": {
           "200": {
             "description": "OK",
@@ -121,9 +215,7 @@
             "description": "The form template id"
           }
         ],
-        "tags": [
-          "Form Templates"
-        ],
+        "tags": ["Form Templates"],
         "requestBody": {
           "content": {}
         },
@@ -153,11 +245,7 @@
                       }
                     }
                   },
-                  "required": [
-                    "id",
-                    "title",
-                    "fields"
-                  ],
+                  "required": ["id", "title", "fields"],
                   "additionalProperties": false
                 }
               }
@@ -201,6 +289,112 @@
       }
     },
     "schemas": {
+      "Permissions": {
+        "type": "object",
+        "properties": {
+          "admin": {
+            "type": "boolean",
+            "description": "Whether the user is an admin",
+            "example": true
+          },
+          "manager": {
+            "type": "boolean",
+            "description": "Whether the user is a manager",
+            "example": false
+          },
+          "reporting": {
+            "type": "boolean",
+            "description": "Whether the user has reporting permissions",
+            "example": true
+          },
+          "activity": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
+          }
+        },
+        "required": ["admin", "manager", "reporting", "activity"],
+        "additionalProperties": false
+      },
+      "PlanOptions": {
+        "type": "object",
+        "properties": {
+          "admin_user_report_enabled": {
+            "type": "boolean",
+            "description": "Whether the user is an admin",
+            "example": true
+          },
+          "asset_chapters_enabled": {
+            "type": "boolean",
+            "description": "Whether the user is a manager",
+            "example": false
+          },
+          "check_trial_name_on_upload_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has reporting permissions",
+            "example": true
+          },
+          "form_templates_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
+          },
+          "hd_transcodes_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
+          },
+          "pdf_previews_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
+          },
+          "reporting_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
+          },
+          "signatures_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
+          },
+          "sites_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
+          }
+        },
+        "required": [
+          "admin_user_report_enabled",
+          "asset_chapters_enabled",
+          "check_trial_name_on_upload_enabled",
+          "form_templates_enabled",
+          "hd_transcodes_enabled",
+          "pdf_previews_enabled",
+          "reporting_enabled",
+          "signatures_enabled",
+          "sites_enabled"
+        ],
+        "additionalProperties": false
+      },
+      "SubjectIdSettings": {
+        "type": "object",
+        "properties": {
+          "length": {
+            "type": "integer",
+            "description": "The length of the subject id",
+            "example": 8
+          },
+          "include_site_prefix": {
+            "type": "boolean",
+            "description": "Whether the site prefix is included",
+            "example": false
+          }
+        },
+        "required": ["length", "include_site_prefix"],
+        "additionalProperties": false
+      },
       "FormTemplateField": {
         "description": "Form template field",
         "type": "object",
@@ -346,11 +540,7 @@
           }
         },
         "additionalProperties": false,
-        "required": [
-          "id",
-          "name",
-          "color"
-        ]
+        "required": ["id", "name", "color"]
       },
       "Error": {
         "description": "An error",
@@ -367,21 +557,15 @@
                 "description": "The error fields",
                 "type": "object",
                 "example": {
-                  "name": [
-                    "can't be blank"
-                  ],
-                  "color": [
-                    "can't be blank"
-                  ]
+                  "name": ["can't be blank"],
+                  "color": ["can't be blank"]
                 }
               }
             }
           }
         },
         "additionalProperties": false,
-        "required": [
-          "errors"
-        ]
+        "required": ["errors"]
       }
     },
     "responses": {
@@ -406,15 +590,11 @@
                   "type": "string",
                   "description": "The error message",
                   "example": "Not found",
-                  "enum": [
-                    "Not found"
-                  ]
+                  "enum": ["Not found"]
                 }
               },
               "additionalProperties": false,
-              "required": [
-                "error"
-              ]
+              "required": ["error"]
             }
           }
         }
@@ -430,15 +610,11 @@
                   "type": "string",
                   "description": "The error message",
                   "example": "Unauthorised",
-                  "enum": [
-                    "Unauthorised"
-                  ]
+                  "enum": ["Unauthorised"]
                 }
               },
               "additionalProperties": false,
-              "required": [
-                "error"
-              ]
+              "required": ["error"]
             }
           }
         }
