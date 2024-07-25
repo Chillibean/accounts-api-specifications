@@ -1,0 +1,62 @@
+{
+  "type": "object",
+  "properties": {
+    "admin_user_report_enabled": {
+      "type": "boolean",
+      "description": "Whether the user is an admin",
+      "example": true
+    },
+    "asset_chapters_enabled": {
+      "type": "boolean",
+      "description": "Whether the user is a manager",
+      "example": false
+    },
+    "check_trial_name_on_upload_enabled": {
+      "type": "boolean",
+      "description": "Whether the user has reporting permissions",
+      "example": true
+    },
+    "form_templates_enabled": {
+      "type": "boolean",
+      "description": "Whether the user has activity permissions",
+      "example": true
+    },
+    "hd_transcodes_enabled": {
+      "type": "boolean",
+      "description": "Whether the user has activity permissions",
+      "example": true
+    },
+    "pdf_previews_enabled": {
+      "type": "boolean",
+      "description": "Whether the user has activity permissions",
+      "example": true
+    },
+    "reporting_enabled": {
+      "type": "boolean",
+      "description": "Whether the user has activity permissions",
+      "example": true
+    },
+    "signatures_enabled": {
+      "type": "boolean",
+      "description": "Whether the user has activity permissions",
+      "example": true
+    },
+    "sites_enabled": {
+      "type": "boolean",
+      "description": "Whether the user has activity permissions",
+      "example": true
+    }
+  },
+  "required": [
+    "admin_user_report_enabled",
+    "asset_chapters_enabled",
+    "check_trial_name_on_upload_enabled",
+    "form_templates_enabled",
+    "hd_transcodes_enabled",
+    "pdf_previews_enabled",
+    "reporting_enabled",
+    "signatures_enabled",
+    "sites_enabled"
+  ],
+  "additionalProperties": false
+}
