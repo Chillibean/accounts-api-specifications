@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "properties": {
+    "admin": {
+      "type": "boolean",
+      "description": "Whether the user is an admin",
+      "example": true
+    },
+    "manager": {
+      "type": "boolean",
+      "description": "Whether the user is a manager",
+      "example": false
+    },
+    "reporting": {
+      "type": "boolean",
+      "description": "Whether the user has reporting permissions",
+      "example": true
+    },
+    "activity": {
+      "type": "boolean",
+      "description": "Whether the user has activity permissions",
+      "example": true
+    }
+  },
+  "required": [
+    "admin",
+    "manager",
+    "reporting",
+    "activity"
+  ],
+  "additionalProperties": false
+}
