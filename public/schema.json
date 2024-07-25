@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.2.0",
+    "version": "1.2.1",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -51,7 +51,9 @@
             "description": "The account id"
           }
         ],
-        "tags": ["Accounts"],
+        "tags": [
+          "Accounts"
+        ],
         "requestBody": {
           "content": {}
         },
@@ -147,7 +149,9 @@
             }
           }
         ],
-        "tags": ["Chapter Definitions"],
+        "tags": [
+          "Chapter Definitions"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -215,7 +219,9 @@
             "description": "The form template id"
           }
         ],
-        "tags": ["Form Templates"],
+        "tags": [
+          "Form Templates"
+        ],
         "requestBody": {
           "content": {}
         },
@@ -245,7 +251,11 @@
                       }
                     }
                   },
-                  "required": ["id", "title", "fields"],
+                  "required": [
+                    "id",
+                    "title",
+                    "fields"
+                  ],
                   "additionalProperties": false
                 }
               }
@@ -313,7 +323,12 @@
             "example": true
           }
         },
-        "required": ["admin", "manager", "reporting", "activity"],
+        "required": [
+          "admin",
+          "manager",
+          "reporting",
+          "activity"
+        ],
         "additionalProperties": false
       },
       "PlanOptions": {
@@ -392,7 +407,10 @@
             "example": false
           }
         },
-        "required": ["length", "include_site_prefix"],
+        "required": [
+          "length",
+          "include_site_prefix"
+        ],
         "additionalProperties": false
       },
       "FormTemplateField": {
@@ -540,7 +558,11 @@
           }
         },
         "additionalProperties": false,
-        "required": ["id", "name", "color"]
+        "required": [
+          "id",
+          "name",
+          "color"
+        ]
       },
       "Error": {
         "description": "An error",
@@ -557,15 +579,21 @@
                 "description": "The error fields",
                 "type": "object",
                 "example": {
-                  "name": ["can't be blank"],
-                  "color": ["can't be blank"]
+                  "name": [
+                    "can't be blank"
+                  ],
+                  "color": [
+                    "can't be blank"
+                  ]
                 }
               }
             }
           }
         },
         "additionalProperties": false,
-        "required": ["errors"]
+        "required": [
+          "errors"
+        ]
       }
     },
     "responses": {
@@ -590,11 +618,15 @@
                   "type": "string",
                   "description": "The error message",
                   "example": "Not found",
-                  "enum": ["Not found"]
+                  "enum": [
+                    "Not found"
+                  ]
                 }
               },
               "additionalProperties": false,
-              "required": ["error"]
+              "required": [
+                "error"
+              ]
             }
           }
         }
@@ -610,11 +642,15 @@
                   "type": "string",
                   "description": "The error message",
                   "example": "Unauthorised",
-                  "enum": ["Unauthorised"]
+                  "enum": [
+                    "Unauthorised"
+                  ]
                 }
               },
               "additionalProperties": false,
-              "required": ["error"]
+              "required": [
+                "error"
+              ]
             }
           }
         }
