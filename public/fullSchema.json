@@ -17,10 +17,6 @@
     {
       "url": "https://www.chillipharm.com/api/v1",
       "description": "Production"
-    },
-    {
-      "url": "https://staging.chillipharm.com/api/v1",
-      "description": "Staging"
     }
   ],
   "tags": [
@@ -303,119 +299,74 @@
       }
     },
     "schemas": {
-      "Permissions": {
+      "ChapterDefinition": {
+        "description": "A chapter definition",
         "type": "object",
         "properties": {
-          "admin": {
-            "type": "boolean",
-            "description": "Whether the user is an admin",
-            "example": true
+          "id": {
+            "type": "number",
+            "description": "The id of chapter definition",
+            "example": 1
           },
-          "manager": {
-            "type": "boolean",
-            "description": "Whether the user is a manager",
-            "example": false
+          "name": {
+            "type": "string",
+            "description": "The name of chapter definition",
+            "example": "pre"
           },
-          "reporting": {
-            "type": "boolean",
-            "description": "Whether the user has reporting permissions",
-            "example": true
+          "color": {
+            "type": "string",
+            "description": "The color of chapter definition",
+            "example": "#ccc"
           },
-          "activity": {
-            "type": "boolean",
-            "description": "Whether the user has activity permissions",
-            "example": true
+          "position": {
+            "type": "number",
+            "description": "The position of chapter definition",
+            "example": 1
           }
         },
+        "additionalProperties": false,
         "required": [
-          "admin",
-          "manager",
-          "reporting",
-          "activity"
-        ],
-        "additionalProperties": false
+          "id",
+          "name",
+          "color"
+        ]
       },
-      "PlanOptions": {
-        "type": "object",
-        "properties": {
-          "admin_user_report_enabled": {
-            "type": "boolean",
-            "description": "Whether the user is an admin",
-            "example": true
-          },
-          "asset_chapters_enabled": {
-            "type": "boolean",
-            "description": "Whether the user is a manager",
-            "example": false
-          },
-          "check_trial_name_on_upload_enabled": {
-            "type": "boolean",
-            "description": "Whether the user has reporting permissions",
-            "example": true
-          },
-          "form_templates_enabled": {
-            "type": "boolean",
-            "description": "Whether the user has activity permissions",
-            "example": true
-          },
-          "hd_transcodes_enabled": {
-            "type": "boolean",
-            "description": "Whether the user has activity permissions",
-            "example": true
-          },
-          "pdf_previews_enabled": {
-            "type": "boolean",
-            "description": "Whether the user has activity permissions",
-            "example": true
-          },
-          "reporting_enabled": {
-            "type": "boolean",
-            "description": "Whether the user has activity permissions",
-            "example": true
-          },
-          "signatures_enabled": {
-            "type": "boolean",
-            "description": "Whether the user has activity permissions",
-            "example": true
-          },
-          "sites_enabled": {
-            "type": "boolean",
-            "description": "Whether the user has activity permissions",
-            "example": true
-          }
-        },
-        "required": [
-          "admin_user_report_enabled",
-          "asset_chapters_enabled",
-          "check_trial_name_on_upload_enabled",
-          "form_templates_enabled",
-          "hd_transcodes_enabled",
-          "pdf_previews_enabled",
-          "reporting_enabled",
-          "signatures_enabled",
-          "sites_enabled"
-        ],
-        "additionalProperties": false
+      "ChapterDefinitions": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ChapterDefinition"
+        }
       },
-      "SubjectIdSettings": {
+      "Error": {
+        "description": "An error",
         "type": "object",
         "properties": {
-          "length": {
-            "type": "integer",
-            "description": "The length of the subject id",
-            "example": 8
-          },
-          "include_site_prefix": {
-            "type": "boolean",
-            "description": "Whether the site prefix is included",
-            "example": false
+          "errors": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "description": "The error message",
+                "example": "Bad request. Missing or invalid input parameters."
+              },
+              "fields": {
+                "description": "The error fields",
+                "type": "object",
+                "example": {
+                  "name": [
+                    "can't be blank"
+                  ],
+                  "color": [
+                    "can't be blank"
+                  ]
+                }
+              }
+            }
           }
         },
+        "additionalProperties": false,
         "required": [
-          "length",
-          "include_site_prefix"
-        ],
-        "additionalProperties": false
+          "errors"
+        ]
       },
       "FormTemplateField": {
         "description": "Form template field",
@@ -530,74 +481,119 @@
         ],
         "additionalProperties": false
       },
-      "ChapterDefinitions": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ChapterDefinition"
-        }
-      },
-      "ChapterDefinition": {
-        "description": "A chapter definition",
+      "Permissions": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "number",
-            "description": "The id of chapter definition",
-            "example": 1
+          "admin": {
+            "type": "boolean",
+            "description": "Whether the user is an admin",
+            "example": true
           },
-          "name": {
-            "type": "string",
-            "description": "The name of chapter definition",
-            "example": "pre"
+          "manager": {
+            "type": "boolean",
+            "description": "Whether the user is a manager",
+            "example": false
           },
-          "color": {
-            "type": "string",
-            "description": "The color of chapter definition",
-            "example": "#ccc"
+          "reporting": {
+            "type": "boolean",
+            "description": "Whether the user has reporting permissions",
+            "example": true
           },
-          "position": {
-            "type": "number",
-            "description": "The position of chapter definition",
-            "example": 1
+          "activity": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
           }
         },
-        "additionalProperties": false,
         "required": [
-          "id",
-          "name",
-          "color"
-        ]
+          "admin",
+          "manager",
+          "reporting",
+          "activity"
+        ],
+        "additionalProperties": false
       },
-      "Error": {
-        "description": "An error",
+      "PlanOptions": {
         "type": "object",
         "properties": {
-          "errors": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "description": "The error message",
-                "example": "Bad request. Missing or invalid input parameters."
-              },
-              "fields": {
-                "description": "The error fields",
-                "type": "object",
-                "example": {
-                  "name": [
-                    "can't be blank"
-                  ],
-                  "color": [
-                    "can't be blank"
-                  ]
-                }
-              }
-            }
+          "admin_user_report_enabled": {
+            "type": "boolean",
+            "description": "Whether the user is an admin",
+            "example": true
+          },
+          "asset_chapters_enabled": {
+            "type": "boolean",
+            "description": "Whether the user is a manager",
+            "example": false
+          },
+          "check_trial_name_on_upload_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has reporting permissions",
+            "example": true
+          },
+          "form_templates_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
+          },
+          "hd_transcodes_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
+          },
+          "pdf_previews_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
+          },
+          "reporting_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
+          },
+          "signatures_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
+          },
+          "sites_enabled": {
+            "type": "boolean",
+            "description": "Whether the user has activity permissions",
+            "example": true
           }
         },
-        "additionalProperties": false,
         "required": [
-          "errors"
-        ]
+          "admin_user_report_enabled",
+          "asset_chapters_enabled",
+          "check_trial_name_on_upload_enabled",
+          "form_templates_enabled",
+          "hd_transcodes_enabled",
+          "pdf_previews_enabled",
+          "reporting_enabled",
+          "signatures_enabled",
+          "sites_enabled"
+        ],
+        "additionalProperties": false
+      },
+      "SubjectIdSettings": {
+        "type": "object",
+        "properties": {
+          "length": {
+            "type": "integer",
+            "description": "The length of the subject id",
+            "example": 8
+          },
+          "include_site_prefix": {
+            "type": "boolean",
+            "description": "Whether the site prefix is included",
+            "example": false
+          }
+        },
+        "required": [
+          "length",
+          "include_site_prefix"
+        ],
+        "additionalProperties": false
       }
     },
     "responses": {
@@ -607,30 +603,6 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error"
-            }
-          }
-        }
-      },
-      "NotFound": {
-        "description": "Not found. The requested resource was not found.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "error": {
-                  "type": "string",
-                  "description": "The error message",
-                  "example": "Not found",
-                  "enum": [
-                    "Not found"
-                  ]
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "error"
-              ]
             }
           }
         }
@@ -676,6 +648,30 @@
                   ]
                 }
               }
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Not found. The requested resource was not found.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "The error message",
+                  "example": "Not found",
+                  "enum": [
+                    "Not found"
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "error"
+              ]
             }
           }
         }
