@@ -1,0 +1,98 @@
+{
+  "get": {
+    "summary": "Get an account",
+    "security": [
+      {
+        "userSessionKey": []
+      },
+      {
+        "chillipharmSession": []
+      }
+    ],
+    "operationId": "getAccount",
+    "description": "Get account",
+    "parameters": [
+      {
+        "name": "account_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "1"
+        },
+        "description": "The account id"
+      }
+    ],
+    "tags": [
+      "Accounts"
+    ],
+    "requestBody": {
+      "content": {}
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "The account id",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "description": "The account name",
+                  "example": "test1"
+                },
+                "permissions": {
+                  "$ref": "../components/schemas/Permissions.json"
+                },
+                "plan_options": {
+                  "$ref": "../components/schemas/PlanOptions.json"
+                },
+                "subject_id_settings": {
+                  "$ref": "../components/schemas/SubjectIdSettings.json"
+                },
+                "timezone": {
+                  "type": "string",
+                  "description": "The account timezone",
+                  "example": "Etc/UTC"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "permissions",
+                "plan_options",
+                "subject_id_settings",
+                "timezone"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "../components/responses/BadRequest.json"
+      },
+      "401": {
+        "$ref": "../components/responses/Unauthorised.json"
+      },
+      "403": {
+        "$ref": "../components/responses/Forbidden.json"
+      },
+      "404": {
+        "$ref": "../components/responses/NotFound.json"
+      },
+      "409": {
+        "$ref": "../components/responses/Conflict.json"
+      },
+      "500": {
+        "$ref": "../components/responses/InternalServerError.json"
+      }
+    }
+  }
+}

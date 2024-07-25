@@ -9,12 +9,6 @@
       "url": "https://www.chillipharm.com"
     }
   },
-  "tags": [
-    {
-      "name": "Chapter Definitions",
-      "description": "Endpoints for chapter definitions"
-    }
-  ],
   "servers": [
     {
       "url": "http://chillipharm.test:3000/api/v1",
@@ -27,6 +21,12 @@
     {
       "url": "https://staging.chillipharm.com/api/v1",
       "description": "Staging"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Chapter Definitions",
+      "description": "Endpoints for chapter definitions"
     }
   ],
   "paths": {
