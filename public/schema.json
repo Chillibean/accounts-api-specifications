@@ -26,6 +26,9 @@
     }
   ],
   "paths": {
+    "/accounts": {
+      "$ref": "refs/paths/accounts.json"
+    },
     "/accounts/{account_id}": {
       "$ref": "refs/paths/accounts_{account_id}.json"
     },
