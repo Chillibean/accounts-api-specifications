@@ -21,11 +21,67 @@
   ],
   "tags": [
     {
+      "name": "Accounts",
+      "description": "Endpoints for accounts"
+    },
+    {
       "name": "Chapter Definitions",
       "description": "Endpoints for chapter definitions"
     }
   ],
   "paths": {
+    "/accounts": {
+      "get": {
+        "summary": "Fetches all the accounts",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getAccounts",
+        "description": "Fetches all accounts",
+        "parameters": [],
+        "tags": [
+          "Accounts"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Accounts"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
     "/accounts/{account_id}": {
       "get": {
         "summary": "Get an account",
@@ -299,6 +355,33 @@
       }
     },
     "schemas": {
+      "Account": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of account",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of account",
+            "example": "Test Trial"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "Accounts": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Accounts"
+        }
+      },
       "ChapterDefinition": {
         "description": "A chapter definition",
         "type": "object",

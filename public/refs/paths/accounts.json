@@ -1,6 +1,6 @@
 {
     "get": {
-      "summary": "Fetches chapter definitions for an account to be used for an asset",
+      "summary": "Fetches all accounts",
       "security": [
         {
           "userSessionKey": []
@@ -12,6 +12,9 @@
       "operationId": "getAccounts",
       "description": "Fetches all accounts",
       "parameters": [
+      ],
+      "tags": [
+        "Accounts"
       ],
       "responses": {
         "200": {

@@ -11,6 +11,10 @@
   },
   "tags": [
     {
+      "name": "Accounts",
+      "description": "Endpoints for accounts"
+    },
+    {
       "name": "Chapter Definitions",
       "description": "Endpoints for chapter definitions"
     }
@@ -55,6 +59,12 @@
       }
     },
     "schemas": {
+      "Account": {
+        "$ref": "refs/components/schemas/Account.json"
+      },
+      "Accounts": {
+        "$ref": "refs/components/schemas/Accounts.json"
+      },
       "ChapterDefinition": {
         "$ref": "refs/components/schemas/ChapterDefinition.json"
       },
