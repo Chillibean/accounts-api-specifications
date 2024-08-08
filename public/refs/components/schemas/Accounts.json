@@ -1,5 +1,5 @@
 {
-  "type": "array",
+  "type": "object",
   "items": {
     "$ref": "./Account.json"
   }
