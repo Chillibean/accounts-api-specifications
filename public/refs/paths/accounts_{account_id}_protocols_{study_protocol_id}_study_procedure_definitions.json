@@ -1,6 +1,6 @@
 {
   "get": {
-    "summary": "Get the study arms of a protocol",
+    "summary": "Get the study procedure definitions of a protocol",
     "security": [
       {
         "userSessionKey": []
@@ -9,8 +9,8 @@
         "chillipharmSession": []
       }
     ],
-    "operationId": "getStudyArms",
-    "description": "Get account form template",
+    "operationId": "getStudyProcedureDefinitions",
+    "description": "Get the study procedure definitions of a protocol",
     "parameters": [
       {
         "name": "account_id",
@@ -45,7 +45,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../components/schemas/StudyArms.json"
+              "$ref": "../components/schemas/StudyProcedureDefinitions.json"
             }
           }
         }

@@ -347,7 +347,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StudyArm"
+                  "$ref": "#/components/schemas/StudyArms"
                 }
               }
             }
@@ -526,6 +526,12 @@
           "account_id",
           "study_protocol_id"
         ]
+      },
+      "StudyArms": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/StudyArm"
+        }
       },
       "Error": {
         "description": "An error",

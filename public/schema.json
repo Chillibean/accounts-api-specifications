@@ -80,6 +80,9 @@
       "StudyArm": {
         "$ref": "refs/components/schemas/StudyArm.json"
       },
+      "StudyArms": {
+        "$ref": "refs/components/schemas/StudyArms.json"
+      },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
       },
