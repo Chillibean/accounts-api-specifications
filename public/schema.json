@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.0.4",
+    "version": "2.1.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -10,6 +10,10 @@
     }
   },
   "tags": [
+    {
+      "name": "Accounts",
+      "description": "Endpoints for accounts"
+    },
     {
       "name": "Chapter Definitions",
       "description": "Endpoints for chapter definitions"
@@ -26,6 +30,9 @@
     }
   ],
   "paths": {
+    "/accounts": {
+      "$ref": "refs/paths/accounts.json"
+    },
     "/accounts/{account_id}": {
       "$ref": "refs/paths/accounts_{account_id}.json"
     },
@@ -34,6 +41,9 @@
     },
     "/accounts/{account_id}/form_templates/{id}": {
       "$ref": "refs/paths/accounts_{account_id}_form_templates_{id}.json"
+    },
+    "/accounts/{account_id}/protocols/{study_protocol_id}/study_arms": {
+      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_study_arms.json"
     }
   },
   "components": {
@@ -52,11 +62,23 @@
       }
     },
     "schemas": {
+      "Account": {
+        "$ref": "refs/components/schemas/Account.json"
+      },
+      "BasicAccount": {
+        "$ref": "refs/components/schemas/BasicAccount.json"
+      },
+      "BasicAccounts": {
+        "$ref": "refs/components/schemas/BasicAccounts.json"
+      },
       "ChapterDefinition": {
         "$ref": "refs/components/schemas/ChapterDefinition.json"
       },
       "ChapterDefinitions": {
         "$ref": "refs/components/schemas/ChapterDefinitions.json"
+      },
+      "StudyArm": {
+        "$ref": "refs/components/schemas/StudyArm.json"
       },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"

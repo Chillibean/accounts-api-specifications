@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.0.4",
+    "version": "2.1.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -21,11 +21,64 @@
   ],
   "tags": [
     {
+      "name": "Accounts",
+      "description": "Endpoints for accounts"
+    },
+    {
       "name": "Chapter Definitions",
       "description": "Endpoints for chapter definitions"
     }
   ],
   "paths": {
+    "/accounts": {
+      "get": {
+        "summary": "Fetches all accounts",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getAccounts",
+        "description": "Fetches all accounts",
+        "parameters": [],
+        "tags": [
+          "Accounts"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BasicAccounts"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
     "/accounts/{account_id}": {
       "get": {
         "summary": "Get an account",
@@ -63,42 +116,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer",
-                      "description": "The account id",
-                      "example": 1
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "The account name",
-                      "example": "test1"
-                    },
-                    "permissions": {
-                      "$ref": "#/components/schemas/Permissions"
-                    },
-                    "plan_options": {
-                      "$ref": "#/components/schemas/PlanOptions"
-                    },
-                    "subject_id_settings": {
-                      "$ref": "#/components/schemas/SubjectIdSettings"
-                    },
-                    "timezone": {
-                      "type": "string",
-                      "description": "The account timezone",
-                      "example": "Etc/UTC"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "name",
-                    "permissions",
-                    "plan_options",
-                    "subject_id_settings",
-                    "timezone"
-                  ],
-                  "additionalProperties": false
+                  "$ref": "#/components/schemas/Account"
                 }
               }
             }
@@ -281,6 +299,79 @@
           }
         }
       }
+    },
+    "/accounts/{account_id}/protocols/{study_protocol_id}/study_arms": {
+      "get": {
+        "summary": "Get the study arms of a protocol",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getStudyArms",
+        "description": "Get account form template",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The account id"
+          },
+          {
+            "name": "study_protocol_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The study protocol id"
+          }
+        ],
+        "tags": [
+          "Accounts"
+        ],
+        "requestBody": {
+          "content": {}
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyArm"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -299,6 +390,72 @@
       }
     },
     "schemas": {
+      "Account": {
+        "description": "An account",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of account",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of account",
+            "example": "Test Trial"
+          },
+          "permissions": {
+            "$ref": "#/components/schemas/Permissions"
+          },
+          "plan_options": {
+            "$ref": "#/components/schemas/PlanOptions"
+          },
+          "subject_id_settings": {
+            "$ref": "#/components/schemas/SubjectIdSettings"
+          },
+          "timezone": {
+            "type": "string",
+            "description": "The account timezone",
+            "example": "Etc/UTC"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "permissions",
+          "plan_options",
+          "subject_id_settings",
+          "timezone"
+        ]
+      },
+      "BasicAccount": {
+        "description": "An account",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of account",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of account",
+            "example": "Test Trial"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "BasicAccounts": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BasicAccount"
+        }
+      },
       "ChapterDefinition": {
         "description": "A chapter definition",
         "type": "object",
@@ -336,6 +493,39 @@
         "items": {
           "$ref": "#/components/schemas/ChapterDefinition"
         }
+      },
+      "StudyArm": {
+        "description": "An account",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of the study arm",
+            "example": 1
+          },
+          "display_name": {
+            "type": "string",
+            "description": "The display name of the study arm",
+            "example": "LoremB6H7E"
+          },
+          "account_id": {
+            "type": "number",
+            "description": "The id of the study arm",
+            "example": 1
+          },
+          "study_protocol_id": {
+            "type": "number",
+            "description": "The id of the study arm",
+            "example": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "display_name",
+          "account_id",
+          "study_protocol_id"
+        ]
       },
       "Error": {
         "description": "An error",

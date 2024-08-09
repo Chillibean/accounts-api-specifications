@@ -1,0 +1,34 @@
+{
+    "description": "An account",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "number",
+        "description": "The id of the study arm",
+        "example": 1
+      },
+      "display_name": {
+        "type": "string",
+        "description": "The display name of the study arm",
+        "example": "LoremB6H7E"
+      },
+      "account_id": {
+        "type": "number",
+        "description": "The id of the study arm",
+        "example": 1
+      },
+      "study_protocol_id": {
+        "type": "number",
+        "description": "The id of the study arm",
+        "example": 1
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "display_name",
+      "account_id",
+      "study_protocol_id"
+    ]
+  }
+  
