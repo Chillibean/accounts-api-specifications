@@ -7,10 +7,6 @@
     "contact": {
       "name": "ChilliPharm",
       "url": "https://www.chillipharm.com"
-    },
-    "license": {
-      "name": "Unknown, will replace later",
-      "url": "https://idklicense.com"
     }
   },
   "servers": [
@@ -303,6 +299,79 @@
           }
         }
       }
+    },
+    "/accounts/{account_id}/protocols/{study_protocol_id}/study_arms": {
+      "get": {
+        "summary": "Get the study arms of a protocol",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getStudyArms",
+        "description": "Get account form template",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The account id"
+          },
+          {
+            "name": "study_protocol_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The study protocol id"
+          }
+        ],
+        "tags": [
+          "Accounts"
+        ],
+        "requestBody": {
+          "content": {}
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyArm"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -424,6 +493,39 @@
         "items": {
           "$ref": "#/components/schemas/ChapterDefinition"
         }
+      },
+      "StudyArm": {
+        "description": "An account",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of the study arm",
+            "example": 1
+          },
+          "display_name": {
+            "type": "string",
+            "description": "The display name of the study arm",
+            "example": "LoremB6H7E"
+          },
+          "account_id": {
+            "type": "number",
+            "description": "The id of the study arm",
+            "example": 1
+          },
+          "study_protocol_id": {
+            "type": "number",
+            "description": "The id of the study arm",
+            "example": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "display_name",
+          "account_id",
+          "study_protocol_id"
+        ]
       },
       "Error": {
         "description": "An error",

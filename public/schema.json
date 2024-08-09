@@ -7,10 +7,6 @@
     "contact": {
       "name": "ChilliPharm",
       "url": "https://www.chillipharm.com"
-    },
-    "license": {
-      "name": "Unknown, will replace later",
-      "url": "https://idklicense.com"
     }
   },
   "tags": [
@@ -45,6 +41,9 @@
     },
     "/accounts/{account_id}/form_templates/{id}": {
       "$ref": "refs/paths/accounts_{account_id}_form_templates_{id}.json"
+    },
+    "/accounts/{account_id}/protocols/{study_protocol_id}/study_arms": {
+      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_study_arms.json"
     }
   },
   "components": {
@@ -77,6 +76,9 @@
       },
       "ChapterDefinitions": {
         "$ref": "refs/components/schemas/ChapterDefinitions.json"
+      },
+      "StudyArm": {
+        "$ref": "refs/components/schemas/StudyArm.json"
       },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
