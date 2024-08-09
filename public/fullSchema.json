@@ -7,6 +7,10 @@
     "contact": {
       "name": "ChilliPharm",
       "url": "https://www.chillipharm.com"
+    },
+    "license": {
+      "name": "Unknown, will replace later",
+      "url": "https://idklicense.com"
     }
   },
   "servers": [
@@ -32,7 +36,7 @@
   "paths": {
     "/accounts": {
       "get": {
-        "summary": "Fetches all the accounts",
+        "summary": "Fetches all accounts",
         "security": [
           {
             "userSessionKey": []
@@ -53,10 +57,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Accounts"
-                  }
+                  "$ref": "#/components/schemas/BasicAccounts"
                 }
               }
             }
@@ -119,42 +120,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer",
-                      "description": "The account id",
-                      "example": 1
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "The account name",
-                      "example": "test1"
-                    },
-                    "permissions": {
-                      "$ref": "#/components/schemas/Permissions"
-                    },
-                    "plan_options": {
-                      "$ref": "#/components/schemas/PlanOptions"
-                    },
-                    "subject_id_settings": {
-                      "$ref": "#/components/schemas/SubjectIdSettings"
-                    },
-                    "timezone": {
-                      "type": "string",
-                      "description": "The account timezone",
-                      "example": "Etc/UTC"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "name",
-                    "permissions",
-                    "plan_options",
-                    "subject_id_settings",
-                    "timezone"
-                  ],
-                  "additionalProperties": false
+                  "$ref": "#/components/schemas/Account"
                 }
               }
             }
@@ -356,7 +322,46 @@
     },
     "schemas": {
       "Account": {
-        "description": "",
+        "description": "An account",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of account",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of account",
+            "example": "Test Trial"
+          },
+          "permissions": {
+            "$ref": "#/components/schemas/Permissions"
+          },
+          "plan_options": {
+            "$ref": "#/components/schemas/PlanOptions"
+          },
+          "subject_id_settings": {
+            "$ref": "#/components/schemas/SubjectIdSettings"
+          },
+          "timezone": {
+            "type": "string",
+            "description": "The account timezone",
+            "example": "Etc/UTC"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "permissions",
+          "plan_options",
+          "subject_id_settings",
+          "timezone"
+        ]
+      },
+      "BasicAccount": {
+        "description": "An account",
         "type": "object",
         "properties": {
           "id": {
@@ -376,10 +381,10 @@
           "name"
         ]
       },
-      "Accounts": {
-        "type": "object",
+      "BasicAccounts": {
+        "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Accounts"
+          "$ref": "#/components/schemas/BasicAccount"
         }
       },
       "ChapterDefinition": {

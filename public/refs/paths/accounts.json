@@ -22,7 +22,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../components/schemas/Accounts.json"
+                "$ref": "../components/schemas/BasicAccounts.json"
               }
             }
           }

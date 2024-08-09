@@ -1,21 +1,39 @@
 {
-    "description": "An account",
-    "type": "object",
-    "properties": {
-      "id": {
-        "type": "number",
-        "description": "The id of account",
-        "example": 1
-      },
-      "name": {
-        "type": "string",
-        "description": "The name of account",
-        "example": "Test Trial"
-      }
+  "description": "An account",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The id of account",
+      "example": 1
     },
-    "additionalProperties": false,
-    "required": [
-      "id",
-      "name"
-    ]
-  }
+    "name": {
+      "type": "string",
+      "description": "The name of account",
+      "example": "Test Trial"
+    },
+    "permissions": {
+      "$ref": "./Permissions.json"
+    },
+    "plan_options": {
+      "$ref": "./PlanOptions.json"
+    },
+    "subject_id_settings": {
+      "$ref": "./SubjectIdSettings.json"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "The account timezone",
+      "example": "Etc/UTC"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "permissions",
+    "plan_options",
+    "subject_id_settings",
+    "timezone"
+  ]
+}

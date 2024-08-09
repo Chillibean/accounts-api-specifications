@@ -35,42 +35,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "integer",
-                  "description": "The account id",
-                  "example": 1
-                },
-                "name": {
-                  "type": "string",
-                  "description": "The account name",
-                  "example": "test1"
-                },
-                "permissions": {
-                  "$ref": "../components/schemas/Permissions.json"
-                },
-                "plan_options": {
-                  "$ref": "../components/schemas/PlanOptions.json"
-                },
-                "subject_id_settings": {
-                  "$ref": "../components/schemas/SubjectIdSettings.json"
-                },
-                "timezone": {
-                  "type": "string",
-                  "description": "The account timezone",
-                  "example": "Etc/UTC"
-                }
-              },
-              "required": [
-                "id",
-                "name",
-                "permissions",
-                "plan_options",
-                "subject_id_settings",
-                "timezone"
-              ],
-              "additionalProperties": false
+              "$ref": "../components/schemas/Account.json"
             }
           }
         }

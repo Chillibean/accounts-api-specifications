@@ -1,6 +1,0 @@
-{
-  "type": "object",
-  "items": {
-    "$ref": "./Account.json"
-  }
-}
