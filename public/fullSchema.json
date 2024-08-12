@@ -372,6 +372,79 @@
           }
         }
       }
+    },
+    "/accounts/{account_id}/protocols/{study_protocol_id}/study_procedure_definitions": {
+      "get": {
+        "summary": "Get the study procedure definitions of a protocol",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getStudyProcedureDefinitions",
+        "description": "Get the study procedure definitions of a protocol",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The account id"
+          },
+          {
+            "name": "study_protocol_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The study protocol id"
+          }
+        ],
+        "tags": [
+          "Accounts"
+        ],
+        "requestBody": {
+          "content": {}
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudyProcedureDefinitions"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -531,6 +604,63 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/StudyArm"
+        }
+      },
+      "StudyProcedureDefinition": {
+        "description": "An account",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of the study procedure definition",
+            "example": 1
+          },
+          "display_name": {
+            "type": "string",
+            "description": "The display name of the study procedure definition",
+            "example": "LoremB6H7E"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "The identifier of the study procedure definition",
+            "example": "IpsumC3H8F"
+          },
+          "position": {
+            "type": "number",
+            "description": "The position of the study procedure definition",
+            "example": 1
+          },
+          "required_form_templates": {
+            "type": "array",
+            "description": "The required form templates of the study procedure definition",
+            "items": {
+              "$ref": "#/components/schemas/FormTemplateField"
+            }
+          },
+          "account_id": {
+            "type": "number",
+            "description": "The id of the study procedure definition",
+            "example": 1
+          },
+          "study_protocol_id": {
+            "type": "number",
+            "description": "The id of the study procedure definition",
+            "example": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "display_name",
+          "identifier",
+          "account_id",
+          "study_protocol_id"
+        ]
+      },
+      "StudyProcedureDefinitions": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/StudyProcedureDefinition"
         }
       },
       "Error": {

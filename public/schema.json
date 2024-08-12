@@ -44,6 +44,9 @@
     },
     "/accounts/{account_id}/protocols/{study_protocol_id}/study_arms": {
       "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_study_arms.json"
+    },
+    "/accounts/{account_id}/protocols/{study_protocol_id}/study_procedure_definitions": {
+      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_study_procedure_definitions.json"
     }
   },
   "components": {
@@ -82,6 +85,12 @@
       },
       "StudyArms": {
         "$ref": "refs/components/schemas/StudyArms.json"
+      },
+      "StudyProcedureDefinition": {
+        "$ref": "refs/components/schemas/StudyProcedureDefinition.json"
+      },
+      "StudyProcedureDefinitions": {
+        "$ref": "refs/components/schemas/StudyProcedureDefinitions.json"
       },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"

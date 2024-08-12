@@ -1,0 +1,51 @@
+{
+  "description": "An account",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The id of the study procedure definition",
+      "example": 1
+    },
+    "display_name": {
+      "type": "string",
+      "description": "The display name of the study procedure definition",
+      "example": "LoremB6H7E"
+    },
+    "identifier": {
+      "type": "string",
+      "description": "The identifier of the study procedure definition",
+      "example": "IpsumC3H8F"
+    },
+    "position": {
+      "type": "number",
+      "description": "The position of the study procedure definition",
+      "example": 1
+    },
+    "required_form_templates": {
+      "type": "array",
+      "description": "The required form templates of the study procedure definition",
+      "items": {
+        "$ref": "./FormTemplateField.json"
+      }
+    },
+    "account_id": {
+      "type": "number",
+      "description": "The id of the study procedure definition",
+      "example": 1
+    },
+    "study_protocol_id": {
+      "type": "number",
+      "description": "The id of the study procedure definition",
+      "example": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "display_name",
+    "identifier",
+    "account_id",
+    "study_protocol_id"
+  ]
+}
