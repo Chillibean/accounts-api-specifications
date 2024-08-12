@@ -17,11 +17,6 @@
       "description": "The date the study arm was created",
       "example": "2021-06-01T00:00:00Z"
     },
-    "account_id": {
-      "type": "number",
-      "description": "The id of the account",
-      "example": 1
-    },
     "study_protocol_id": {
       "type": "number",
       "description": "The id of the study arm",
@@ -39,7 +34,6 @@
   "required": [
     "id",
     "display_name",
-    "account_id",
     "study_protocol_id"
   ]
 }
