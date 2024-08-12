@@ -1,0 +1,34 @@
+{
+  "description": "A Subject",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The id of creator",
+      "example": 1
+    },
+    "email": {
+      "type": "string",
+      "description": "The email of the creator",
+      "example": "B0001001"
+    },
+    "first_name": {
+      "type": "string",
+      "description": "The first name of the creator",
+      "example": "REFILL1"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "The last name of the creator",
+      "example": "Mon Admin1"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "email",
+    "first_name",
+    "last_name"
+  ]
+}

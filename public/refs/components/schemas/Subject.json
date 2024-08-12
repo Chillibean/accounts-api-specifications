@@ -1,0 +1,37 @@
+{
+    "description": "A Subject",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "number",
+        "description": "The id of account",
+        "example": 1
+      },
+      "subject_number": {
+        "type": "string",
+        "description": "The subject number",
+        "example": "B0001001"
+      },
+      "current_study_event": {
+        "type": "string",
+        "description": "The current study event",
+        "example": "REFILL1"
+      },
+      "created_by": {
+        "type": "string",
+        "description": "The creator of the subject",
+        "example": "Mon Admin1"
+      },
+      "creator": {
+        "$ref": "./Creator.json"
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "subject_number",
+      "current_study_event",
+      "created_by",
+      "creator"
+    ]
+}

@@ -80,6 +80,12 @@
       "ChapterDefinitions": {
         "$ref": "refs/components/schemas/ChapterDefinitions.json"
       },
+      "Creator": {
+        "$ref": "refs/components/schemas/Creator.json"
+      },
+      "Subject": {
+        "$ref": "refs/components/schemas/Subject.json"
+      },
       "StudyArm": {
         "$ref": "refs/components/schemas/StudyArm.json"
       },

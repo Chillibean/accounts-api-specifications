@@ -567,6 +567,77 @@
           "$ref": "#/components/schemas/ChapterDefinition"
         }
       },
+      "Creator": {
+        "description": "A Subject",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of creator",
+            "example": 1
+          },
+          "email": {
+            "type": "string",
+            "description": "The email of the creator",
+            "example": "B0001001"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the creator",
+            "example": "REFILL1"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the creator",
+            "example": "Mon Admin1"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "email",
+          "first_name",
+          "last_name"
+        ]
+      },
+      "Subject": {
+        "description": "A Subject",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of account",
+            "example": 1
+          },
+          "subject_number": {
+            "type": "string",
+            "description": "The subject number",
+            "example": "B0001001"
+          },
+          "current_study_event": {
+            "type": "string",
+            "description": "The current study event",
+            "example": "REFILL1"
+          },
+          "created_by": {
+            "type": "string",
+            "description": "The creator of the subject",
+            "example": "Mon Admin1"
+          },
+          "creator": {
+            "$ref": "#/components/schemas/Creator"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "subject_number",
+          "current_study_event",
+          "created_by",
+          "creator"
+        ]
+      },
       "StudyArm": {
         "description": "An account",
         "type": "object",
@@ -581,15 +652,17 @@
             "description": "The display name of the study arm",
             "example": "LoremB6H7E"
           },
-          "account_id": {
-            "type": "number",
-            "description": "The id of the study arm",
-            "example": 1
-          },
           "study_protocol_id": {
             "type": "number",
             "description": "The id of the study arm",
             "example": 1
+          },
+          "subjects": {
+            "type": "array",
+            "description": "The subjects of the study arm",
+            "items": {
+              "$ref": "#/components/schemas/Subject"
+            }
           }
         },
         "additionalProperties": false,

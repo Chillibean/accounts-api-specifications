@@ -12,15 +12,17 @@
       "description": "The display name of the study arm",
       "example": "LoremB6H7E"
     },
-    "account_id": {
-      "type": "number",
-      "description": "The id of the study arm",
-      "example": 1
-    },
     "study_protocol_id": {
       "type": "number",
       "description": "The id of the study arm",
       "example": 1
+    },
+    "subjects": {
+      "type": "array",
+      "description": "The subjects of the study arm",
+      "items": {
+        "$ref": "./Subject.json"
+      }
     }
   },
   "additionalProperties": false,
