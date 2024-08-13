@@ -932,17 +932,28 @@
             "description": "The subject number",
             "example": "B0001001"
           },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time the subject was created",
+            "example": "2020-01-01T00:00:00Z"
+          },
           "current_study_event": {
             "type": "string",
             "description": "The current study event",
             "example": "REFILL1"
+          },
+          "study_arm": {
+            "type": "string",
+            "description": "The study arm",
+            "example": "A"
           },
           "created_by": {
             "type": "string",
             "description": "The user of the subject",
             "example": "Mon Admin1"
           },
-          "user": {
+          "creator": {
             "$ref": "#/components/schemas/User"
           }
         },
@@ -989,6 +1000,11 @@
             "description": "The email of the user",
             "example": "B0001001"
           },
+          "uuid": {
+            "type": "string",
+            "description": "The uuid of the user",
+            "example": "30e7c29d-fa0e-4bc7-a0ea-014b3d5a354f"
+          },
           "first_name": {
             "type": "string",
             "description": "The first name of the user",
@@ -1004,6 +1020,7 @@
         "required": [
           "id",
           "email",
+          "uuid",
           "first_name",
           "last_name"
         ]

@@ -12,6 +12,11 @@
       "description": "The email of the user",
       "example": "B0001001"
     },
+    "uuid": {
+      "type": "string",
+      "description": "The uuid of the user",
+      "example": "30e7c29d-fa0e-4bc7-a0ea-014b3d5a354f"
+    },
     "first_name": {
       "type": "string",
       "description": "The first name of the user",
@@ -27,6 +32,7 @@
   "required": [
     "id",
     "email",
+    "uuid",
     "first_name",
     "last_name"
   ]
