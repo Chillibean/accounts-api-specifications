@@ -567,40 +567,6 @@
           "$ref": "#/components/schemas/ChapterDefinition"
         }
       },
-      "Creator": {
-        "description": "A Subject",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "The id of creator",
-            "example": 1
-          },
-          "email": {
-            "type": "string",
-            "description": "The email of the creator",
-            "example": "B0001001"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The first name of the creator",
-            "example": "REFILL1"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The last name of the creator",
-            "example": "Mon Admin1"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "name",
-          "email",
-          "first_name",
-          "last_name"
-        ]
-      },
       "Error": {
         "description": "An error",
         "type": "object",
@@ -915,50 +881,20 @@
         "description": "An account",
         "type": "object",
         "properties": {
-          "date": {
-            "type": "string",
-            "description": "The date of the study procedure definition",
-            "example": "2024-08-12"
+          "id": {
+            "type": "number",
+            "description": "The id of the study procedure definition",
+            "example": 3
           },
           "display_name": {
             "type": "string",
             "description": "The display name of the study procedure definition",
             "example": "LoremB6H7E"
           },
-          "evaluator_id": {
-            "type": "number",
-            "description": "The id of the evaluator",
-            "example": 16
-          },
-          "id": {
-            "type": "number",
-            "description": "The id of the study procedure definition",
-            "example": 3
-          },
           "identifier": {
             "type": "string",
             "description": "The identifier of the study procedure definition",
             "example": "EXPROC"
-          },
-          "protocol": {
-            "$ref": "#/components/schemas/StudyProtocol"
-          },
-          "role_definitions": {
-            "type": "array",
-            "description": "The role definitions of the study procedure definition",
-            "items": {
-              "$ref": "#/components/schemas/StudyProcedureRoleDefinition"
-            }
-          },
-          "status": {
-            "type": "string",
-            "description": "The status of the study procedure definition",
-            "example": "in_progress"
-          },
-          "locked": {
-            "type": "boolean",
-            "description": "Whether the study procedure definition is locked",
-            "example": false
           },
           "required_form_templates": {
             "type": "array",
@@ -966,28 +902,14 @@
             "items": {
               "$ref": "#/components/schemas/FormTemplate"
             }
-          },
-          "required_form_id": {
-            "type": "array",
-            "description": "The id of the study procedure definition",
-            "example": [
-              3
-            ]
           }
         },
         "additionalProperties": false,
         "required": [
-          "date",
-          "display_name",
-          "evaluator_id",
           "id",
+          "display_name",
           "identifier",
-          "protocol",
-          "role_definitions",
-          "status",
-          "locked",
-          "required_form_templates",
-          "required_form_id"
+          "required_form_templates"
         ]
       },
       "StudyProcedureDefinitions": {
@@ -995,95 +917,6 @@
         "items": {
           "$ref": "#/components/schemas/StudyProcedureDefinition"
         }
-      },
-      "StudyProcedureRoleDefinition": {
-        "description": "An account",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "The uc of the study procedure role definition",
-            "example": 1
-          },
-          "notify": {
-            "type": "boolean",
-            "description": "Whether notifications are enabled",
-            "example": false
-          },
-          "role_id": {
-            "type": "number",
-            "description": "The id of the role",
-            "example": 2
-          },
-          "study_protocol_id": {
-            "type": "number",
-            "description": "The id of the study protocol",
-            "example": 3
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "notify",
-          "role_id",
-          "study_protocol_id"
-        ]
-      },
-      "StudyProtocol": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "The id of the protocol",
-            "example": 2
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of a protocol",
-            "example": "Alpha Protocol"
-          },
-          "study_event_display_name": {
-            "type": "object",
-            "description": "The plural and singular names of the study event",
-            "example": {
-              "plural": "refill visits",
-              "singular": "refill visit"
-            }
-          },
-          "study_procedure_display_name": {
-            "type": "object",
-            "description": "The plural and singular names of the study procedure",
-            "example": {
-              "plural": "procedures",
-              "singular": "procedure"
-            }
-          },
-          "locked": {
-            "type": "boolean",
-            "description": "Whether the protocol is locked",
-            "example": true
-          },
-          "version_number": {
-            "type": "number",
-            "description": "The version number of the protocol",
-            "example": 1
-          },
-          "study_procedure_role_definitions": {
-            "type": "array",
-            "description": "Study procedure role definitions belonging to the protocol",
-            "items": {
-              "$ref": "#/components/schemas/StudyProcedureRoleDefinition"
-            }
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "locked",
-          "version_number",
-          "study_procedure_role_definitions"
-        ],
-        "additionalProperties": false
       },
       "Subject": {
         "description": "A Subject",
@@ -1106,11 +939,11 @@
           },
           "created_by": {
             "type": "string",
-            "description": "The creator of the subject",
+            "description": "The user of the subject",
             "example": "Mon Admin1"
           },
-          "creator": {
-            "$ref": "#/components/schemas/Creator"
+          "user": {
+            "$ref": "#/components/schemas/User"
           }
         },
         "additionalProperties": false,
@@ -1119,7 +952,7 @@
           "subject_number",
           "current_study_event",
           "created_by",
-          "creator"
+          "user"
         ]
       },
       "SubjectIdSettings": {
@@ -1141,6 +974,39 @@
           "include_site_prefix"
         ],
         "additionalProperties": false
+      },
+      "User": {
+        "description": "A Subject",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of user",
+            "example": 1
+          },
+          "email": {
+            "type": "string",
+            "description": "The email of the user",
+            "example": "B0001001"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "The first name of the user",
+            "example": "REFILL1"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "The last name of the user",
+            "example": "Mon Admin1"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "email",
+          "first_name",
+          "last_name"
+        ]
       }
     },
     "responses": {

@@ -80,9 +80,6 @@
       "ChapterDefinitions": {
         "$ref": "refs/components/schemas/ChapterDefinitions.json"
       },
-      "Creator": {
-        "$ref": "refs/components/schemas/Creator.json"
-      },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
       },
@@ -110,17 +107,14 @@
       "StudyProcedureDefinitions": {
         "$ref": "refs/components/schemas/StudyProcedureDefinitions.json"
       },
-      "StudyProcedureRoleDefinition": {
-        "$ref": "refs/components/schemas/StudyProcedureRoleDefinition.json"
-      },
-      "StudyProtocol": {
-        "$ref": "refs/components/schemas/StudyProtocol.json"
-      },
       "Subject": {
         "$ref": "refs/components/schemas/Subject.json"
       },
       "SubjectIdSettings": {
         "$ref": "refs/components/schemas/SubjectIdSettings.json"
+      },
+      "User": {
+        "$ref": "refs/components/schemas/User.json"
       }
     }
   }

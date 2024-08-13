@@ -4,29 +4,28 @@
   "properties": {
     "id": {
       "type": "number",
-      "description": "The id of creator",
+      "description": "The id of user",
       "example": 1
     },
     "email": {
       "type": "string",
-      "description": "The email of the creator",
+      "description": "The email of the user",
       "example": "B0001001"
     },
     "first_name": {
       "type": "string",
-      "description": "The first name of the creator",
+      "description": "The first name of the user",
       "example": "REFILL1"
     },
     "last_name": {
       "type": "string",
-      "description": "The last name of the creator",
+      "description": "The last name of the user",
       "example": "Mon Admin1"
     }
   },
   "additionalProperties": false,
   "required": [
     "id",
-    "name",
     "email",
     "first_name",
     "last_name"
