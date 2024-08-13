@@ -963,7 +963,7 @@
           "subject_number",
           "current_study_event",
           "created_by",
-          "user"
+          "creator"
         ]
       },
       "SubjectIdSettings": {
