@@ -1,0 +1,27 @@
+{
+  "description": "Form template field",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The field id",
+      "example": "1"
+    },
+    "title": {
+      "type": "string",
+      "description": "The field title",
+      "example": "Field title"
+    },
+    "version_number": {
+      "type": "number",
+      "description": "The version number of the form template",
+      "example": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "version_number"
+  ]
+}
