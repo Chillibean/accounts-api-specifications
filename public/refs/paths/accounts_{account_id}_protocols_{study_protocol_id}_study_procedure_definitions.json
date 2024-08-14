@@ -1,6 +1,6 @@
 {
   "get": {
-    "summary": "Get an account",
+    "summary": "Get the study procedure definitions of a protocol",
     "security": [
       {
         "userSessionKey": []
@@ -9,8 +9,8 @@
         "chillipharmSession": []
       }
     ],
-    "operationId": "getAccount",
-    "description": "Get account",
+    "operationId": "getStudyProcedureDefinitions",
+    "description": "Get the study procedure definitions of a protocol",
     "parameters": [
       {
         "name": "account_id",
@@ -21,6 +21,16 @@
           "example": "1"
         },
         "description": "The account id"
+      },
+      {
+        "name": "study_protocol_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "1"
+        },
+        "description": "The study protocol id"
       }
     ],
     "tags": [
@@ -35,7 +45,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../components/schemas/Account.json"
+              "$ref": "../components/schemas/StudyProcedureDefinitions.json"
             }
           }
         }

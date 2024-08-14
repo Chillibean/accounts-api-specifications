@@ -1,0 +1,21 @@
+{
+  "description": "Display name in both singular and plural format",
+  "type": "object",
+  "properties": {
+    "singular": {
+      "type": "string",
+      "description": "The singular variant of the display name",
+      "example": "refill visit"
+    },
+    "plural": {
+      "type": "string",
+      "description": "The plural variant of the display name",
+      "example": "refill visits"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "singular",
+    "plural"
+  ]
+}
