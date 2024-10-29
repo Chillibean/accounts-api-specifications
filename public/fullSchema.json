@@ -446,6 +446,81 @@
         }
       }
     },
+    "/accounts/{account_id}/protocols/{study_protocol_id}/reporting/export": {
+      "get": {
+        "summary": "Get report export for the protocol",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getProtocolsReportingExport",
+        "description": "Get protocols reporting export",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The account id"
+          },
+          {
+            "name": "study_protocol_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The study protocol id"
+          }
+        ],
+        "tags": [
+          "Accounts"
+        ],
+        "requestBody": {
+          "content": {}
+        },
+        "responses": {
+          "200": {
+            "description": "Successful export",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary",
+                  "example": "PK!�E�@J,[Content_Types].xml���"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
     "/accounts/{account_id}/protocols/{study_protocol_id}/study_arms": {
       "get": {
         "summary": "Get the study arms of a protocol",
