@@ -1,0 +1,87 @@
+{
+  "description": "Reporting row",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The id of the protocol",
+      "example": 1
+    },
+    "identifier": {
+      "type": "string",
+      "description": "The indentifier of the protocol",
+      "example": "NSTAR"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "The display name of the protocol",
+      "example": "North Star"
+    },
+    "date": {
+      "type": "string",
+      "description": "The protocol date",
+      "example": "2020-01-01"
+    },
+    "status": {
+      "type": "string",
+      "description": "The protocol status",
+      "example": "completed"
+    },
+    "clinical_evaluator": {
+      "type": "string",
+      "description": "The clinical evaluator",
+      "example": "Mark Smith"
+    },
+    "account_trial_name": {
+      "type": "string",
+      "description": "The account trial",
+      "example": "Trial 1"
+    },
+    "study_protocol_name": {
+      "type": "string",
+      "description": "Study protocol name",
+      "example": "Protocol v1"
+    },
+    "site": {
+      "$ref": "./Site.json"
+    },
+    "subject_number": {
+      "type": "string",
+      "description": "The subject number",
+      "example": "E0010023"
+    },
+    "study_event": {
+      "$ref": "./StudyEvent.json"
+    },
+    "flagged_tasks_raised": {
+      "type": "string",
+      "description": "Flagged tasks raised",
+      "example": "yes"
+    },
+    "flagged_tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "./FlaggedTask.json"
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "./Task.json"
+      }
+    },
+    "completed_forms": {
+      "type": "array",
+      "items": {
+        "$ref": "./CompletedForm.json"
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "example": 1
+      }
+    }
+  }
+}

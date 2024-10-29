@@ -1,0 +1,31 @@
+{
+  "description": "A study event",
+  "type": "object",
+  "properties": {
+    "arm": {
+      "type": "string",
+      "description": "The arm",
+      "example": "arm 1"
+    },
+    "status": {
+      "type": "string",
+      "description": "The status",
+      "example": "in_progress"
+    },
+    "date": {
+      "type": "string",
+      "description": "The date",
+      "example": "2024-10-06"
+    }, 
+    "identifier": {
+      "type": "string",
+      "description": "The identifier of a study event",
+      "example": "VIS1"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "The display name of a study event",
+      "example": "Visit 1"
+    }
+  }
+}
