@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.0.1",
+    "version": "2.1.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -10,6 +10,10 @@
     }
   },
   "tags": [
+    {
+      "name": "Accounts",
+      "description": "Endpoints for accounts"
+    },
     {
       "name": "Chapter Definitions",
       "description": "Endpoints for chapter definitions"
@@ -26,65 +30,23 @@
     }
   ],
   "paths": {
+    "/accounts": {
+      "$ref": "refs/paths/accounts.json"
+    },
+    "/accounts/{account_id}": {
+      "$ref": "refs/paths/accounts_{account_id}.json"
+    },
     "/accounts/{account_id}/chapter_definitions": {
-      "get": {
-        "summary": "Fetches chapter definitions for an account to be used for an asset",
-        "security": [
-          {
-            "userSessionKey": []
-          },
-          {
-            "chillipharmSession": []
-          }
-        ],
-        "operationId": "getAccountChapterDefinitions",
-        "description": "Fetches chapter definitions for an account",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "description": "The account id",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "1"
-            }
-          }
-        ],
-        "tags": [
-          "Chapter Definitions"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ChapterDefinitions"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorised"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          }
-        }
-      }
+      "$ref": "refs/paths/accounts_{account_id}_chapter_definitions.json"
+    },
+    "/accounts/{account_id}/form_templates/{id}": {
+      "$ref": "refs/paths/accounts_{account_id}_form_templates_{id}.json"
+    },
+    "/accounts/{account_id}/protocols/{study_protocol_id}/study_arms": {
+      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_study_arms.json"
+    },
+    "/accounts/{account_id}/protocols/{study_protocol_id}/study_procedure_definitions": {
+      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_study_procedure_definitions.json"
     }
   },
   "components": {
@@ -103,175 +65,56 @@
       }
     },
     "schemas": {
-      "ChapterDefinitions": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ChapterDefinition"
-        }
+      "Account": {
+        "$ref": "refs/components/schemas/Account.json"
+      },
+      "BasicAccount": {
+        "$ref": "refs/components/schemas/BasicAccount.json"
+      },
+      "BasicAccounts": {
+        "$ref": "refs/components/schemas/BasicAccounts.json"
       },
       "ChapterDefinition": {
-        "description": "A chapter definition",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "The id of chapter definition",
-            "example": 1
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of chapter definition",
-            "example": "pre"
-          },
-          "color": {
-            "type": "string",
-            "description": "The color of chapter definition",
-            "example": "#ccc"
-          },
-          "position": {
-            "type": "number",
-            "description": "The position of chapter definition",
-            "example": 1
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "name",
-          "color"
-        ]
+        "$ref": "refs/components/schemas/ChapterDefinition.json"
+      },
+      "ChapterDefinitions": {
+        "$ref": "refs/components/schemas/ChapterDefinitions.json"
       },
       "Error": {
-        "description": "An error",
-        "type": "object",
-        "properties": {
-          "errors": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "description": "The error message",
-                "example": "Bad request. Missing or invalid input parameters."
-              },
-              "fields": {
-                "description": "The error fields",
-                "type": "object",
-                "example": {
-                  "name": [
-                    "can't be blank"
-                  ],
-                  "color": [
-                    "can't be blank"
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "errors"
-        ]
-      }
-    },
-    "responses": {
-      "BadRequest": {
-        "description": "Bad request. Missing or invalid input parameters.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        }
+        "$ref": "refs/components/schemas/Error.json"
       },
-      "NotFound": {
-        "description": "Not found. The requested resource was not found.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "error": {
-                  "type": "string",
-                  "description": "The error message",
-                  "example": "Not found",
-                  "enum": [
-                    "Not found"
-                  ]
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "error"
-              ]
-            }
-          }
-        }
+      "FormTemplate": {
+        "$ref": "refs/components/schemas/FormTemplate.json"
       },
-      "Unauthorised": {
-        "description": "Unauthorised. Missing or invalid authentication credentials.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "error": {
-                  "type": "string",
-                  "description": "The error message",
-                  "example": "Unauthorised",
-                  "enum": [
-                    "Unauthorised"
-                  ]
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "error"
-              ]
-            }
-          }
-        }
+      "FormTemplateField": {
+        "$ref": "refs/components/schemas/FormTemplateField.json"
       },
-      "Forbidden": {
-        "description": "Forbidden. The request was valid, but the server is refusing action.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "error": {
-                  "type": "string",
-                  "description": "The error message",
-                  "example": "You do not have sufficient permission to perform this action",
-                  "enum": [
-                    "You do not have sufficient permission to perform this action",
-                    "Forbidden"
-                  ]
-                }
-              }
-            }
-          }
-        }
+      "Permissions": {
+        "$ref": "refs/components/schemas/Permissions.json"
       },
-      "Conflict": {
-        "description": "Conflict. The request could not be completed due to a conflict with the current state of the resource.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        }
+      "PlanOptions": {
+        "$ref": "refs/components/schemas/PlanOptions.json"
       },
-      "InternalServerError": {
-        "description": "Internal server error. Please contact support.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        }
+      "StudyArm": {
+        "$ref": "refs/components/schemas/StudyArm.json"
+      },
+      "StudyArms": {
+        "$ref": "refs/components/schemas/StudyArms.json"
+      },
+      "StudyProcedureDefinition": {
+        "$ref": "refs/components/schemas/StudyProcedureDefinition.json"
+      },
+      "StudyProcedureDefinitions": {
+        "$ref": "refs/components/schemas/StudyProcedureDefinitions.json"
+      },
+      "Subject": {
+        "$ref": "refs/components/schemas/Subject.json"
+      },
+      "SubjectIdSettings": {
+        "$ref": "refs/components/schemas/SubjectIdSettings.json"
+      },
+      "User": {
+        "$ref": "refs/components/schemas/User.json"
       }
     }
   }

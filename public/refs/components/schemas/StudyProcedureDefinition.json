@@ -1,0 +1,35 @@
+{
+  "description": "An account",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The id of the study procedure definition",
+      "example": 3
+    },
+    "display_name": {
+      "type": "string",
+      "description": "The display name of the study procedure definition",
+      "example": "LoremB6H7E"
+    },
+    "identifier": {
+      "type": "string",
+      "description": "The identifier of the study procedure definition",
+      "example": "EXPROC"
+    },
+    "required_form_templates": {
+      "type": "array",
+      "description": "The required form templates of the study procedure definition",
+      "items": {
+        "$ref": "./FormTemplate.json"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "display_name",
+    "identifier",
+    "required_form_templates"
+  ]
+}
