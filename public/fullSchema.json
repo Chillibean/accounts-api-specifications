@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.1.0",
+    "version": "2.1.1",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -275,6 +275,69 @@
                     "fields"
                   ],
                   "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/accounts/:account_id/protocols": {
+      "get": {
+        "summary": "Get protocols",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getProtocols",
+        "description": "Get protocols",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The account id"
+          }
+        ],
+        "tags": [
+          "Accounts"
+        ],
+        "requestBody": {
+          "content": {}
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Protocols"
                 }
               }
             }
@@ -985,6 +1048,39 @@
           "include_site_prefix"
         ],
         "additionalProperties": false
+      },
+      "Protocols": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Protocol"
+        }
+      },
+      "Protocol": {
+        "description": "A protocol",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of the protocol",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the protocol",
+            "example": "Protocol v1"
+          },
+          "number_of_study_procedures": {
+            "type": "number",
+            "description": "The number of study procedures in the protocol",
+            "example": 2
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "display_name",
+          "study_protocol_id"
+        ]
       },
       "User": {
         "description": "A Subject",
