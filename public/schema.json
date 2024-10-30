@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.1.1",
+    "version": "2.2.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -89,6 +89,9 @@
       "ChapterDefinitions": {
         "$ref": "refs/components/schemas/ChapterDefinitions.json"
       },
+      "CompletedForm": {
+        "$ref": "refs/components/schemas/CompletedForm.json"
+      },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
       },
@@ -98,17 +101,38 @@
       "FormTemplateField": {
         "$ref": "refs/components/schemas/FormTemplateField.json"
       },
+      "FlaggedTask": {
+        "$ref": "refs/components/schemas/FlaggedTask.json"
+      },
       "Permissions": {
         "$ref": "refs/components/schemas/Permissions.json"
       },
+      "Protocol": {
+        "$ref": "refs/components/schemas/Protocol.json"
+      },
+      "Protocols": {
+        "$ref": "refs/components/schemas/Protocols.json"
+      },
+      "ProtocolsReporting": {
+        "$ref": "refs/components/schemas/ProtocolsReporting.json"
+      },
       "PlanOptions": {
         "$ref": "refs/components/schemas/PlanOptions.json"
+      },
+      "Rows": {
+        "$ref": "refs/components/schemas/Rows.json"
+      },
+      "Site": {
+        "$ref": "refs/components/schemas/Site.json"
       },
       "StudyArm": {
         "$ref": "refs/components/schemas/StudyArm.json"
       },
       "StudyArms": {
         "$ref": "refs/components/schemas/StudyArms.json"
+      },
+      "StudyEvent": {
+        "$ref": "refs/components/schemas/StudyEvent.json"
       },
       "StudyProcedureDefinition": {
         "$ref": "refs/components/schemas/StudyProcedureDefinition.json"
@@ -121,6 +145,9 @@
       },
       "SubjectIdSettings": {
         "$ref": "refs/components/schemas/SubjectIdSettings.json"
+      },
+      "Task": {
+        "$ref": "refs/components/schemas/Task.json"
       },
       "User": {
         "$ref": "refs/components/schemas/User.json"
