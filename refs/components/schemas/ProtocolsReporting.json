@@ -1,0 +1,32 @@
+{
+  "description": "Protocols reporting",
+  "type": "object",
+  "properties": {
+    "study_protocol_name": {
+      "type": "string",
+      "description": "The protocol name",
+      "example": "Protocol 1"
+    },
+    "hits": {
+      "type": "number",
+      "description": "The total number of rows",
+      "example": 100
+    },
+    "per_page": {
+      "type": "number",
+      "description": "Numeber of rows per page",
+      "example": 50
+    },
+    "page": {
+      "type": "number",
+      "description": "The current page number",
+      "example": 1
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "./Rows.json"
+      }
+    }
+  }
+}

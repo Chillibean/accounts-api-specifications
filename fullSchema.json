@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.1.0",
+    "version": "2.2.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -445,6 +445,227 @@
           }
         }
       }
+    },
+    "/accounts/{account_id}/protocols": {
+      "get": {
+        "summary": "Get protocols",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getProtocols",
+        "description": "Get protocols",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The account id"
+          }
+        ],
+        "tags": [
+          "Accounts"
+        ],
+        "requestBody": {
+          "content": {}
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Protocols"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/protocols/{study_protocol_id}/reporting": {
+      "get": {
+        "summary": "Get report for the protocol",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getProtocolsReporting",
+        "description": "Get protocols reporting",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The account id"
+          },
+          {
+            "name": "study_protocol_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The study protocol id"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "tags": [
+          "Accounts"
+        ],
+        "requestBody": {
+          "content": {}
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProtocolsReporting"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/protocols/{study_protocol_id}/reporting/export": {
+      "get": {
+        "summary": "Get report export for the protocol",
+        "security": [
+          {
+            "userSessionKey": []
+          },
+          {
+            "chillipharmSession": []
+          }
+        ],
+        "operationId": "getProtocolsReportingExport",
+        "description": "Get protocols reporting export",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The account id"
+          },
+          {
+            "name": "study_protocol_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The study protocol id"
+          }
+        ],
+        "tags": [
+          "Accounts"
+        ],
+        "requestBody": {
+          "content": {}
+        },
+        "responses": {
+          "200": {
+            "description": "Successful export",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary",
+                  "example": "PK!�E�@J,[Content_Types].xml���"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorised"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -565,6 +786,22 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ChapterDefinition"
+        }
+      },
+      "CompletedForm": {
+        "description": "Completed form",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of a form",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of a form",
+            "example": "Form 1"
+          }
         }
       },
       "Error": {
@@ -738,6 +975,32 @@
         ],
         "additionalProperties": false
       },
+      "FlaggedTask": {
+        "description": "A flagged task",
+        "type": "object",
+        "properties": {
+          "action_required": {
+            "type": "string",
+            "description": "Action required",
+            "example": "Please complete xyz"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Created at date",
+            "example": "October 15th, 2024"
+          },
+          "action_resolved": {
+            "type": "string",
+            "description": "Action resolved",
+            "example": "Completed xyz"
+          },
+          "resolved_at": {
+            "type": "string",
+            "description": "Resolved at date",
+            "example": "October 15th, 2024"
+          }
+        }
+      },
       "Permissions": {
         "type": "object",
         "properties": {
@@ -769,6 +1032,71 @@
           "activity"
         ],
         "additionalProperties": false
+      },
+      "Protocol": {
+        "description": "A protocol",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of the protocol",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the protocol",
+            "example": "Protocol v1"
+          },
+          "number_of_study_procedures": {
+            "type": "number",
+            "description": "The number of study procedures in the protocol",
+            "example": 2
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "display_name",
+          "study_protocol_id"
+        ]
+      },
+      "Protocols": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Protocol"
+        }
+      },
+      "ProtocolsReporting": {
+        "description": "Protocols reporting",
+        "type": "object",
+        "properties": {
+          "study_protocol_name": {
+            "type": "string",
+            "description": "The protocol name",
+            "example": "Protocol 1"
+          },
+          "hits": {
+            "type": "number",
+            "description": "The total number of rows",
+            "example": 100
+          },
+          "per_page": {
+            "type": "number",
+            "description": "Numeber of rows per page",
+            "example": 50
+          },
+          "page": {
+            "type": "number",
+            "description": "The current page number",
+            "example": 1
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Rows"
+            }
+          }
+        }
       },
       "PlanOptions": {
         "type": "object",
@@ -832,6 +1160,109 @@
         ],
         "additionalProperties": false
       },
+      "Rows": {
+        "description": "Reporting row",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of the protocol",
+            "example": 1
+          },
+          "identifier": {
+            "type": "string",
+            "description": "The indentifier of the protocol",
+            "example": "NSTAR"
+          },
+          "display_name": {
+            "type": "string",
+            "description": "The display name of the protocol",
+            "example": "North Star"
+          },
+          "date": {
+            "type": "string",
+            "description": "The protocol date",
+            "example": "2020-01-01"
+          },
+          "status": {
+            "type": "string",
+            "description": "The protocol status",
+            "example": "completed"
+          },
+          "clinical_evaluator": {
+            "type": "string",
+            "description": "The clinical evaluator",
+            "example": "Mark Smith"
+          },
+          "account_trial_name": {
+            "type": "string",
+            "description": "The account trial",
+            "example": "Trial 1"
+          },
+          "study_protocol_name": {
+            "type": "string",
+            "description": "Study protocol name",
+            "example": "Protocol v1"
+          },
+          "site": {
+            "$ref": "#/components/schemas/Site"
+          },
+          "subject_number": {
+            "type": "string",
+            "description": "The subject number",
+            "example": "E0010023"
+          },
+          "study_event": {
+            "$ref": "#/components/schemas/StudyEvent"
+          },
+          "flagged_tasks_raised": {
+            "type": "string",
+            "description": "Flagged tasks raised",
+            "example": "yes"
+          },
+          "flagged_tasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FlaggedTask"
+            }
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            }
+          },
+          "completed_forms": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CompletedForm"
+            }
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        }
+      },
+      "Site": {
+        "description": "A Site",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of site",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of site",
+            "example": "0123 Hospital London St Thomas"
+          }
+        }
+      },
       "StudyArm": {
         "description": "An account",
         "type": "object",
@@ -875,6 +1306,37 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/StudyArm"
+        }
+      },
+      "StudyEvent": {
+        "description": "A study event",
+        "type": "object",
+        "properties": {
+          "arm": {
+            "type": "string",
+            "description": "The arm",
+            "example": "arm 1"
+          },
+          "status": {
+            "type": "string",
+            "description": "The status",
+            "example": "in_progress"
+          },
+          "date": {
+            "type": "string",
+            "description": "The date",
+            "example": "2024-10-06"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "The identifier of a study event",
+            "example": "VIS1"
+          },
+          "display_name": {
+            "type": "string",
+            "description": "The display name of a study event",
+            "example": "Visit 1"
+          }
         }
       },
       "StudyProcedureDefinition": {
@@ -985,6 +1447,32 @@
           "include_site_prefix"
         ],
         "additionalProperties": false
+      },
+      "Task": {
+        "description": "A task",
+        "type": "object",
+        "properties": {
+          "definition": {
+            "type": "string",
+            "description": "Task definition",
+            "example": "Complete something"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status",
+            "example": "complete"
+          },
+          "completed_date": {
+            "type": "string",
+            "description": "Completed date",
+            "example": "October 15th, 2024"
+          },
+          "completed_by": {
+            "type": "string",
+            "description": "Completed by",
+            "example": "James Smith"
+          }
+        }
       },
       "User": {
         "description": "A Subject",

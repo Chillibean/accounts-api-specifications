@@ -1,0 +1,16 @@
+{
+  "description": "A Site",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The id of site",
+      "example": 1
+    }, 
+    "name": {
+      "type": "string",
+      "description": "The name of site",
+      "example": "0123 Hospital London St Thomas"
+    }
+  }
+}

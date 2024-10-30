@@ -1,0 +1,83 @@
+{
+  "get": {
+    "summary": "Get report for the protocol",
+    "security": [
+      {
+        "userSessionKey": []
+      },
+      {
+        "chillipharmSession": []
+      }
+    ],
+    "operationId": "getProtocolsReporting",
+    "description": "Get protocols reporting",
+    "parameters": [
+      {
+        "name": "account_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "1"
+        },
+        "description": "The account id"
+      },
+      {
+        "name": "study_protocol_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "1"
+        },
+        "description": "The study protocol id"
+      },
+      {
+        "name": "page",
+        "in": "query",
+        "description": "The page number",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "example": 1
+        }
+      }
+    ],
+    "tags": [
+      "Accounts"
+    ],
+    "requestBody": {
+      "content": {}
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/ProtocolsReporting.json"
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "../components/responses/BadRequest.json"
+      },
+      "401": {
+        "$ref": "../components/responses/Unauthorised.json"
+      },
+      "403": {
+        "$ref": "../components/responses/Forbidden.json"
+      },
+      "404": {
+        "$ref": "../components/responses/NotFound.json"
+      },
+      "409": {
+        "$ref": "../components/responses/Conflict.json"
+      },
+      "500": {
+        "$ref": "../components/responses/InternalServerError.json"
+      }
+    }
+  }
+}

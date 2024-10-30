@@ -1,0 +1,27 @@
+{
+  "description": "A protocol",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The id of the protocol",
+      "example": 1
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the protocol",
+      "example": "Protocol v1"
+    },
+    "number_of_study_procedures": {
+      "type": "number",
+      "description": "The number of study procedures in the protocol",
+      "example": 2
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "display_name",
+    "study_protocol_id"
+  ]
+}
