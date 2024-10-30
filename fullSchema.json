@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.2.0",
+    "version": "2.2.1",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -1056,8 +1056,8 @@
         "additionalProperties": false,
         "required": [
           "id",
-          "display_name",
-          "study_protocol_id"
+          "name",
+          "number_of_study_procedures"
         ]
       },
       "Protocols": {
