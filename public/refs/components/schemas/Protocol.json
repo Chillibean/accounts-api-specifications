@@ -21,7 +21,7 @@
   "additionalProperties": false,
   "required": [
     "id",
-    "display_name",
-    "study_protocol_id"
+    "name",
+    "number_of_study_procedures"
   ]
 }
