@@ -1098,7 +1098,15 @@
               "$ref": "#/components/schemas/Rows"
             }
           }
-        }
+        },
+        "required": [
+          "study_protocol_name",
+          "hits",
+          "per_page",
+          "page",
+          "results"
+        ],
+        "additionalProperties": false
       },
       "PlanOptions": {
         "type": "object",
@@ -1170,6 +1178,11 @@
             "type": "number",
             "description": "The id of the protocol",
             "example": 1
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date the row was created",
+            "example": "2020-01-01T00:00:00.000Z"
           },
           "identifier": {
             "type": "string",
