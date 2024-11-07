@@ -979,7 +979,7 @@
         "description": "A flagged task",
         "type": "object",
         "properties": {
-          "action_required": {
+          "reason_for_creation": {
             "type": "string",
             "description": "Action required",
             "example": "Please complete xyz"
@@ -989,15 +989,17 @@
             "description": "Created at date",
             "example": "October 15th, 2024"
           },
-          "action_resolved": {
+          "reason_for_resolving": {
             "type": "string",
             "description": "Action resolved",
-            "example": "Completed xyz"
+            "example": "Completed xyz",
+            "nullable": true
           },
           "resolved_at": {
             "type": "string",
             "description": "Resolved at date",
-            "example": "October 15th, 2024"
+            "example": "October 15th, 2024",
+            "nullable": true
           }
         }
       },
