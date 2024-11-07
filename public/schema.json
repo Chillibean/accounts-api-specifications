@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.2.1",
+    "version": "2.2.2",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -51,11 +51,11 @@
     "/accounts/{account_id}/protocols": {
       "$ref": "refs/paths/accounts_{account_id}_protocols.json"
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/reporting": {
-      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_reporting.json"
+    "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting": {
+      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_site_reporting.json"
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/reporting/export": {
-      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_reporting_export.json"
+    "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting/export": {
+      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_site_reporting_export.json"
     }
   },
   "components": {

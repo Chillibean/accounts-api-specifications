@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.2.1",
+    "version": "2.2.2",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -509,7 +509,7 @@
         }
       }
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/reporting": {
+    "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting": {
       "get": {
         "summary": "Get report for the protocol",
         "security": [
@@ -592,7 +592,7 @@
         }
       }
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/reporting/export": {
+    "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting/export": {
       "get": {
         "summary": "Get report export for the protocol",
         "security": [
