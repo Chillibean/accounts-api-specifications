@@ -28,5 +28,13 @@
         "$ref": "./Rows.json"
       }
     }
-  }
+  },
+  "required": [
+    "study_protocol_name",
+    "hits",
+    "per_page",
+    "page",
+    "results"
+  ],
+  "additionalProperties": false
 }

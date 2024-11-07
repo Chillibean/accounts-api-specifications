@@ -7,6 +7,11 @@
       "description": "The id of the protocol",
       "example": 1
     },
+    "created_at": {
+      "type": "string",
+      "description": "The date the row was created",
+      "example": "2020-01-01T00:00:00.000Z"
+    },
     "identifier": {
       "type": "string",
       "description": "The indentifier of the protocol",

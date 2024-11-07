@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.2.1",
+    "version": "2.2.2",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -509,7 +509,7 @@
         }
       }
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/reporting": {
+    "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting": {
       "get": {
         "summary": "Get report for the protocol",
         "security": [
@@ -592,7 +592,7 @@
         }
       }
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/reporting/export": {
+    "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting/export": {
       "get": {
         "summary": "Get report export for the protocol",
         "security": [
@@ -979,7 +979,7 @@
         "description": "A flagged task",
         "type": "object",
         "properties": {
-          "action_required": {
+          "reason_for_creation": {
             "type": "string",
             "description": "Action required",
             "example": "Please complete xyz"
@@ -989,15 +989,17 @@
             "description": "Created at date",
             "example": "October 15th, 2024"
           },
-          "action_resolved": {
+          "reason_for_resolving": {
             "type": "string",
             "description": "Action resolved",
-            "example": "Completed xyz"
+            "example": "Completed xyz",
+            "nullable": true
           },
           "resolved_at": {
             "type": "string",
             "description": "Resolved at date",
-            "example": "October 15th, 2024"
+            "example": "October 15th, 2024",
+            "nullable": true
           }
         }
       },
@@ -1096,7 +1098,15 @@
               "$ref": "#/components/schemas/Rows"
             }
           }
-        }
+        },
+        "required": [
+          "study_protocol_name",
+          "hits",
+          "per_page",
+          "page",
+          "results"
+        ],
+        "additionalProperties": false
       },
       "PlanOptions": {
         "type": "object",
@@ -1168,6 +1178,11 @@
             "type": "number",
             "description": "The id of the protocol",
             "example": 1
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date the row was created",
+            "example": "2020-01-01T00:00:00.000Z"
           },
           "identifier": {
             "type": "string",
