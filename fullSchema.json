@@ -1,15 +1,11 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.2.3",
+    "version": "2.2.2",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
       "name": "ChilliPharm",
-      "url": "https://www.chillipharm.com"
-    },
-    "license": {
-      "name": "UNLICENSED",
       "url": "https://www.chillipharm.com"
     }
   },
@@ -1117,52 +1113,47 @@
         "properties": {
           "admin_user_report_enabled": {
             "type": "boolean",
-            "description": "Whether the account has user reporting enabled for administrators",
+            "description": "Whether the user is an admin",
             "example": true
           },
           "asset_chapters_enabled": {
             "type": "boolean",
-            "description": "Whether the account has asset chapters enabled",
+            "description": "Whether the user is a manager",
             "example": false
           },
           "check_trial_name_on_upload_enabled": {
             "type": "boolean",
-            "description": "Whether the account has trial name on upload checking enabled",
+            "description": "Whether the user has reporting permissions",
             "example": true
           },
           "form_templates_enabled": {
             "type": "boolean",
-            "description": "Whether the account has forms enabled",
+            "description": "Whether the user has activity permissions",
             "example": true
           },
           "hd_transcodes_enabled": {
             "type": "boolean",
-            "description": "Whether the account has HD transcodes enabled",
+            "description": "Whether the user has activity permissions",
             "example": true
           },
           "pdf_previews_enabled": {
             "type": "boolean",
-            "description": "Whether the account has PDF previews enabled",
+            "description": "Whether the user has activity permissions",
             "example": true
           },
           "reporting_enabled": {
             "type": "boolean",
-            "description": "Whether the account has reporting enabled",
+            "description": "Whether the user has activity permissions",
             "example": true
           },
           "signatures_enabled": {
             "type": "boolean",
-            "description": "Whether the account has signatures enabled",
+            "description": "Whether the user has activity permissions",
             "example": true
           },
           "sites_enabled": {
             "type": "boolean",
-            "description": "Whether the account has sites enabled",
-            "example": true
-          },
-          "video_timecode_enabled": {
-            "type": "boolean",
-            "description": "Whether the account has video timecode enabled",
+            "description": "Whether the user has activity permissions",
             "example": true
           }
         },
@@ -1175,8 +1166,7 @@
           "pdf_previews_enabled",
           "reporting_enabled",
           "signatures_enabled",
-          "sites_enabled",
-          "video_timecode_enabled"
+          "sites_enabled"
         ],
         "additionalProperties": false
       },
