@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.2.3",
+    "version": "2.2.4",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -1490,12 +1490,14 @@
           "completed_date": {
             "type": "string",
             "description": "Completed date",
-            "example": "October 15th, 2024"
+            "example": "October 15th, 2024",
+            "nullable": true
           },
           "completed_by": {
             "type": "string",
             "description": "Completed by",
-            "example": "James Smith"
+            "example": "James Smith",
+            "nullable": true
           }
         }
       },
