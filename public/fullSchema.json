@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.2.4",
+    "version": "2.2.5",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -1499,7 +1499,13 @@
             "example": "James Smith",
             "nullable": true
           }
-        }
+        },
+        "required": [
+          "definition",
+          "status",
+          "completed_date",
+          "completed_by"
+        ]
       },
       "User": {
         "description": "A Subject",
