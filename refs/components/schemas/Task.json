@@ -17,12 +17,13 @@
       "description": "Completed date",
       "example": "October 15th, 2024",
       "nullable": true
-    }, 
+    },
     "completed_by": {
       "type": "string",
       "description": "Completed by",
       "example": "James Smith",
       "nullable": true
     }
-  }
+  },
+  "required": ["definition", "status", "completed_date", "completed_by"]
 }
