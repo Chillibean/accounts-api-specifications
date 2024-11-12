@@ -1499,7 +1499,13 @@
             "example": "James Smith",
             "nullable": true
           }
-        }
+        },
+        "required": [
+          "definition",
+          "status",
+          "completed_date",
+          "completed_by"
+        ]
       },
       "User": {
         "description": "A Subject",
