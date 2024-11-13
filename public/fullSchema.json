@@ -1214,6 +1214,11 @@
             "description": "The protocol status",
             "example": "completed"
           },
+          "status_change_date": {
+            "type": "string",
+            "description": "The protocol status change date",
+            "example": "2022-08-10T10:00:00.000Z"
+          },
           "clinical_evaluator": {
             "type": "string",
             "description": "The clinical evaluator",
