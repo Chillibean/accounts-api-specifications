@@ -1309,7 +1309,7 @@
           "account_trial_name",
           "study_protocol_name",
           "site",
-          "subject_number",
+          "subject",
           "study_event",
           "flagged_tasks_raised",
           "flagged_tasks",
