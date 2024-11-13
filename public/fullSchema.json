@@ -806,7 +806,12 @@
             "description": "The name of a form",
             "example": "Form 1"
           }
-        }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "additionalProperties": false
       },
       "Error": {
         "description": "An error",
@@ -1005,7 +1010,12 @@
             "example": "October 15th, 2024",
             "nullable": true
           }
-        }
+        },
+        "required": [
+          "reason_for_creation",
+          "created_at"
+        ],
+        "additionalProperties": false
       },
       "Permissions": {
         "type": "object",
@@ -1275,7 +1285,28 @@
               "example": 1
             }
           }
-        }
+        },
+        "required": [
+          "id",
+          "created_at",
+          "identifier",
+          "display_name",
+          "date",
+          "status",
+          "status_change_date",
+          "clinical_evaluator",
+          "account_trial_name",
+          "study_protocol_name",
+          "site",
+          "subject_number",
+          "study_event",
+          "flagged_tasks_raised",
+          "flagged_tasks",
+          "tasks",
+          "completed_forms",
+          "assets"
+        ],
+        "additionalProperties": false
       },
       "Site": {
         "description": "A Site",
@@ -1290,8 +1321,19 @@
             "type": "string",
             "description": "The name of site",
             "example": "0123 Hospital London St Thomas"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "The identifier of the site",
+            "example": "0123"
           }
-        }
+        },
+        "required": [
+          "id",
+          "name",
+          "identifier"
+        ],
+        "additionalProperties": false
       },
       "StudyArm": {
         "description": "An account",
@@ -1367,7 +1409,15 @@
             "description": "The display name of a study event",
             "example": "Visit 1"
           }
-        }
+        },
+        "required": [
+          "arm",
+          "status",
+          "date",
+          "identifier",
+          "display_name"
+        ],
+        "additionalProperties": false
       },
       "StudyProcedureDefinition": {
         "description": "An account",
@@ -1510,7 +1560,8 @@
           "status",
           "completed_date",
           "completed_by"
-        ]
+        ],
+        "additionalProperties": false
       },
       "User": {
         "description": "A Subject",

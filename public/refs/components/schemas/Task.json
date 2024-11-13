@@ -25,5 +25,6 @@
       "nullable": true
     }
   },
-  "required": ["definition", "status", "completed_date", "completed_by"]
+  "required": ["definition", "status", "completed_date", "completed_by"],
+  "additionalProperties": false
 }
