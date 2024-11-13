@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.2.5",
+    "version": "2.2.6",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -1213,6 +1213,11 @@
             "type": "string",
             "description": "The protocol status",
             "example": "completed"
+          },
+          "status_change_date": {
+            "type": "string",
+            "description": "The protocol status change date",
+            "example": "2022-08-10T10:00:00.000Z"
           },
           "clinical_evaluator": {
             "type": "string",
