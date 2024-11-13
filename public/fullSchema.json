@@ -1258,7 +1258,8 @@
               "arm": {
                 "type": "string",
                 "description": "The subject arm",
-                "example": "Arm A"
+                "example": "Arm A",
+                "nullable": true
               }
             }
           },
