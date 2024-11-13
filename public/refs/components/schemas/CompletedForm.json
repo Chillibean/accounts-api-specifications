@@ -6,11 +6,13 @@
       "type": "number",
       "description": "The id of a form",
       "example": 1
-    }, 
+    },
     "name": {
       "type": "string",
       "description": "The name of a form",
       "example": "Form 1"
     }
-  }
+  },
+  "required": ["id", "name"],
+  "additionalProperties": false
 }

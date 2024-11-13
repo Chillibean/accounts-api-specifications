@@ -55,10 +55,21 @@
     "site": {
       "$ref": "./Site.json"
     },
-    "subject_number": {
-      "type": "string",
-      "description": "The subject number",
-      "example": "E0010023"
+    "subject": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string",
+          "description": "The subject number",
+          "example": "1234"
+        },
+        "arm": {
+          "type": "string",
+          "description": "The subject arm",
+          "example": "Arm A",
+          "nullable": true
+        }
+      }
     },
     "study_event": {
       "$ref": "./StudyEvent.json"
@@ -93,5 +104,26 @@
         "example": 1
       }
     }
-  }
+  },
+  "required": [
+    "id",
+    "created_at",
+    "identifier",
+    "display_name",
+    "date",
+    "status",
+    "status_change_date",
+    "clinical_evaluator",
+    "account_trial_name",
+    "study_protocol_name",
+    "site",
+    "subject",
+    "study_event",
+    "flagged_tasks_raised",
+    "flagged_tasks",
+    "tasks",
+    "completed_forms",
+    "assets"
+  ],
+  "additionalProperties": false
 }

@@ -6,11 +6,18 @@
       "type": "number",
       "description": "The id of site",
       "example": 1
-    }, 
+    },
     "name": {
       "type": "string",
       "description": "The name of site",
       "example": "0123 Hospital London St Thomas"
+    },
+    "identifier": {
+      "type": "string",
+      "description": "The identifier of the site",
+      "example": "0123"
     }
-  }
+  },
+  "required": ["id", "name", "identifier"],
+  "additionalProperties": false
 }
