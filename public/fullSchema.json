@@ -1384,11 +1384,6 @@
         "description": "A study event",
         "type": "object",
         "properties": {
-          "arm": {
-            "type": "string",
-            "description": "The arm",
-            "example": "arm 1"
-          },
           "status": {
             "type": "string",
             "description": "The status",
@@ -1411,7 +1406,6 @@
           }
         },
         "required": [
-          "arm",
           "status",
           "date",
           "identifier",
