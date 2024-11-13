@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.2.6",
+    "version": "2.2.7",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -806,7 +806,12 @@
             "description": "The name of a form",
             "example": "Form 1"
           }
-        }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "additionalProperties": false
       },
       "Error": {
         "description": "An error",
@@ -1005,7 +1010,12 @@
             "example": "October 15th, 2024",
             "nullable": true
           }
-        }
+        },
+        "required": [
+          "reason_for_creation",
+          "created_at"
+        ],
+        "additionalProperties": false
       },
       "Permissions": {
         "type": "object",
@@ -1237,10 +1247,21 @@
           "site": {
             "$ref": "#/components/schemas/Site"
           },
-          "subject_number": {
-            "type": "string",
-            "description": "The subject number",
-            "example": "E0010023"
+          "subject": {
+            "type": "object",
+            "properties": {
+              "number": {
+                "type": "string",
+                "description": "The subject number",
+                "example": "1234"
+              },
+              "arm": {
+                "type": "string",
+                "description": "The subject arm",
+                "example": "Arm A",
+                "nullable": true
+              }
+            }
           },
           "study_event": {
             "$ref": "#/components/schemas/StudyEvent"
@@ -1275,7 +1296,28 @@
               "example": 1
             }
           }
-        }
+        },
+        "required": [
+          "id",
+          "created_at",
+          "identifier",
+          "display_name",
+          "date",
+          "status",
+          "status_change_date",
+          "clinical_evaluator",
+          "account_trial_name",
+          "study_protocol_name",
+          "site",
+          "subject",
+          "study_event",
+          "flagged_tasks_raised",
+          "flagged_tasks",
+          "tasks",
+          "completed_forms",
+          "assets"
+        ],
+        "additionalProperties": false
       },
       "Site": {
         "description": "A Site",
@@ -1290,8 +1332,19 @@
             "type": "string",
             "description": "The name of site",
             "example": "0123 Hospital London St Thomas"
+          },
+          "identifier": {
+            "type": "string",
+            "description": "The identifier of the site",
+            "example": "0123"
           }
-        }
+        },
+        "required": [
+          "id",
+          "name",
+          "identifier"
+        ],
+        "additionalProperties": false
       },
       "StudyArm": {
         "description": "An account",
@@ -1342,11 +1395,6 @@
         "description": "A study event",
         "type": "object",
         "properties": {
-          "arm": {
-            "type": "string",
-            "description": "The arm",
-            "example": "arm 1"
-          },
           "status": {
             "type": "string",
             "description": "The status",
@@ -1367,7 +1415,14 @@
             "description": "The display name of a study event",
             "example": "Visit 1"
           }
-        }
+        },
+        "required": [
+          "status",
+          "date",
+          "identifier",
+          "display_name"
+        ],
+        "additionalProperties": false
       },
       "StudyProcedureDefinition": {
         "description": "An account",
@@ -1510,7 +1565,8 @@
           "status",
           "completed_date",
           "completed_by"
-        ]
+        ],
+        "additionalProperties": false
       },
       "User": {
         "description": "A Subject",
