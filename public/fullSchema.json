@@ -39,6 +39,10 @@
     {
       "name": "Protocols",
       "description": "Endpoints for protocols"
+    },
+    {
+      "name": "Trial Containers",
+      "description": "Endpoints for trial containers"
     }
   ],
   "paths": {
@@ -715,7 +719,7 @@
           }
         ],
         "tags": [
-          "Forms"
+          "Trial Containers"
         ],
         "requestBody": {
           "content": {
@@ -838,7 +842,7 @@
           }
         ],
         "tags": [
-          "Forms"
+          "Trial Containers"
         ],
         "requestBody": {
           "content": {}

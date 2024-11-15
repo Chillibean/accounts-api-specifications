@@ -29,6 +29,10 @@
     {
       "name": "Protocols",
       "description": "Endpoints for protocols"
+    },
+    {
+      "name": "Trial Containers",
+      "description": "Endpoints for trial containers"
     }
   ],
   "servers": [
