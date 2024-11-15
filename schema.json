@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.2.7",
+    "version": "2.3.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -21,6 +21,18 @@
     {
       "name": "Chapter Definitions",
       "description": "Endpoints for chapter definitions"
+    },
+    {
+      "name": "Form Templates",
+      "description": "Endpoints for form templates"
+    },
+    {
+      "name": "Protocols",
+      "description": "Endpoints for protocols"
+    },
+    {
+      "name": "Trial Containers",
+      "description": "Endpoints for trial containers"
     }
   ],
   "servers": [
@@ -60,6 +72,15 @@
     },
     "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting/export": {
       "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_site_reporting_export.json"
+    },
+    "/accounts/{account_id}/trial_containers/{trial_container_id}/forms": {
+      "$ref": "refs/paths/accounts_{account_id}_trial_containers_{trial_container_id}_forms.json"
+    },
+    "/accounts/{account_id}/trial_containers/{trial_container_id}/forms/{id}": {
+      "$ref": "refs/paths/accounts_{account_id}_trial_containers_{trial_container_id}_forms_{id}.json"
+    },
+    "/accounts/{account_id}/trial_containers/{id}": {
+      "$ref": "refs/paths/accounts_{account_id}_trial_containers_{id}.json"
     }
   },
   "components": {
@@ -80,6 +101,9 @@
     "schemas": {
       "Account": {
         "$ref": "refs/components/schemas/Account.json"
+      },
+      "AudienceMember": {
+        "$ref": "refs/components/schemas/AudienceMember.json"
       },
       "BasicAccount": {
         "$ref": "refs/components/schemas/BasicAccount.json"
@@ -126,6 +150,9 @@
       "Rows": {
         "$ref": "refs/components/schemas/Rows.json"
       },
+      "Signature": {
+        "$ref": "refs/components/schemas/Signature.json"
+      },
       "Site": {
         "$ref": "refs/components/schemas/Site.json"
       },
@@ -152,6 +179,12 @@
       },
       "Task": {
         "$ref": "refs/components/schemas/Task.json"
+      },
+      "Transition": {
+        "$ref": "refs/components/schemas/Transition.json"
+      },
+      "TrialContainer": {
+        "$ref": "refs/components/schemas/TrialContainer.json"
       },
       "User": {
         "$ref": "refs/components/schemas/User.json"

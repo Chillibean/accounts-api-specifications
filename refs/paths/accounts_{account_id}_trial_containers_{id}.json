@@ -1,6 +1,6 @@
 {
   "get": {
-    "summary": "Get report for the protocol",
+    "summary": "Get a trial container",
     "security": [
       {
         "userSessionKey": []
@@ -9,8 +9,8 @@
         "chillipharmSession": []
       }
     ],
-    "operationId": "getProtocolsReporting",
-    "description": "Get protocols reporting",
+    "operationId": "getTrialContainer",
+    "description": "Get a trial container",
     "parameters": [
       {
         "name": "account_id",
@@ -23,28 +23,18 @@
         "description": "The account id"
       },
       {
-        "name": "study_protocol_id",
+        "name": "id",
         "in": "path",
         "required": true,
         "schema": {
           "type": "string",
           "example": "1"
         },
-        "description": "The study protocol id"
-      },
-      {
-        "name": "page",
-        "in": "query",
-        "description": "The page number",
-        "required": false,
-        "schema": {
-          "type": "integer",
-          "example": 1
-        }
+        "description": "The trial container id"
       }
     ],
     "tags": [
-      "Protocols"
+      "Trial Containers"
     ],
     "requestBody": {
       "content": {}
@@ -55,7 +45,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../components/schemas/ProtocolsReporting.json"
+              "$ref": "../components/schemas/TrialContainer.json"
             }
           }
         }
