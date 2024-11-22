@@ -41,7 +41,7 @@
       "200": {
         "description": "Successful export",
         "content": {
-          "application/octet-stream": {
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
             "schema": {
               "type": "string",
               "format": "binary",
