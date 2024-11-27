@@ -28,7 +28,7 @@
     }
   },
   "required": [
-    "study_protocol_name",
+    "study_protocol",
     "hits",
     "per_page",
     "page",

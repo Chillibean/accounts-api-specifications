@@ -126,7 +126,6 @@
     "status_change_date",
     "clinical_evaluator",
     "account_trial_name",
-    "study_protocol_name",
     "site",
     "subject",
     "study_event",
@@ -134,7 +133,8 @@
     "flagged_tasks",
     "tasks",
     "completed_forms",
-    "assets"
+    "assets",
+    "study_protocol"
   ],
   "additionalProperties": false
 }
