@@ -1513,6 +1513,12 @@
             "type": "number",
             "description": "The number of study procedures in the protocol",
             "example": 2
+          },
+          "study_procedure_display_name": {
+            "$ref": "#/components/schemas/DisplayName"
+          },
+          "study_event_display_name": {
+            "$ref": "#/components/schemas/DisplayName"
           }
         },
         "additionalProperties": false,
@@ -1532,10 +1538,8 @@
         "description": "Protocols reporting",
         "type": "object",
         "properties": {
-          "study_protocol_name": {
-            "type": "string",
-            "description": "The protocol name",
-            "example": "Protocol 1"
+          "study_protocol": {
+            "$ref": "#/components/schemas/Protocol"
           },
           "hits": {
             "type": "number",
@@ -1685,10 +1689,21 @@
             "description": "The account trial",
             "example": "Trial 1"
           },
-          "study_protocol_name": {
-            "type": "string",
-            "description": "Study protocol name",
-            "example": "Protocol v1"
+          "study_protocol": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the protocol",
+                "example": "Protocol v1"
+              },
+              "study_procedure_display_name": {
+                "$ref": "#/components/schemas/DisplayName"
+              },
+              "study_event_display_name": {
+                "$ref": "#/components/schemas/DisplayName"
+              }
+            }
           },
           "site": {
             "$ref": "#/components/schemas/Site"
@@ -2306,6 +2321,27 @@
           "uuid",
           "first_name",
           "last_name"
+        ]
+      },
+      "DisplayName": {
+        "description": "Display name in both singular and plural format",
+        "type": "object",
+        "properties": {
+          "singular": {
+            "type": "string",
+            "description": "The singular variant of the display name",
+            "example": "refill visit"
+          },
+          "plural": {
+            "type": "string",
+            "description": "The plural variant of the display name",
+            "example": "refill visits"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "singular",
+          "plural"
         ]
       }
     },
