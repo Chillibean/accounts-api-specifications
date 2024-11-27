@@ -16,12 +16,14 @@
       "type": "number",
       "description": "The number of study procedures in the protocol",
       "example": 2
+    },
+    "study_procedure_display_name": {
+      "$ref": "./DisplayName.json"
+    },
+    "study_event_display_name": {
+      "$ref": "./DisplayName.json"
     }
   },
   "additionalProperties": false,
-  "required": [
-    "id",
-    "name",
-    "number_of_study_procedures"
-  ]
+  "required": ["id", "name", "number_of_study_procedures"]
 }

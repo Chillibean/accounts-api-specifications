@@ -2,10 +2,8 @@
   "description": "Protocols reporting",
   "type": "object",
   "properties": {
-    "study_protocol_name": {
-      "type": "string",
-      "description": "The protocol name",
-      "example": "Protocol 1"
+    "study_protocol": {
+      "$ref": "./Protocol.json"
     },
     "hits": {
       "type": "number",
@@ -30,7 +28,7 @@
     }
   },
   "required": [
-    "study_protocol_name",
+    "study_protocol",
     "hits",
     "per_page",
     "page",
