@@ -47,10 +47,21 @@
       "description": "The account trial",
       "example": "Trial 1"
     },
-    "study_protocol_name": {
-      "type": "string",
-      "description": "Study protocol name",
-      "example": "Protocol v1"
+    "study_protocol": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the protocol",
+          "example": "Protocol v1"
+        },
+        "study_procedure_display_name": {
+          "$ref": "./DisplayName.json"
+        },
+        "study_event_display_name": {
+          "$ref": "./DisplayName.json"
+        }
+      }
     },
     "site": {
       "$ref": "./Site.json"
@@ -115,7 +126,6 @@
     "status_change_date",
     "clinical_evaluator",
     "account_trial_name",
-    "study_protocol_name",
     "site",
     "subject",
     "study_event",
@@ -123,7 +133,8 @@
     "flagged_tasks",
     "tasks",
     "completed_forms",
-    "assets"
+    "assets",
+    "study_protocol"
   ],
   "additionalProperties": false
 }
