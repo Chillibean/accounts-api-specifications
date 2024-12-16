@@ -1352,6 +1352,11 @@
             "description": "Whether other types are enabled",
             "example": false
           },
+          "other_field": {
+            "type": "string",
+            "description": "The other field label",
+            "example": "Other"
+          },
           "value": {
             "oneOf": [
               {
