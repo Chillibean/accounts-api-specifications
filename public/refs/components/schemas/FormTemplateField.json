@@ -110,6 +110,7 @@
     "type",
     "enabled",
     "other_enabled",
+    "other_field",
     "value",
     "validations",
     "options"
