@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.4.0",
+    "version": "2.4.1",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
