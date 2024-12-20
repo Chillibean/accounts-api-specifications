@@ -12,6 +12,16 @@
       "operationId": "getAccounts",
       "description": "Fetches all accounts",
       "parameters": [
+        {
+          "description": "The account subdomain",
+          "in": "query",
+          "name": "subdomain",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "pfizer"
+          }
+        }
       ],
       "tags": [
         "Accounts"
