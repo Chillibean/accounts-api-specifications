@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.4.2",
+    "version": "3.0.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -17,6 +17,18 @@
     {
       "url": "http://chillipharm.test:3000/api/v1",
       "description": "Local development"
+    },
+    {
+      "url": "https://qa.chillipharm.dev/api/v1",
+      "description": "QA"
+    },
+    {
+      "url": "https://chillipharm-staging.com/api/v1",
+      "description": "Staging"
+    },
+    {
+      "url": "https://chillipharm-uat.com/api/v1",
+      "description": "UAT"
     },
     {
       "url": "https://www.chillipharm.com/api/v1",
@@ -39,26 +51,23 @@
     {
       "name": "Protocols",
       "description": "Endpoints for protocols"
-    },
-    {
-      "name": "Trial Containers",
-      "description": "Endpoints for trial containers"
     }
   ],
   "paths": {
     "/accounts": {
       "get": {
-        "summary": "Fetches all accounts",
+        "summary": "Gets all accounts",
+        "description": "Gets all accounts",
+        "operationId": "getAccounts",
+        "tags": [
+          "Accounts"
+        ],
         "security": [
           {
-            "userSessionKey": []
-          },
-          {
+            "userSessionKey": [],
             "chillipharmSession": []
           }
         ],
-        "operationId": "getAccounts",
-        "description": "Fetches all accounts",
         "parameters": [
           {
             "description": "The account subdomain",
@@ -71,16 +80,16 @@
             }
           }
         ],
-        "tags": [
-          "Accounts"
-        ],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BasicAccounts"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BasicAccount"
+                  }
                 }
               }
             }
@@ -89,7 +98,7 @@
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorised"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -109,16 +118,17 @@
     "/accounts/{account_id}": {
       "get": {
         "summary": "Get an account",
+        "description": "Get account",
+        "operationId": "getAccount",
+        "tags": [
+          "Accounts"
+        ],
         "security": [
           {
-            "userSessionKey": []
-          },
-          {
+            "userSessionKey": [],
             "chillipharmSession": []
           }
         ],
-        "operationId": "getAccount",
-        "description": "Get account",
         "parameters": [
           {
             "name": "account_id",
@@ -131,12 +141,6 @@
             "description": "The account id"
           }
         ],
-        "tags": [
-          "Accounts"
-        ],
-        "requestBody": {
-          "content": {}
-        },
         "responses": {
           "200": {
             "description": "OK",
@@ -152,7 +156,7 @@
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorised"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -171,17 +175,18 @@
     },
     "/accounts/{account_id}/chapter_definitions": {
       "get": {
-        "summary": "Fetches chapter definitions for an account to be used for an asset",
+        "summary": "Gets chapter definitions for an account to be used for an asset",
+        "description": "Gets chapter definitions for an account",
+        "operationId": "getChapterDefinitions",
+        "tags": [
+          "Chapter Definitions"
+        ],
         "security": [
           {
-            "userSessionKey": []
-          },
-          {
+            "userSessionKey": [],
             "chillipharmSession": []
           }
         ],
-        "operationId": "getAccountChapterDefinitions",
-        "description": "Fetches chapter definitions for an account",
         "parameters": [
           {
             "name": "account_id",
@@ -194,16 +199,16 @@
             }
           }
         ],
-        "tags": [
-          "Chapter Definitions"
-        ],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ChapterDefinitions"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChapterDefinition"
+                  }
                 }
               }
             }
@@ -212,7 +217,7 @@
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorised"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -229,19 +234,20 @@
         }
       }
     },
-    "/accounts/{account_id}/form_templates/{id}": {
+    "/accounts/{account_id}/form_templates/{form_template_id}": {
       "get": {
         "summary": "Get an account form template",
+        "description": "Get account form template",
+        "operationId": "getFormTemplate",
+        "tags": [
+          "Form Templates"
+        ],
         "security": [
           {
-            "userSessionKey": []
-          },
-          {
+            "userSessionKey": [],
             "chillipharmSession": []
           }
         ],
-        "operationId": "getAccountFormTemplate",
-        "description": "Get account form template",
         "parameters": [
           {
             "name": "account_id",
@@ -254,7 +260,7 @@
             "description": "The account id"
           },
           {
-            "name": "id",
+            "name": "form_template_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -264,12 +270,6 @@
             "description": "The form template id"
           }
         ],
-        "tags": [
-          "Form Templates"
-        ],
-        "requestBody": {
-          "content": {}
-        },
         "responses": {
           "200": {
             "description": "OK",
@@ -310,7 +310,7 @@
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorised"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -330,16 +330,17 @@
     "/accounts/{account_id}/protocols/{study_protocol_id}/study_arms": {
       "get": {
         "summary": "Get the study arms of a protocol",
+        "description": "Get account form template",
+        "operationId": "getStudyArms",
+        "tags": [
+          "Protocols"
+        ],
         "security": [
           {
-            "userSessionKey": []
-          },
-          {
+            "userSessionKey": [],
             "chillipharmSession": []
           }
         ],
-        "operationId": "getStudyArms",
-        "description": "Get account form template",
         "parameters": [
           {
             "name": "account_id",
@@ -362,19 +363,16 @@
             "description": "The study protocol id"
           }
         ],
-        "tags": [
-          "Protocols"
-        ],
-        "requestBody": {
-          "content": {}
-        },
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StudyArms"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudyArm"
+                  }
                 }
               }
             }
@@ -383,7 +381,7 @@
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorised"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -403,16 +401,17 @@
     "/accounts/{account_id}/protocols/{study_protocol_id}/study_procedure_definitions": {
       "get": {
         "summary": "Get the study procedure definitions of a protocol",
+        "description": "Get the study procedure definitions of a protocol",
+        "operationId": "getStudyProcedureDefinitions",
+        "tags": [
+          "Protocols"
+        ],
         "security": [
           {
-            "userSessionKey": []
-          },
-          {
+            "userSessionKey": [],
             "chillipharmSession": []
           }
         ],
-        "operationId": "getStudyProcedureDefinitions",
-        "description": "Get the study procedure definitions of a protocol",
         "parameters": [
           {
             "name": "account_id",
@@ -435,19 +434,16 @@
             "description": "The study protocol id"
           }
         ],
-        "tags": [
-          "Protocols"
-        ],
-        "requestBody": {
-          "content": {}
-        },
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StudyProcedureDefinitions"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudyProcedureDefinition"
+                  }
                 }
               }
             }
@@ -456,7 +452,7 @@
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorised"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -476,16 +472,17 @@
     "/accounts/{account_id}/protocols": {
       "get": {
         "summary": "Get protocols",
+        "description": "Get protocols",
+        "operationId": "getStudyProtocols",
+        "tags": [
+          "Protocols"
+        ],
         "security": [
           {
-            "userSessionKey": []
-          },
-          {
+            "userSessionKey": [],
             "chillipharmSession": []
           }
         ],
-        "operationId": "getProtocols",
-        "description": "Get protocols",
         "parameters": [
           {
             "name": "account_id",
@@ -498,19 +495,16 @@
             "description": "The account id"
           }
         ],
-        "tags": [
-          "Protocols"
-        ],
-        "requestBody": {
-          "content": {}
-        },
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Protocols"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Protocol"
+                  }
                 }
               }
             }
@@ -519,7 +513,7 @@
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorised"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -539,16 +533,17 @@
     "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting": {
       "get": {
         "summary": "Get report for the protocol",
+        "description": "Get protocols reporting",
+        "operationId": "getProtocolsReporting",
+        "tags": [
+          "Protocols"
+        ],
         "security": [
           {
-            "userSessionKey": []
-          },
-          {
+            "userSessionKey": [],
             "chillipharmSession": []
           }
         ],
-        "operationId": "getProtocolsReporting",
-        "description": "Get protocols reporting",
         "parameters": [
           {
             "name": "account_id",
@@ -581,12 +576,6 @@
             }
           }
         ],
-        "tags": [
-          "Protocols"
-        ],
-        "requestBody": {
-          "content": {}
-        },
         "responses": {
           "200": {
             "description": "OK",
@@ -602,7 +591,7 @@
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorised"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -622,16 +611,17 @@
     "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting/export": {
       "get": {
         "summary": "Get report export for the protocol",
+        "description": "Get protocols reporting export",
+        "operationId": "getProtocolsReportingExport",
+        "tags": [
+          "Protocols"
+        ],
         "security": [
           {
-            "userSessionKey": []
-          },
-          {
+            "userSessionKey": [],
             "chillipharmSession": []
           }
         ],
-        "operationId": "getProtocolsReportingExport",
-        "description": "Get protocols reporting export",
         "parameters": [
           {
             "name": "account_id",
@@ -654,12 +644,6 @@
             "description": "The study protocol id"
           }
         ],
-        "tags": [
-          "Protocols"
-        ],
-        "requestBody": {
-          "content": {}
-        },
         "responses": {
           "200": {
             "description": "Successful export",
@@ -677,403 +661,7 @@
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
-            "$ref": "#/components/responses/Unauthorised"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          }
-        }
-      }
-    },
-    "/accounts/{account_id}/trial_containers/{trial_container_id}/forms": {
-      "post": {
-        "summary": "Post trial container forms",
-        "security": [
-          {
-            "userSessionKey": []
-          },
-          {
-            "chillipharmSession": []
-          }
-        ],
-        "operationId": "postTrialContainerForms",
-        "description": "Create a new form for a trial container",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "1"
-            },
-            "description": "The account id"
-          },
-          {
-            "name": "trial_container_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "1"
-            },
-            "description": "The trial container id"
-          }
-        ],
-        "tags": [
-          "Trial Containers"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "form_container_id": {
-                    "type": "integer",
-                    "description": "The form container id",
-                    "example": 5
-                  },
-                  "form_container_type": {
-                    "type": "string",
-                    "description": "The form container type",
-                    "example": "Study::Procedure"
-                  },
-                  "form_template_id": {
-                    "type": "integer",
-                    "description": "The form template id",
-                    "example": 1
-                  }
-                },
-                "required": [
-                  "form_container_id",
-                  "form_container_type",
-                  "form_template_id"
-                ],
-                "additionalProperties": false
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer",
-                      "description": "The form id",
-                      "example": 1
-                    }
-                  },
-                  "required": [
-                    "id"
-                  ],
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorised"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          }
-        }
-      }
-    },
-    "/accounts/{account_id}/trial_containers/{trial_container_id}/forms/{id}": {
-      "get": {
-        "summary": "Get a form",
-        "security": [
-          {
-            "userSessionKey": []
-          },
-          {
-            "chillipharmSession": []
-          }
-        ],
-        "operationId": "getForm",
-        "description": "Get a form",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "1"
-            },
-            "description": "The account id"
-          },
-          {
-            "name": "trial_container_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "1"
-            },
-            "description": "The trial container id"
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "1"
-            },
-            "description": "The form id"
-          }
-        ],
-        "tags": [
-          "Trial Containers"
-        ],
-        "requestBody": {
-          "content": {}
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "signatures": {
-                      "type": "array",
-                      "description": "The form signatures",
-                      "items": {
-                        "$ref": "#/components/schemas/Signature"
-                      }
-                    },
-                    "version_number": {
-                      "type": "integer",
-                      "description": "The form version number",
-                      "example": 0
-                    },
-                    "description": {
-                      "type": "string",
-                      "description": "The form description",
-                      "example": "Form description"
-                    },
-                    "audience": {
-                      "type": "array",
-                      "description": "The form audience",
-                      "items": {
-                        "$ref": "#/components/schemas/AudienceMember"
-                      }
-                    },
-                    "has_history": {
-                      "type": "boolean",
-                      "description": "Whether the form has history",
-                      "example": true
-                    },
-                    "current_transitions": {
-                      "type": "array",
-                      "description": "The form current transitions",
-                      "items": {
-                        "$ref": "#/components/schemas/Transition"
-                      }
-                    },
-                    "created_at": {
-                      "type": "string",
-                      "description": "The form created at",
-                      "example": "2024-04-16T16:35:52.875Z"
-                    },
-                    "id": {
-                      "type": "integer",
-                      "description": "The form id",
-                      "example": 1
-                    },
-                    "fields": {
-                      "type": "array",
-                      "description": "The form fields",
-                      "items": {
-                        "$ref": "#/components/schemas/FormTemplateField"
-                      }
-                    },
-                    "title": {
-                      "type": "string",
-                      "description": "The form title",
-                      "example": "Form title"
-                    },
-                    "current_state": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer",
-                          "description": "The state id",
-                          "example": 1
-                        },
-                        "name": {
-                          "type": "string",
-                          "description": "The state name",
-                          "example": "In Draft"
-                        },
-                        "type": {
-                          "type": "string",
-                          "description": "The state type",
-                          "example": "draft"
-                        },
-                        "options": {
-                          "type": "object",
-                          "properties": {
-                            "editable": {
-                              "type": "boolean",
-                              "description": "Whether the state is editable",
-                              "example": false
-                            },
-                            "deletable": {
-                              "type": "boolean",
-                              "description": "Whether the state is deletable",
-                              "example": false
-                            },
-                            "can_add_comments": {
-                              "type": "boolean",
-                              "description": "Whether the state can add comments",
-                              "example": false
-                            }
-                          },
-                          "required": [
-                            "editable",
-                            "deletable",
-                            "can_add_comments"
-                          ],
-                          "additionalProperties": false
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "name",
-                        "type",
-                        "options"
-                      ],
-                      "additionalProperties": false
-                    }
-                  },
-                  "required": [
-                    "signatures",
-                    "version_number",
-                    "description",
-                    "audience",
-                    "has_history",
-                    "current_transitions",
-                    "created_at",
-                    "id",
-                    "fields",
-                    "title",
-                    "current_state"
-                  ],
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorised"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          }
-        }
-      }
-    },
-    "/accounts/{account_id}/trial_containers/{id}": {
-      "get": {
-        "summary": "Get a trial container",
-        "security": [
-          {
-            "userSessionKey": []
-          },
-          {
-            "chillipharmSession": []
-          }
-        ],
-        "operationId": "getTrialContainer",
-        "description": "Get a trial container",
-        "parameters": [
-          {
-            "name": "account_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "1"
-            },
-            "description": "The account id"
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "1"
-            },
-            "description": "The trial container id"
-          }
-        ],
-        "tags": [
-          "Trial Containers"
-        ],
-        "requestBody": {
-          "content": {}
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TrialContainer"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorised"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -1146,44 +734,6 @@
           "timezone"
         ]
       },
-      "AudienceMember": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "The audience id",
-            "example": 1
-          },
-          "email": {
-            "type": "string",
-            "description": "The audience email",
-            "example": "example@gmail.com",
-            "nullable": true
-          },
-          "uuid": {
-            "type": "string",
-            "description": "The audience uuid",
-            "example": "uuid"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The audience first name",
-            "example": "First"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The audience last name",
-            "example": "Last"
-          }
-        },
-        "required": [
-          "id",
-          "email",
-          "uuid",
-          "first_name",
-          "last_name"
-        ]
-      },
       "BasicAccount": {
         "description": "An account",
         "type": "object",
@@ -1204,12 +754,6 @@
           "id",
           "name"
         ]
-      },
-      "BasicAccounts": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BasicAccount"
-        }
       },
       "ChapterDefinition": {
         "description": "A chapter definition",
@@ -1243,12 +787,6 @@
           "color"
         ]
       },
-      "ChapterDefinitions": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ChapterDefinition"
-        }
-      },
       "CompletedForm": {
         "description": "Completed form",
         "type": "object",
@@ -1269,6 +807,27 @@
           "name"
         ],
         "additionalProperties": false
+      },
+      "DisplayName": {
+        "description": "Display name in both singular and plural format",
+        "type": "object",
+        "properties": {
+          "singular": {
+            "type": "string",
+            "description": "The singular variant of the display name",
+            "example": "refill visit"
+          },
+          "plural": {
+            "type": "string",
+            "description": "The plural variant of the display name",
+            "example": "refill visits"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "singular",
+          "plural"
+        ]
       },
       "Error": {
         "description": "An error",
@@ -1300,6 +859,39 @@
         "required": [
           "errors"
         ]
+      },
+      "FlaggedTask": {
+        "description": "A flagged task",
+        "type": "object",
+        "properties": {
+          "reason_for_creation": {
+            "type": "string",
+            "description": "Action required",
+            "example": "Please complete xyz"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Created at date",
+            "example": "October 15th, 2024"
+          },
+          "reason_for_resolving": {
+            "type": "string",
+            "description": "Action resolved",
+            "example": "Completed xyz",
+            "nullable": true
+          },
+          "resolved_at": {
+            "type": "string",
+            "description": "Resolved at date",
+            "example": "October 15th, 2024",
+            "nullable": true
+          }
+        },
+        "required": [
+          "reason_for_creation",
+          "created_at"
+        ],
+        "additionalProperties": false
       },
       "FormTemplate": {
         "description": "Form template field",
@@ -1447,39 +1039,6 @@
         ],
         "additionalProperties": false
       },
-      "FlaggedTask": {
-        "description": "A flagged task",
-        "type": "object",
-        "properties": {
-          "reason_for_creation": {
-            "type": "string",
-            "description": "Action required",
-            "example": "Please complete xyz"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "Created at date",
-            "example": "October 15th, 2024"
-          },
-          "reason_for_resolving": {
-            "type": "string",
-            "description": "Action resolved",
-            "example": "Completed xyz",
-            "nullable": true
-          },
-          "resolved_at": {
-            "type": "string",
-            "description": "Resolved at date",
-            "example": "October 15th, 2024",
-            "nullable": true
-          }
-        },
-        "required": [
-          "reason_for_creation",
-          "created_at"
-        ],
-        "additionalProperties": false
-      },
       "Permissions": {
         "type": "object",
         "properties": {
@@ -1509,83 +1068,6 @@
           "manager",
           "reporting",
           "activity"
-        ],
-        "additionalProperties": false
-      },
-      "Protocol": {
-        "description": "A protocol",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "The id of the protocol",
-            "example": 1
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the protocol",
-            "example": "Protocol v1"
-          },
-          "number_of_study_procedures": {
-            "type": "number",
-            "description": "The number of study procedures in the protocol",
-            "example": 2
-          },
-          "study_procedure_display_name": {
-            "$ref": "#/components/schemas/DisplayName"
-          },
-          "study_event_display_name": {
-            "$ref": "#/components/schemas/DisplayName"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "name",
-          "number_of_study_procedures"
-        ]
-      },
-      "Protocols": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Protocol"
-        }
-      },
-      "ProtocolsReporting": {
-        "description": "Protocols reporting",
-        "type": "object",
-        "properties": {
-          "study_protocol": {
-            "$ref": "#/components/schemas/Protocol"
-          },
-          "hits": {
-            "type": "number",
-            "description": "The total number of rows",
-            "example": 100
-          },
-          "per_page": {
-            "type": "number",
-            "description": "Numeber of rows per page",
-            "example": 50
-          },
-          "page": {
-            "type": "number",
-            "description": "The current page number",
-            "example": 1
-          },
-          "results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Rows"
-            }
-          }
-        },
-        "required": [
-          "study_protocol",
-          "hits",
-          "per_page",
-          "page",
-          "results"
         ],
         "additionalProperties": false
       },
@@ -1654,6 +1136,77 @@
           "signatures_enabled",
           "sites_enabled",
           "video_timecode_enabled"
+        ],
+        "additionalProperties": false
+      },
+      "Protocol": {
+        "description": "A protocol",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of the protocol",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the protocol",
+            "example": "Protocol v1"
+          },
+          "number_of_study_procedures": {
+            "type": "number",
+            "description": "The number of study procedures in the protocol",
+            "example": 2
+          },
+          "study_procedure_display_name": {
+            "$ref": "#/components/schemas/DisplayName"
+          },
+          "study_event_display_name": {
+            "$ref": "#/components/schemas/DisplayName"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "number_of_study_procedures"
+        ]
+      },
+      "ProtocolsReporting": {
+        "description": "Protocols reporting",
+        "type": "object",
+        "properties": {
+          "study_protocol": {
+            "$ref": "#/components/schemas/Protocol"
+          },
+          "hits": {
+            "type": "number",
+            "description": "The total number of rows",
+            "example": 100
+          },
+          "per_page": {
+            "type": "number",
+            "description": "Numeber of rows per page",
+            "example": 50
+          },
+          "page": {
+            "type": "number",
+            "description": "The current page number",
+            "example": 1
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Rows"
+            }
+          }
+        },
+        "required": [
+          "study_protocol",
+          "hits",
+          "per_page",
+          "page",
+          "results"
         ],
         "additionalProperties": false
       },
@@ -1930,12 +1483,6 @@
           "study_protocol_id"
         ]
       },
-      "StudyArms": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/StudyArm"
-        }
-      },
       "StudyEvent": {
         "description": "A study event",
         "type": "object",
@@ -2003,12 +1550,6 @@
           "identifier",
           "required_form_templates"
         ]
-      },
-      "StudyProcedureDefinitions": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/StudyProcedureDefinition"
-        }
       },
       "Subject": {
         "description": "A Subject",
@@ -2193,120 +1734,11 @@
         ],
         "additionalProperties": false
       },
-      "TrialContainer": {
+      "User": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
-            "description": "The trial container id",
-            "example": 1
-          },
-          "identifier": {
-            "type": "string",
-            "description": "The trial container identifier",
-            "example": "VITALITY"
-          },
-          "name": {
-            "type": "string",
-            "description": "The trial container name",
-            "example": "Vitality Medical Center with subject"
-          },
-          "country": {
-            "type": "string",
-            "description": "The trial container country",
-            "example": "United Kingdom"
-          },
-          "type": {
-            "type": "string",
-            "description": "The trial container type",
-            "example": "Site"
-          },
-          "permissions": {
-            "type": "array",
-            "description": "The trial container permissions",
-            "items": {
-              "type": "string",
-              "example": "read"
-            }
-          },
-          "study_protocol": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer",
-                "description": "The study protocol id",
-                "example": 1
-              },
-              "name": {
-                "type": "string",
-                "description": "The study protocol name",
-                "example": "Ghost Protocol"
-              },
-              "study_event_display_name": {
-                "type": "object",
-                "properties": {
-                  "plural": {
-                    "type": "string",
-                    "description": "The study event display name plural",
-                    "example": "visits"
-                  },
-                  "singular": {
-                    "type": "string",
-                    "description": "The study event display name singular",
-                    "example": "visit"
-                  }
-                },
-                "required": [
-                  "plural",
-                  "singular"
-                ],
-                "additionalProperties": false
-              },
-              "study_procedure_display_name": {
-                "type": "object",
-                "properties": {
-                  "plural": {
-                    "type": "string",
-                    "description": "The study procedure display name plural",
-                    "example": "assessments"
-                  },
-                  "singular": {
-                    "type": "string",
-                    "description": "The study procedure display name singular",
-                    "example": "assessment"
-                  }
-                },
-                "required": [
-                  "plural",
-                  "singular"
-                ],
-                "additionalProperties": false
-              }
-            },
-            "required": [
-              "id",
-              "name",
-              "study_event_display_name",
-              "study_procedure_display_name"
-            ],
-            "additionalProperties": false
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "country",
-          "type",
-          "permissions"
-        ],
-        "additionalProperties": false
-      },
-      "User": {
-        "description": "A Subject",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
             "description": "The id of user",
             "example": 1
           },
@@ -2339,27 +1771,6 @@
           "first_name",
           "last_name"
         ]
-      },
-      "DisplayName": {
-        "description": "Display name in both singular and plural format",
-        "type": "object",
-        "properties": {
-          "singular": {
-            "type": "string",
-            "description": "The singular variant of the display name",
-            "example": "refill visit"
-          },
-          "plural": {
-            "type": "string",
-            "description": "The plural variant of the display name",
-            "example": "refill visits"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "singular",
-          "plural"
-        ]
       }
     },
     "responses": {
@@ -2373,8 +1784,8 @@
           }
         }
       },
-      "Unauthorised": {
-        "description": "Unauthorised. Missing or invalid authentication credentials.",
+      "Unauthorized": {
+        "description": "Unauthorized. Missing or invalid authentication credentials.",
         "content": {
           "application/json": {
             "schema": {
