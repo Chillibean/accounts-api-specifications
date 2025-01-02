@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Retrieve version
+      - name: Retrieve Version
         id: version
         run: echo "value=$(node -pe 'require("./package.json").version')-dev.${{ github.run_number }}" >> $GITHUB_OUTPUT
       - name: Create Release
@@ -83,4 +83,4 @@ jobs:
           curl -X POST https://api.github.com/repos/Chillibean/accounts-api-client-sdk/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.API_SPEC_PAT_TOKEN }} \
-          --data '{"event_type": "trigger_workflow", "client_payload": { "version": "${{ needs.create-pre-release.outputs.version }}" }}'
+          --data '{"event_type": "trigger-pre-release", "client_payload": { "version": "${{ needs.create-pre-release.outputs.version }}" }}'
