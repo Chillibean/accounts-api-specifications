@@ -31,7 +31,7 @@ jobs:
             const { repo: { owner, repo }, sha } = context;
 
             try {
-              const release = await github.repos.createRelease({
+              const release = await github.rest.repos.createRelease({
                 owner: owner,
                 repo: repo,
                 tag_name: '${{ steps.version.outputs.value }}',
@@ -42,7 +42,7 @@ jobs:
                 prerelease: true,
               });
 
-              await github.repos.uploadReleaseAsset({
+              await github.rest.repos.uploadReleaseAsset({
                 owner: owner,
                 repo: repo,
                 release_id: release.data.id,
@@ -50,21 +50,22 @@ jobs:
                 data: await fs.readFile('./public/fullSchema.json'),
               });
 
-              await github.repos.updateRelease({
+              await github.rest.repos.updateRelease({
                 owner: owner,
                 repo: repo,
                 release_id: release.data.id,
                 draft: false,
               });
             } catch (error) {
-             console.log('error:', error);
-              await github.repos.deleteRelease({
+              console.error(error);
+
+              await github.rest.repos.deleteRelease({
                 owner: owner,
                 repo: repo,
                 release_id: release.data.id,
               });
 
-              core.setFailed(JSON.stringify(error));
+              core.setFailed('Failed to create a pre-release');
             }
     outputs:
       version: ${{ steps.version.outputs.value }}
