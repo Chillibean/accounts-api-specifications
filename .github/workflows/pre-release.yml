@@ -57,6 +57,13 @@ jobs:
                 draft: false,
               });
             } catch (error) {
+             console.log('error:', error);
+              await github.repos.deleteRelease({
+                owner: owner,
+                repo: repo,
+                release_id: release.data.id,
+              });
+
               core.setFailed(JSON.stringify(error));
             }
     outputs:
