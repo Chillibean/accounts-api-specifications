@@ -1,16 +1,17 @@
 {
   "get": {
-    "summary": "Fetches chapter definitions for an account to be used for an asset",
+    "summary": "Gets chapter definitions for an account to be used for an asset",
+    "description": "Gets chapter definitions for an account",
+    "operationId": "getChapterDefinitions",
+    "tags": [
+      "Chapter Definitions"
+    ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
-    "operationId": "getAccountChapterDefinitions",
-    "description": "Fetches chapter definitions for an account",
     "parameters": [
       {
         "name": "account_id",
@@ -23,16 +24,16 @@
         }
       }
     ],
-    "tags": [
-      "Chapter Definitions"
-    ],
     "responses": {
       "200": {
         "description": "OK",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../components/schemas/ChapterDefinitions.json"
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/ChapterDefinition.json"
+              }
             }
           }
         }
@@ -41,7 +42,7 @@
         "$ref": "../components/responses/BadRequest.json"
       },
       "401": {
-        "$ref": "../components/responses/Unauthorised.json"
+        "$ref": "../components/responses/Unauthorized.json"
       },
       "403": {
         "$ref": "../components/responses/Forbidden.json"

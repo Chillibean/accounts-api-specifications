@@ -1,16 +1,17 @@
 {
   "get": {
     "summary": "Get an account",
+    "description": "Get account",
+    "operationId": "getAccount",
+    "tags": [
+      "Accounts"
+    ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
-    "operationId": "getAccount",
-    "description": "Get account",
     "parameters": [
       {
         "name": "account_id",
@@ -23,12 +24,6 @@
         "description": "The account id"
       }
     ],
-    "tags": [
-      "Accounts"
-    ],
-    "requestBody": {
-      "content": {}
-    },
     "responses": {
       "200": {
         "description": "OK",
@@ -44,7 +39,7 @@
         "$ref": "../components/responses/BadRequest.json"
       },
       "401": {
-        "$ref": "../components/responses/Unauthorised.json"
+        "$ref": "../components/responses/Unauthorized.json"
       },
       "403": {
         "$ref": "../components/responses/Forbidden.json"

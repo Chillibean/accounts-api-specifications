@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "2.4.2",
+    "version": "3.0.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -29,16 +29,24 @@
     {
       "name": "Protocols",
       "description": "Endpoints for protocols"
-    },
-    {
-      "name": "Trial Containers",
-      "description": "Endpoints for trial containers"
     }
   ],
   "servers": [
     {
       "url": "http://chillipharm.test:3000/api/v1",
       "description": "Local development"
+    },
+    {
+      "url": "https://qa.chillipharm.dev/api/v1",
+      "description": "QA"
+    },
+    {
+      "url": "https://chillipharm-staging.com/api/v1",
+      "description": "Staging"
+    },
+    {
+      "url": "https://chillipharm-uat.com/api/v1",
+      "description": "UAT"
     },
     {
       "url": "https://www.chillipharm.com/api/v1",
@@ -55,8 +63,8 @@
     "/accounts/{account_id}/chapter_definitions": {
       "$ref": "refs/paths/accounts_{account_id}_chapter_definitions.json"
     },
-    "/accounts/{account_id}/form_templates/{id}": {
-      "$ref": "refs/paths/accounts_{account_id}_form_templates_{id}.json"
+    "/accounts/{account_id}/form_templates/{form_template_id}": {
+      "$ref": "refs/paths/accounts_{account_id}_form_templates_{form_template_id}.json"
     },
     "/accounts/{account_id}/protocols/{study_protocol_id}/study_arms": {
       "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_study_arms.json"
@@ -72,15 +80,6 @@
     },
     "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting/export": {
       "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_site_reporting_export.json"
-    },
-    "/accounts/{account_id}/trial_containers/{trial_container_id}/forms": {
-      "$ref": "refs/paths/accounts_{account_id}_trial_containers_{trial_container_id}_forms.json"
-    },
-    "/accounts/{account_id}/trial_containers/{trial_container_id}/forms/{id}": {
-      "$ref": "refs/paths/accounts_{account_id}_trial_containers_{trial_container_id}_forms_{id}.json"
-    },
-    "/accounts/{account_id}/trial_containers/{id}": {
-      "$ref": "refs/paths/accounts_{account_id}_trial_containers_{id}.json"
     }
   },
   "components": {
@@ -102,26 +101,23 @@
       "Account": {
         "$ref": "refs/components/schemas/Account.json"
       },
-      "AudienceMember": {
-        "$ref": "refs/components/schemas/AudienceMember.json"
-      },
       "BasicAccount": {
         "$ref": "refs/components/schemas/BasicAccount.json"
-      },
-      "BasicAccounts": {
-        "$ref": "refs/components/schemas/BasicAccounts.json"
       },
       "ChapterDefinition": {
         "$ref": "refs/components/schemas/ChapterDefinition.json"
       },
-      "ChapterDefinitions": {
-        "$ref": "refs/components/schemas/ChapterDefinitions.json"
-      },
       "CompletedForm": {
         "$ref": "refs/components/schemas/CompletedForm.json"
       },
+      "DisplayName": {
+        "$ref": "refs/components/schemas/DisplayName.json"
+      },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
+      },
+      "FlaggedTask": {
+        "$ref": "refs/components/schemas/FlaggedTask.json"
       },
       "FormTemplate": {
         "$ref": "refs/components/schemas/FormTemplate.json"
@@ -129,23 +125,17 @@
       "FormTemplateField": {
         "$ref": "refs/components/schemas/FormTemplateField.json"
       },
-      "FlaggedTask": {
-        "$ref": "refs/components/schemas/FlaggedTask.json"
-      },
       "Permissions": {
         "$ref": "refs/components/schemas/Permissions.json"
+      },
+      "PlanOptions": {
+        "$ref": "refs/components/schemas/PlanOptions.json"
       },
       "Protocol": {
         "$ref": "refs/components/schemas/Protocol.json"
       },
-      "Protocols": {
-        "$ref": "refs/components/schemas/Protocols.json"
-      },
       "ProtocolsReporting": {
         "$ref": "refs/components/schemas/ProtocolsReporting.json"
-      },
-      "PlanOptions": {
-        "$ref": "refs/components/schemas/PlanOptions.json"
       },
       "Rows": {
         "$ref": "refs/components/schemas/Rows.json"
@@ -159,17 +149,11 @@
       "StudyArm": {
         "$ref": "refs/components/schemas/StudyArm.json"
       },
-      "StudyArms": {
-        "$ref": "refs/components/schemas/StudyArms.json"
-      },
       "StudyEvent": {
         "$ref": "refs/components/schemas/StudyEvent.json"
       },
       "StudyProcedureDefinition": {
         "$ref": "refs/components/schemas/StudyProcedureDefinition.json"
-      },
-      "StudyProcedureDefinitions": {
-        "$ref": "refs/components/schemas/StudyProcedureDefinitions.json"
       },
       "Subject": {
         "$ref": "refs/components/schemas/Subject.json"
@@ -182,9 +166,6 @@
       },
       "Transition": {
         "$ref": "refs/components/schemas/Transition.json"
-      },
-      "TrialContainer": {
-        "$ref": "refs/components/schemas/TrialContainer.json"
       },
       "User": {
         "$ref": "refs/components/schemas/User.json"
