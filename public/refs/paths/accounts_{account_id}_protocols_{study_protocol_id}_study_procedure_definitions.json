@@ -1,16 +1,17 @@
 {
   "get": {
     "summary": "Get the study procedure definitions of a protocol",
+    "description": "Get the study procedure definitions of a protocol",
+    "operationId": "getStudyProcedureDefinitions",
+    "tags": [
+      "Protocols"
+    ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
-    "operationId": "getStudyProcedureDefinitions",
-    "description": "Get the study procedure definitions of a protocol",
     "parameters": [
       {
         "name": "account_id",
@@ -33,19 +34,16 @@
         "description": "The study protocol id"
       }
     ],
-    "tags": [
-      "Protocols"
-    ],
-    "requestBody": {
-      "content": {}
-    },
     "responses": {
       "200": {
         "description": "OK",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../components/schemas/StudyProcedureDefinitions.json"
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/StudyProcedureDefinition.json"
+              }
             }
           }
         }
@@ -54,7 +52,7 @@
         "$ref": "../components/responses/BadRequest.json"
       },
       "401": {
-        "$ref": "../components/responses/Unauthorised.json"
+        "$ref": "../components/responses/Unauthorized.json"
       },
       "403": {
         "$ref": "../components/responses/Forbidden.json"

@@ -1,9 +1,8 @@
 {
-  "description": "A Subject",
   "type": "object",
   "properties": {
     "id": {
-      "type": "number",
+      "type": "integer",
       "description": "The id of user",
       "example": 1
     },
