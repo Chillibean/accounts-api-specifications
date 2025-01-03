@@ -84,7 +84,9 @@ jobs:
                 owner: owner,
                 repo: repo,
               });
-              const preReleases = releases.filter((release) => release.name && release.name.includes('${{ needs.create-release.outputs.version }}' && release.prerelease));
+              const preReleases = releases.data.filter((release) => release.name && release.name.includes('${{ needs.create-release.outputs.version }}' && release.prerelease));
+
+              console.log('Found:', preReleases.map((release) => release.name));
 
               for (const release of preReleases) {
                 await github.rest.repos.deleteRelease({
