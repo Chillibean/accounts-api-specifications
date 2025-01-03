@@ -1,16 +1,17 @@
 {
   "get": {
     "summary": "Get report export for the protocol",
+    "description": "Get protocols reporting export",
+    "operationId": "getProtocolsReportingExport",
+    "tags": [
+      "Protocols"
+    ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
-    "operationId": "getProtocolsReportingExport",
-    "description": "Get protocols reporting export",
     "parameters": [
       {
         "name": "account_id",
@@ -33,10 +34,6 @@
         "description": "The study protocol id"
       }
     ],
-    "tags": ["Protocols"],
-    "requestBody": {
-      "content": {}
-    },
     "responses": {
       "200": {
         "description": "Successful export",
@@ -54,7 +51,7 @@
         "$ref": "../components/responses/BadRequest.json"
       },
       "401": {
-        "$ref": "../components/responses/Unauthorised.json"
+        "$ref": "../components/responses/Unauthorized.json"
       },
       "403": {
         "$ref": "../components/responses/Forbidden.json"
