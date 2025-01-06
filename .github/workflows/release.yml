@@ -139,13 +139,13 @@ jobs:
                 owner: owner,
                 repo: repo,
                 issue_number: ${{ steps.pr.outputs.number }},
-                body: 'Package Version: ${{ needs.create-release.outputs.version }}',
+                body: 'Version: ${{ needs.create-release.outputs.version }}',
               });
             } catch (error) {
               console.error(error);
             }
 
-  publish-gh-pages:
+  publish-to-github-pages:
     name: Publish to GitHub Pages
     runs-on: ubuntu-latest
     needs: create-release
