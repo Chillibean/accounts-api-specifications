@@ -1,60 +1,61 @@
 {
-    "get": {
-      "summary": "Fetches all accounts",
-      "security": [
-        {
-          "userSessionKey": []
-        },
-        {
-          "chillipharmSession": []
+  "get": {
+    "summary": "Gets all accounts",
+    "description": "Gets all accounts",
+    "operationId": "getAccounts",
+    "tags": [
+      "Accounts"
+    ],
+    "security": [
+      {
+        "userSessionKey": [],
+        "chillipharmSession": []
+      }
+    ],
+    "parameters": [
+      {
+        "description": "The account subdomain",
+        "in": "query",
+        "name": "subdomain",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "example": "pfizer"
         }
-      ],
-      "operationId": "getAccounts",
-      "description": "Fetches all accounts",
-      "parameters": [
-        {
-          "description": "The account subdomain",
-          "in": "query",
-          "name": "subdomain",
-          "required": false,
-          "schema": {
-            "type": "string",
-            "example": "pfizer"
-          }
-        }
-      ],
-      "tags": [
-        "Accounts"
-      ],
-      "responses": {
-        "200": {
-          "description": "OK",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../components/schemas/BasicAccounts.json"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/BasicAccount.json"
               }
             }
           }
-        },
-        "400": {
-          "$ref": "../components/responses/BadRequest.json"
-        },
-        "401": {
-          "$ref": "../components/responses/Unauthorised.json"
-        },
-        "403": {
-          "$ref": "../components/responses/Forbidden.json"
-        },
-        "404": {
-          "$ref": "../components/responses/NotFound.json"
-        },
-        "409": {
-          "$ref": "../components/responses/Conflict.json"
-        },
-        "500": {
-          "$ref": "../components/responses/InternalServerError.json"
         }
+      },
+      "400": {
+        "$ref": "../components/responses/BadRequest.json"
+      },
+      "401": {
+        "$ref": "../components/responses/Unauthorized.json"
+      },
+      "403": {
+        "$ref": "../components/responses/Forbidden.json"
+      },
+      "404": {
+        "$ref": "../components/responses/NotFound.json"
+      },
+      "409": {
+        "$ref": "../components/responses/Conflict.json"
+      },
+      "500": {
+        "$ref": "../components/responses/InternalServerError.json"
       }
     }
   }
+}
