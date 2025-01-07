@@ -1,16 +1,17 @@
 {
   "get": {
     "summary": "Get protocols",
+    "description": "Get protocols",
+    "operationId": "getStudyProtocols",
+    "tags": [
+      "Protocols"
+    ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
-    "operationId": "getProtocols",
-    "description": "Get protocols",
     "parameters": [
       {
         "name": "account_id",
@@ -23,19 +24,16 @@
         "description": "The account id"
       }
     ],
-    "tags": [
-      "Protocols"
-    ],
-    "requestBody": {
-      "content": {}
-    },
     "responses": {
       "200": {
         "description": "OK",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../components/schemas/Protocols.json"
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/Protocol.json"
+              }
             }
           }
         }
@@ -44,7 +42,7 @@
         "$ref": "../components/responses/BadRequest.json"
       },
       "401": {
-        "$ref": "../components/responses/Unauthorised.json"
+        "$ref": "../components/responses/Unauthorized.json"
       },
       "403": {
         "$ref": "../components/responses/Forbidden.json"
