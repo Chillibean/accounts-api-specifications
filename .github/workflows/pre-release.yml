@@ -74,8 +74,6 @@ jobs:
     needs: create-pre-release
     if: ${{ !github.event.pull_request.draft }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
       - name: Trigger Workflow
         run: |
           curl -X POST https://api.github.com/repos/Chillibean/accounts-api-client-sdk/dispatches \
