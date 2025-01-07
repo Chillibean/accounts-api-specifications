@@ -1,16 +1,17 @@
 {
   "get": {
     "summary": "Get the study arms of a protocol",
+    "description": "Get account form template",
+    "operationId": "getStudyArms",
+    "tags": [
+      "Protocols"
+    ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
-    "operationId": "getStudyArms",
-    "description": "Get account form template",
     "parameters": [
       {
         "name": "account_id",
@@ -33,19 +34,16 @@
         "description": "The study protocol id"
       }
     ],
-    "tags": [
-      "Protocols"
-    ],
-    "requestBody": {
-      "content": {}
-    },
     "responses": {
       "200": {
         "description": "OK",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../components/schemas/StudyArms.json"
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/StudyArm.json"
+              }
             }
           }
         }
@@ -54,7 +52,7 @@
         "$ref": "../components/responses/BadRequest.json"
       },
       "401": {
-        "$ref": "../components/responses/Unauthorised.json"
+        "$ref": "../components/responses/Unauthorized.json"
       },
       "403": {
         "$ref": "../components/responses/Forbidden.json"
