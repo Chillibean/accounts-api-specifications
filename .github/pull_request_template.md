@@ -1,14 +1,14 @@
 # Version
 
-- 
+-
 
 # Ticket URL
 
-- 
+-
 
 # Changes Made
 
-- 
+-
 
 # Checklist
 
