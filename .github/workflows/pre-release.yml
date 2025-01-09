@@ -76,6 +76,7 @@ jobs:
     steps:
       - name: Trigger Workflow
         run: |
+          set -e
           curl -X POST https://api.github.com/repos/Chillibean/accounts-api-client-sdk/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.GITHUB_TOKEN }} \
