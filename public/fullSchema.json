@@ -1485,52 +1485,49 @@
         ]
       },
       "Subject": {
-        "description": "A Subject",
+        "description": "A subject",
         "type": "object",
         "properties": {
+          "cohort": {
+            "type": "string",
+            "description": "The study cohort of the subject",
+            "example": "Cohort 1",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Date time for when the subject was created",
+            "example": "2024-01-02T11:06:48.566Z"
+          },
+          "created_by": {
+            "type": "string",
+            "description": "Full name of subject creator",
+            "example": "John Doe"
+          },
           "id": {
             "type": "number",
-            "description": "The id of account",
+            "description": "The subject id",
             "example": 1
           },
           "number": {
             "type": "string",
-            "description": "The subject number",
-            "example": "B0001001"
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The date and time the subject was created",
-            "example": "2020-01-01T00:00:00Z"
-          },
-          "current_study_event": {
-            "type": "string",
-            "description": "The current study event",
-            "example": "REFILL1"
+            "description": "The serial number of the subject",
+            "example": "E001004"
           },
           "study_arm": {
             "type": "string",
-            "description": "The study arm",
-            "example": "A"
-          },
-          "created_by": {
-            "type": "string",
-            "description": "The user of the subject",
-            "example": "Mon Admin1"
-          },
-          "creator": {
-            "$ref": "#/components/schemas/User"
+            "description": "The study arm the subject is currently in",
+            "example": "Arm 1",
+            "nullable": true
           }
         },
-        "additionalProperties": false,
         "required": [
-          "id",
-          "number",
-          "current_study_event",
+          "created_at",
           "created_by",
-          "creator"
-        ]
+          "id",
+          "number"
+        ],
+        "additionalProperties": false
       },
       "SubjectIdSettings": {
         "type": "object",
@@ -1586,44 +1583,6 @@
           "completed_by"
         ],
         "additionalProperties": false
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "The id of user",
-            "example": 1
-          },
-          "email": {
-            "type": "string",
-            "description": "The email of the user",
-            "example": "B0001001"
-          },
-          "uuid": {
-            "type": "string",
-            "description": "The uuid of the user",
-            "example": "30e7c29d-fa0e-4bc7-a0ea-014b3d5a354f"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The first name of the user",
-            "example": "REFILL1"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The last name of the user",
-            "example": "Mon Admin1"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "email",
-          "uuid",
-          "first_name",
-          "last_name"
-        ]
       }
     },
     "responses": {

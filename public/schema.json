@@ -160,9 +160,6 @@
       },
       "Task": {
         "$ref": "refs/components/schemas/Task.json"
-      },
-      "User": {
-        "$ref": "refs/components/schemas/User.json"
       }
     }
   }
