@@ -1,16 +1,17 @@
 {
   "get": {
     "summary": "Get report for the protocol",
+    "description": "Get protocols reporting",
+    "operationId": "getProtocolsReporting",
+    "tags": [
+      "Protocols"
+    ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
-    "operationId": "getProtocolsReporting",
-    "description": "Get protocols reporting",
     "parameters": [
       {
         "name": "account_id",
@@ -43,12 +44,6 @@
         }
       }
     ],
-    "tags": [
-      "Protocols"
-    ],
-    "requestBody": {
-      "content": {}
-    },
     "responses": {
       "200": {
         "description": "OK",
@@ -64,7 +59,7 @@
         "$ref": "../components/responses/BadRequest.json"
       },
       "401": {
-        "$ref": "../components/responses/Unauthorised.json"
+        "$ref": "../components/responses/Unauthorized.json"
       },
       "403": {
         "$ref": "../components/responses/Forbidden.json"
