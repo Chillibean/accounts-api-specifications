@@ -7,7 +7,7 @@
       "description": "The id of account",
       "example": 1
     },
-    "subject_number": {
+    "number": {
       "type": "string",
       "description": "The subject number",
       "example": "B0001001"
@@ -40,7 +40,7 @@
   "additionalProperties": false,
   "required": [
     "id",
-    "subject_number",
+    "number",
     "current_study_event",
     "created_by",
     "creator"

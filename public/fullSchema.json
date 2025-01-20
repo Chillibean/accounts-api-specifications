@@ -1350,73 +1350,6 @@
         ],
         "additionalProperties": false
       },
-      "Signature": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "The signature id",
-            "example": 1
-          },
-          "email": {
-            "type": "string",
-            "description": "The signature email",
-            "example": "example@gmail.com"
-          },
-          "first_name": {
-            "type": "string",
-            "description": "The signature first name",
-            "example": "First"
-          },
-          "last_name": {
-            "type": "string",
-            "description": "The signature last name",
-            "example": "Last"
-          },
-          "meaning": {
-            "type": "string",
-            "description": "The signature meaning",
-            "example": "Submit"
-          },
-          "reason": {
-            "type": "string",
-            "description": "The signature reason",
-            "example": "Reason"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The signature created at",
-            "example": "2024-04-16T16:35:52.875Z"
-          },
-          "object_uuid": {
-            "type": "string",
-            "description": "The signature object uuid",
-            "example": "uuid"
-          },
-          "user_uuid": {
-            "type": "string",
-            "description": "The signature user uuid",
-            "example": "uuid"
-          },
-          "verification_status": {
-            "type": "string",
-            "description": "The signature verification status",
-            "example": "verified"
-          }
-        },
-        "required": [
-          "id",
-          "email",
-          "first_name",
-          "last_name",
-          "meaning",
-          "reason",
-          "created_at",
-          "object_uuid",
-          "user_uuid",
-          "verification_status"
-        ]
-      },
       "Site": {
         "description": "A Site",
         "type": "object",
@@ -1560,7 +1493,7 @@
             "description": "The id of account",
             "example": 1
           },
-          "subject_number": {
+          "number": {
             "type": "string",
             "description": "The subject number",
             "example": "B0001001"
@@ -1593,7 +1526,7 @@
         "additionalProperties": false,
         "required": [
           "id",
-          "subject_number",
+          "number",
           "current_study_event",
           "created_by",
           "creator"
@@ -1654,86 +1587,6 @@
         ],
         "additionalProperties": false
       },
-      "Transition": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The transition id",
-            "example": "1"
-          },
-          "name": {
-            "type": "string",
-            "description": "The transition name",
-            "example": "Submit"
-          },
-          "requires_signatures": {
-            "type": "array",
-            "description": "The transition requires signatures",
-            "items": {
-              "type": "string",
-              "example": "1"
-            }
-          },
-          "audience": {
-            "type": "array",
-            "description": "The transition audience",
-            "items": {
-              "type": "string",
-              "example": "can_review_forms"
-            }
-          },
-          "options": {
-            "type": "object",
-            "properties": {
-              "skip_validation": {
-                "type": "boolean",
-                "description": "Whether to skip validation",
-                "example": true
-              }
-            },
-            "required": [
-              "skip_validation"
-            ],
-            "additionalProperties": false
-          },
-          "activity_text": {
-            "type": "string",
-            "description": "The transition activity text",
-            "example": "Submitted"
-          },
-          "signature_definitions": {
-            "type": "array",
-            "description": "The transition signature definitions",
-            "items": {
-              "type": "string",
-              "example": "1"
-            }
-          },
-          "requires_reason_for_change": {
-            "type": "boolean",
-            "description": "Whether the transition requires reason for change",
-            "example": true
-          },
-          "requires_review_comments": {
-            "type": "boolean",
-            "description": "Whether the transition requires review comments",
-            "example": true
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "requires_signatures",
-          "audience",
-          "options",
-          "activity_text",
-          "signature_definitions",
-          "requires_reason_for_change",
-          "requires_review_comments"
-        ],
-        "additionalProperties": false
-      },
       "User": {
         "type": "object",
         "properties": {
@@ -1789,42 +1642,17 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "error": {
-                  "type": "string",
-                  "description": "The error message",
-                  "example": "Unauthorised",
-                  "enum": [
-                    "Unauthorised"
-                  ]
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "error"
-              ]
+              "$ref": "#/components/schemas/Error"
             }
           }
         }
       },
       "Forbidden": {
-        "description": "Forbidden. The request was valid, but the server is refusing action.",
+        "description": "Forbidden. Insufficient permissions to perform the operation.",
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "error": {
-                  "type": "string",
-                  "description": "The error message",
-                  "example": "You do not have sufficient permission to perform this action",
-                  "enum": [
-                    "You do not have sufficient permission to perform this action",
-                    "Forbidden"
-                  ]
-                }
-              }
+              "$ref": "#/components/schemas/Error"
             }
           }
         }
@@ -1834,21 +1662,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "error": {
-                  "type": "string",
-                  "description": "The error message",
-                  "example": "Not found",
-                  "enum": [
-                    "Not found"
-                  ]
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "error"
-              ]
+              "$ref": "#/components/schemas/Error"
             }
           }
         }

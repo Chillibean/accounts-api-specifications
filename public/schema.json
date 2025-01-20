@@ -140,9 +140,6 @@
       "Rows": {
         "$ref": "refs/components/schemas/Rows.json"
       },
-      "Signature": {
-        "$ref": "refs/components/schemas/Signature.json"
-      },
       "Site": {
         "$ref": "refs/components/schemas/Site.json"
       },
@@ -163,9 +160,6 @@
       },
       "Task": {
         "$ref": "refs/components/schemas/Task.json"
-      },
-      "Transition": {
-        "$ref": "refs/components/schemas/Transition.json"
       },
       "User": {
         "$ref": "refs/components/schemas/User.json"
