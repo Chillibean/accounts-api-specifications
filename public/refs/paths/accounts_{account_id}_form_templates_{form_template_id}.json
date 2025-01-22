@@ -1,16 +1,17 @@
 {
   "get": {
     "summary": "Get an account form template",
+    "description": "Get account form template",
+    "operationId": "getFormTemplate",
+    "tags": [
+      "Form Templates"
+    ],
     "security": [
       {
-        "userSessionKey": []
-      },
-      {
+        "userSessionKey": [],
         "chillipharmSession": []
       }
     ],
-    "operationId": "getAccountFormTemplate",
-    "description": "Get account form template",
     "parameters": [
       {
         "name": "account_id",
@@ -23,7 +24,7 @@
         "description": "The account id"
       },
       {
-        "name": "id",
+        "name": "form_template_id",
         "in": "path",
         "required": true,
         "schema": {
@@ -33,12 +34,6 @@
         "description": "The form template id"
       }
     ],
-    "tags": [
-      "Form Templates"
-    ],
-    "requestBody": {
-      "content": {}
-    },
     "responses": {
       "200": {
         "description": "OK",
@@ -79,7 +74,7 @@
         "$ref": "../components/responses/BadRequest.json"
       },
       "401": {
-        "$ref": "../components/responses/Unauthorised.json"
+        "$ref": "../components/responses/Unauthorized.json"
       },
       "403": {
         "$ref": "../components/responses/Forbidden.json"
