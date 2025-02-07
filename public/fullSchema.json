@@ -178,7 +178,7 @@
       }
     },
     "/accounts/{account_id}/assets/{asset_id}": {
-      "delete": {
+      "get": {
         "summary": "Download asset",
         "description": "Download asset",
         "operationId": "downloadAsset",
