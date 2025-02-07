@@ -64,6 +64,9 @@
     "/accounts/{account_id}": {
       "$ref": "refs/paths/accounts_{account_id}.json"
     },
+    "/accounts/{account_id}/assets/{asset_id}": {
+      "$ref": "refs/paths/accounts_{account_id}_assets_{asset_id}.json"
+    },
     "/accounts/{account_id}/chapter_definitions": {
       "$ref": "refs/paths/accounts_{account_id}_chapter_definitions.json"
     },
