@@ -882,7 +882,7 @@
         }
       }
     },
-    "/accounts/{account_id}/upload/start_multipart": {
+    "/accounts/{account_id}/uploads/start_multipart": {
       "post": {
         "summary": "Start a multipart upload",
         "description": "Start a multipart upload",

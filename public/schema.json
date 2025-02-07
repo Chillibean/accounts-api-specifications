@@ -91,7 +91,7 @@
     "/accounts/{account_id}/uploads/complete_multipart": {
       "$ref": "refs/paths/accounts_{account_id}_uploads_complete_multipart.json"
     },
-    "/accounts/{account_id}/upload/start_multipart": {
+    "/accounts/{account_id}/uploads/start_multipart": {
       "$ref": "refs/paths/accounts_{account_id}_uploads_start_multipart.json"
     },
     "/accounts/{account_id}/uploads/upload_part": {
