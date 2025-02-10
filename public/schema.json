@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "3.0.0",
+    "version": "10.0.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -17,6 +17,10 @@
     {
       "name": "Accounts",
       "description": "Endpoints for accounts"
+    },
+    {
+      "name": "Account Upload",
+      "description": "Endpoints for account uploads"
     },
     {
       "name": "Chapter Definitions",
@@ -60,6 +64,9 @@
     "/accounts/{account_id}": {
       "$ref": "refs/paths/accounts_{account_id}.json"
     },
+    "/accounts/{account_id}/assets/{asset_id}": {
+      "$ref": "refs/paths/accounts_{account_id}_assets_{asset_id}.json"
+    },
     "/accounts/{account_id}/chapter_definitions": {
       "$ref": "refs/paths/accounts_{account_id}_chapter_definitions.json"
     },
@@ -80,6 +87,18 @@
     },
     "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting/export": {
       "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_site_reporting_export.json"
+    },
+    "/accounts/{account_id}/uploads/abort_multipart": {
+      "$ref": "refs/paths/accounts_{account_id}_uploads_abort_multipart.json"
+    },
+    "/accounts/{account_id}/uploads/complete_multipart": {
+      "$ref": "refs/paths/accounts_{account_id}_uploads_complete_multipart.json"
+    },
+    "/accounts/{account_id}/uploads/start_multipart": {
+      "$ref": "refs/paths/accounts_{account_id}_uploads_start_multipart.json"
+    },
+    "/accounts/{account_id}/uploads/upload_part": {
+      "$ref": "refs/paths/accounts_{account_id}_uploads_upload_part.json"
     }
   },
   "components": {
@@ -100,6 +119,12 @@
     "schemas": {
       "Account": {
         "$ref": "refs/components/schemas/Account.json"
+      },
+      "Asset": {
+        "$ref": "refs/components/schemas/Asset.json"
+      },
+      "AuthenticityToken": {
+        "$ref": "refs/components/schemas/AuthenticityToken.json"
       },
       "BasicAccount": {
         "$ref": "refs/components/schemas/BasicAccount.json"
@@ -160,6 +185,12 @@
       },
       "Task": {
         "$ref": "refs/components/schemas/Task.json"
+      },
+      "User": {
+        "$ref": "refs/components/schemas/User.json"
+      },
+      "VideoTranscode": {
+        "$ref": "refs/components/schemas/VideoTranscode.json"
       }
     }
   }
