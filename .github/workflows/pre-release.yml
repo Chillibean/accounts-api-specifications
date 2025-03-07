@@ -19,35 +19,13 @@ jobs:
       - name: Retrieve Version
         id: version
         run: echo "value=$(node -pe 'require("./package.json").version')-dev.${{ github.run_number }}" >> $GITHUB_OUTPUT
-      - name: Create Release
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            const fs = require('fs').promises;
-
-            const { repo: { owner, repo }, sha } = context;
-
-            try {
-              const releases = await github.paginate(github.rest.repos.listReleases, {
-                owner: owner,
-                repo: repo,
-                per_page: 100,
-              });
-              const preReleases = releases.filter((release) => release.name && release.name.includes('3.0.0') && release.prerelease);
-
-              console.log('Releases found:', preReleases.map((release) => release.name));
-
-              for (const release of preReleases) {
-                await github.rest.repos.deleteRelease({
-                  owner: owner,
-                  repo: repo,
-                  release_id: release.id,
-                });
-              }
-            } catch (error) {
-              console.error(error);
-              core.setFailed('Failed to remove pre-releases');
-            }
+      - name: Trigger Workflow
+        run: |
+          set -e
+          curl -X POST https://api.github.com/repos/Chillibean/accounts-api-client-sdk/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.API_SPEC_PAT_TOKEN }} \
+          --data '{"event_type": "trigger-release", "client_payload": { "version": "3.0.0" }}' \
+          --fail
     outputs:
       version: ${{ steps.version.outputs.value }}
