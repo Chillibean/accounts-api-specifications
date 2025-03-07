@@ -2,30 +2,27 @@
   "description": "An error",
   "type": "object",
   "properties": {
+    "error": {
+      "type": "string",
+      "description": "The error message",
+      "example": "Bad request. Missing or invalid input parameters."
+    },
     "errors": {
       "type": "object",
+      "description": "The error object",
       "properties": {
         "message": {
+          "type": "string",
           "description": "The error message",
-          "example": "Bad request. Missing or invalid input parameters."
+          "example": "Validation failed."
         },
         "fields": {
-          "description": "The error fields",
           "type": "object",
-          "example": {
-            "name": [
-              "can't be blank"
-            ],
-            "color": [
-              "can't be blank"
-            ]
-          }
+          "description": "The validation fields errors"
         }
       }
     }
   },
   "additionalProperties": false,
-  "required": [
-    "errors"
-  ]
+  "required": []
 }
