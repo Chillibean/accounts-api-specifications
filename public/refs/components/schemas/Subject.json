@@ -1,48 +1,45 @@
 {
-  "description": "A Subject",
+  "description": "A subject",
   "type": "object",
   "properties": {
-    "id": {
-      "type": "number",
-      "description": "The id of account",
-      "example": 1
-    },
-    "subject_number": {
+    "cohort": {
       "type": "string",
-      "description": "The subject number",
-      "example": "B0001001"
+      "description": "The study cohort of the subject",
+      "example": "Cohort 1",
+      "nullable": true
     },
     "created_at": {
       "type": "string",
-      "format": "date-time",
-      "description": "The date and time the subject was created",
-      "example": "2020-01-01T00:00:00Z"
-    },
-    "current_study_event": {
-      "type": "string",
-      "description": "The current study event",
-      "example": "REFILL1"
-    },
-    "study_arm": {
-      "type": "string",
-      "description": "The study arm",
-      "example": "A"
+      "description": "Date time for when the subject was created",
+      "example": "2024-01-02T11:06:48.566Z"
     },
     "created_by": {
       "type": "string",
-      "description": "The user of the subject",
-      "example": "Mon Admin1"
+      "description": "Full name of subject creator",
+      "example": "John Doe"
     },
-    "creator": {
-      "$ref": "./User.json"
+    "id": {
+      "type": "number",
+      "description": "The subject id",
+      "example": 1
+    },
+    "number": {
+      "type": "string",
+      "description": "The serial number of the subject",
+      "example": "E001004"
+    },
+    "study_arm": {
+      "type": "string",
+      "description": "The study arm the subject is currently in",
+      "example": "Arm 1",
+      "nullable": true
     }
   },
-  "additionalProperties": false,
   "required": [
-    "id",
-    "subject_number",
-    "current_study_event",
+    "created_at",
     "created_by",
-    "creator"
-  ]
+    "id",
+    "number"
+  ],
+  "additionalProperties": false
 }
