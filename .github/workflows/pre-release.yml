@@ -29,11 +29,12 @@ jobs:
             const { repo: { owner, repo }, sha } = context;
 
             try {
-              const releases = await github.rest.repos.listReleases({
+              const releases = await github.paginate(github.rest.repos.listReleases, {
                 owner: owner,
                 repo: repo,
+                per_page: 100,
               });
-              console.log('All releases:', releases.data);
+              console.log('All releases:', releases.data.length);
 
               const preReleases = releases.data.filter((release) => release.name && release.name.includes('3.0.0') && release.prerelease);
 
