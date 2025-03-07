@@ -101,7 +101,7 @@ Key elements within the JSON file:
 
 You can access the documentation at [https://chillibean.github.io/accounts-api-specifications](https://chillibean.github.io/accounts-api-specifications).
 
-The OpenAPI JSON file is available at [https://chillibean.github.io/accounts-api-specifications](https://chillibean.github.io/accounts-api-specifications/fullSchema.json).
+The OpenAPI JSON file is available at [https://chillibean.github.io/accounts-api-specifications/fullSchema.json](https://chillibean.github.io/accounts-api-specifications/fullSchema.json).
 
 ## **GitHub Workflows**
 
