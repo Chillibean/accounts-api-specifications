@@ -35,7 +35,7 @@ jobs:
               });
               console.log('All releases:', releases.data);
 
-              const preReleases = releases.data.filter((release) => release.name && release.name.includes('3.0.0' && release.prerelease));
+              const preReleases = releases.data.filter((release) => release.name && release.name.includes('3.0.0') && release.prerelease);
 
               console.log('Releases found:', preReleases.map((release) => release.name));
             } catch (error) {
