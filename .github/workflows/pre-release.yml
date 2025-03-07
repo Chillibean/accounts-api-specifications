@@ -34,11 +34,17 @@ jobs:
                 repo: repo,
                 per_page: 100,
               });
-              console.log('All releases:', releases.length);
-
               const preReleases = releases.filter((release) => release.name && release.name.includes('3.0.0') && release.prerelease);
 
               console.log('Releases found:', preReleases.map((release) => release.name));
+
+              for (const release of preReleases) {
+                await github.rest.repos.deleteRelease({
+                  owner: owner,
+                  repo: repo,
+                  release_id: release.id,
+                });
+              }
             } catch (error) {
               console.error(error);
               core.setFailed('Failed to remove pre-releases');
