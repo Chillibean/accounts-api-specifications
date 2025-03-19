@@ -29,7 +29,7 @@
         "required": true,
         "schema": {
           "type": "string",
-          "example": "1"
+          "example": "c40a88fc-189e-4bbf-8606-9c7b57030e21"
         },
         "description": "The download request id"
       }
