@@ -1,0 +1,70 @@
+{
+  "get": {
+    "summary": "Download requested resource",
+    "description": "Download requested resource",
+    "operationId": "downloadRequest",
+    "tags": [
+      "Downloads"
+    ],
+    "security": [
+      {
+        "userSessionKey": [],
+        "chillipharmSession": []
+      }
+    ],
+    "parameters": [
+      {
+        "name": "account_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "1"
+        },
+        "description": "The account id"
+      },
+      {
+        "name": "download_request_uuid",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "1"
+        },
+        "description": "The download request id"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/octet-stream": {
+            "schema": {
+              "type": "object",
+              "format": "binary",
+              "example": "data"
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "../components/responses/BadRequest.json"
+      },
+      "401": {
+        "$ref": "../components/responses/Unauthorized.json"
+      },
+      "403": {
+        "$ref": "../components/responses/Forbidden.json"
+      },
+      "404": {
+        "$ref": "../components/responses/NotFound.json"
+      },
+      "409": {
+        "$ref": "../components/responses/Conflict.json"
+      },
+      "500": {
+        "$ref": "../components/responses/InternalServerError.json"
+      }
+    }
+  }
+}
