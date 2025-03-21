@@ -23,6 +23,10 @@
       "description": "Endpoints for chapter definitions"
     },
     {
+      "name": "Downloads",
+      "description": "Endpoints for downloads"
+    },
+    {
       "name": "Form Templates",
       "description": "Endpoints for form templates"
     },
@@ -62,6 +66,9 @@
     },
     "/accounts/{account_id}/chapter_definitions": {
       "$ref": "refs/paths/accounts_{account_id}_chapter_definitions.json"
+    },
+    "/accounts/{account_id}/downloads/{download_request_uuid}": {
+      "$ref": "refs/paths/accounts_{account_id}_downloads.json"
     },
     "/accounts/{account_id}/form_templates/{form_template_id}": {
       "$ref": "refs/paths/accounts_{account_id}_form_templates_{form_template_id}.json"
