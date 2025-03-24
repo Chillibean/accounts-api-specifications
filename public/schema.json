@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "3.1.0",
+    "version": "3.3.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -21,6 +21,10 @@
     {
       "name": "Chapter Definitions",
       "description": "Endpoints for chapter definitions"
+    },
+    {
+      "name": "Downloads",
+      "description": "Endpoints for downloads"
     },
     {
       "name": "Form Templates",
@@ -62,6 +66,9 @@
     },
     "/accounts/{account_id}/chapter_definitions": {
       "$ref": "refs/paths/accounts_{account_id}_chapter_definitions.json"
+    },
+    "/accounts/{account_id}/downloads/{download_request_uuid}": {
+      "$ref": "refs/paths/accounts_{account_id}_downloads.json"
     },
     "/accounts/{account_id}/form_templates/{form_template_id}": {
       "$ref": "refs/paths/accounts_{account_id}_form_templates_{form_template_id}.json"

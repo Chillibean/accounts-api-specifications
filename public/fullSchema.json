@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "3.1.0",
+    "version": "3.3.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -43,6 +43,10 @@
     {
       "name": "Chapter Definitions",
       "description": "Endpoints for chapter definitions"
+    },
+    {
+      "name": "Downloads",
+      "description": "Endpoints for downloads"
     },
     {
       "name": "Form Templates",
@@ -209,6 +213,76 @@
                   "items": {
                     "$ref": "#/components/schemas/ChapterDefinition"
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/downloads/{download_request_uuid}": {
+      "get": {
+        "summary": "Download requested resource",
+        "description": "Download requested resource",
+        "operationId": "downloadRequestedResource",
+        "tags": [
+          "Downloads"
+        ],
+        "security": [
+          {
+            "userSessionKey": [],
+            "chillipharmSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The account id"
+          },
+          {
+            "name": "download_request_uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "c40a88fc-189e-4bbf-8606-9c7b57030e21"
+            },
+            "description": "The download request uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "object",
+                  "format": "binary",
+                  "example": "data"
                 }
               }
             }
