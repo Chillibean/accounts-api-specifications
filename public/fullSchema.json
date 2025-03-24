@@ -275,8 +275,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
+          "302": {
+            "description": "Redirect to resource",
             "content": {
               "application/octet-stream": {
                 "schema": {
