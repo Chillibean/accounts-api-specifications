@@ -2,7 +2,7 @@
   "get": {
     "summary": "Download requested resource",
     "description": "Download requested resource",
-    "operationId": "downloadRequest",
+    "operationId": "downloadRequestedResource",
     "tags": [
       "Downloads"
     ],
