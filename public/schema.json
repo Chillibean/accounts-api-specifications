@@ -63,6 +63,9 @@
     "/accounts/{account_id}/chapter_definitions": {
       "$ref": "refs/paths/accounts_{account_id}_chapter_definitions.json"
     },
+    "/accounts/{account_id}/form_templates": {
+      "$ref": "refs/paths/accounts_{account_id}_form_templates.json"
+    },
     "/accounts/{account_id}/form_templates/{form_template_id}": {
       "$ref": "refs/paths/accounts_{account_id}_form_templates_{form_template_id}.json"
     },
