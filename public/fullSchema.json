@@ -234,6 +234,92 @@
         }
       }
     },
+    "/accounts/{account_id}/form_templates": {
+      "get": {
+        "summary": "Get account form templates",
+        "description": "Get account form templates",
+        "operationId": "getFormTemplates",
+        "tags": [
+          "Form Templates"
+        ],
+        "security": [
+          {
+            "userSessionKey": [],
+            "chillipharmSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "The account id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "description": "The form template id",
+                        "example": 1
+                      },
+                      "title": {
+                        "type": "string",
+                        "description": "The form template title",
+                        "example": "Form template title"
+                      },
+                      "fields": {
+                        "type": "array",
+                        "description": "The form template fields",
+                        "items": {
+                          "$ref": "#/components/schemas/FormTemplateField"
+                        }
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "fields"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
     "/accounts/{account_id}/form_templates/{form_template_id}": {
       "get": {
         "summary": "Get an account form template",
