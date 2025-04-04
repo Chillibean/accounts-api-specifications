@@ -73,14 +73,14 @@
           "type": "string",
           "description": "The subject number",
           "example": "1234"
-        },
-        "arm": {
-          "type": "string",
-          "description": "The subject arm",
-          "example": "Arm A",
-          "nullable": true
         }
       }
+    },
+    "study_arm": {
+      "type": "string",
+      "description": "The subject arm",
+      "example": "Arm A",
+      "nullable": true
     },
     "study_event": {
       "$ref": "./StudyEvent.json"

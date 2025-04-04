@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -1282,14 +1282,14 @@
                 "type": "string",
                 "description": "The subject number",
                 "example": "1234"
-              },
-              "arm": {
-                "type": "string",
-                "description": "The subject arm",
-                "example": "Arm A",
-                "nullable": true
               }
             }
+          },
+          "study_arm": {
+            "type": "string",
+            "description": "The subject arm",
+            "example": "Arm A",
+            "nullable": true
           },
           "study_event": {
             "$ref": "#/components/schemas/StudyEvent"
@@ -1516,13 +1516,31 @@
             "description": "The study arm the subject is currently in",
             "example": "Arm 1",
             "nullable": true
+          },
+          "any_study_events_exist": {
+            "type": "boolean",
+            "description": "Indicates if any study events exist for the subject",
+            "example": true
+          },
+          "any_study_events_completed": {
+            "type": "boolean",
+            "description": "Indicates if any study events have been completed for the subject",
+            "example": true
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Indicates if the subject is active",
+            "example": true
           }
         },
         "required": [
           "created_at",
           "created_by",
           "id",
-          "number"
+          "number",
+          "any_study_events_exist",
+          "any_study_events_completed",
+          "active"
         ],
         "additionalProperties": false
       },
