@@ -715,7 +715,7 @@
           "plan_options": {
             "$ref": "#/components/schemas/PlanOptions"
           },
-          "subject_id_settings": {
+          "subject_number_requirements": {
             "$ref": "#/components/schemas/SubjectIdSettings"
           },
           "timezone": {
@@ -730,7 +730,7 @@
           "name",
           "permissions",
           "plan_options",
-          "subject_id_settings",
+          "subject_number_requirements",
           "timezone"
         ]
       },
