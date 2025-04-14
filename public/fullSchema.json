@@ -1367,7 +1367,7 @@
             "example": "0123"
           },
           "number": {
-            "type": "number",
+            "type": "string",
             "description": "The number of the site",
             "example": 1
           }
