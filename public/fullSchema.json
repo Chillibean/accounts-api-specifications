@@ -1375,7 +1375,7 @@
         "required": [
           "id",
           "name",
-          "identifier"
+          "number"
         ],
         "additionalProperties": false
       },

@@ -23,6 +23,6 @@
       "example": 1
     }
   },
-  "required": ["id", "name", "identifier"],
+  "required": ["id", "name", "number"],
   "additionalProperties": false
 }
