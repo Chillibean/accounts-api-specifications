@@ -18,7 +18,7 @@
     "plan_options": {
       "$ref": "./PlanOptions.json"
     },
-    "subject_id_settings": {
+    "subject_number_requirements": {
       "$ref": "./SubjectIdSettings.json"
     },
     "timezone": {
@@ -33,7 +33,7 @@
     "name",
     "permissions",
     "plan_options",
-    "subject_id_settings",
+    "subject_number_requirements",
     "timezone"
   ]
 }

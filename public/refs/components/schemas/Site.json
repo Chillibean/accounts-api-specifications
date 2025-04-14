@@ -16,6 +16,11 @@
       "type": "string",
       "description": "The identifier of the site",
       "example": "0123"
+    },
+    "number": {
+      "type": "string",
+      "description": "The number of the site",
+      "example": 1
     }
   },
   "required": ["id", "name", "identifier"],
