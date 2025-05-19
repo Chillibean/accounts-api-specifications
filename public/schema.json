@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "3.3.0",
+    "version": "3.4.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -17,6 +17,10 @@
     {
       "name": "Accounts",
       "description": "Endpoints for accounts"
+    },
+    {
+      "name": "Brandings",
+      "description": "Endpoints for brandings"
     },
     {
       "name": "Chapter Definitions",
@@ -64,6 +68,9 @@
     "/accounts/{account_id}": {
       "$ref": "refs/paths/accounts_{account_id}.json"
     },
+    "/accounts/{account_id}/brandings": {
+      "$ref": "refs/paths/accounts_{account_id}_brandings.json"
+    },
     "/accounts/{account_id}/chapter_definitions": {
       "$ref": "refs/paths/accounts_{account_id}_chapter_definitions.json"
     },
@@ -110,6 +117,9 @@
       },
       "BasicAccount": {
         "$ref": "refs/components/schemas/BasicAccount.json"
+      },
+      "Branding": {
+        "$ref": "refs/components/schemas/Branding.json"
       },
       "ChapterDefinition": {
         "$ref": "refs/components/schemas/ChapterDefinition.json"
