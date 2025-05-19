@@ -1,0 +1,20 @@
+{
+  "description": "The branding of the account",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "The branding id",
+      "example": 1,
+      "nullable": true
+    },
+    "s3_thumbnail_path": {
+      "type": "string",
+      "description": "The s3 thumbnail path of the branding",
+      "example": "/branding/thumbnail/path",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "required": ["id", "s3_thumbnail_path"]
+}
