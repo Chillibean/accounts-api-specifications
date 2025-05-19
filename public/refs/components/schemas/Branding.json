@@ -7,16 +7,6 @@
       "description": "The branding id",
       "example": 1
     },
-    "account_id": {
-      "type": "integer",
-      "description": "The account id of the branding",
-      "example": 1
-    },
-    "s3_name": {
-      "type": "string",
-      "description": "The s3 name of the branding",
-      "example": "branding_name"
-    },
     "s3_thumbnail_path": {
       "type": "string",
       "description": "The s3 thumbnail path of the branding",
@@ -24,5 +14,5 @@
     }
   },
   "additionalProperties": false,
-  "required": ["id", "account_id", "s3_name", "s3_thumbnail_path"]
+  "required": ["id", "s3_thumbnail_path"]
 }
