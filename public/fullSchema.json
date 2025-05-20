@@ -185,7 +185,7 @@
       "get": {
         "summary": "Gets branding for an account",
         "description": "Gets branding for an account",
-        "operationId": "getBrandings",
+        "operationId": "getBranding",
         "tags": [
           "Branding"
         ],
