@@ -1,10 +1,10 @@
 {
   "get": {
-    "summary": "Gets brandings for an account",
-    "description": "Gets brandings for an account",
+    "summary": "Gets branding for an account",
+    "description": "Gets branding for an account",
     "operationId": "getBrandings",
     "tags": [
-      "Brandings"
+      "Branding"
     ],
     "security": [
       {

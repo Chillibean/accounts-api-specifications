@@ -41,8 +41,8 @@
       "description": "Endpoints for accounts"
     },
     {
-      "name": "Brandings",
-      "description": "Endpoints for brandings"
+      "name": "Branding",
+      "description": "Endpoints for account branding"
     },
     {
       "name": "Chapter Definitions",
@@ -181,13 +181,13 @@
         }
       }
     },
-    "/accounts/{account_id}/brandings": {
+    "/accounts/{account_id}/branding": {
       "get": {
-        "summary": "Gets brandings for an account",
-        "description": "Gets brandings for an account",
+        "summary": "Gets branding for an account",
+        "description": "Gets branding for an account",
         "operationId": "getBrandings",
         "tags": [
-          "Brandings"
+          "Branding"
         ],
         "security": [
           {
@@ -901,9 +901,9 @@
             "example": 1,
             "nullable": true
           },
-          "s3_thumbnail_path": {
+          "presigned_url": {
             "type": "string",
-            "description": "The s3 thumbnail path of the branding",
+            "description": "The presigned URL for the branding thumbnail",
             "example": "/branding/thumbnail/path",
             "nullable": true
           }
@@ -911,7 +911,7 @@
         "additionalProperties": false,
         "required": [
           "id",
-          "s3_thumbnail_path"
+          "presigned_url"
         ]
       },
       "ChapterDefinition": {

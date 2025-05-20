@@ -8,13 +8,13 @@
       "example": 1,
       "nullable": true
     },
-    "s3_thumbnail_path": {
+    "presigned_url": {
       "type": "string",
-      "description": "The s3 thumbnail path of the branding",
+      "description": "The presigned URL for the branding thumbnail",
       "example": "/branding/thumbnail/path",
       "nullable": true
     }
   },
   "additionalProperties": false,
-  "required": ["id", "s3_thumbnail_path"]
+  "required": ["id", "presigned_url"]
 }
