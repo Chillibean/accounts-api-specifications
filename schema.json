@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "3.1.0",
+    "version": "3.2.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -155,8 +155,8 @@
       "Subject": {
         "$ref": "refs/components/schemas/Subject.json"
       },
-      "SubjectIdSettings": {
-        "$ref": "refs/components/schemas/SubjectIdSettings.json"
+      "SubjectNumberSettings": {
+        "$ref": "refs/components/schemas/SubjectNumberSettings.json"
       },
       "Task": {
         "$ref": "refs/components/schemas/Task.json"
