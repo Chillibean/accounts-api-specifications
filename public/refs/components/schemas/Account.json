@@ -19,7 +19,7 @@
       "$ref": "./PlanOptions.json"
     },
     "subject_number_requirements": {
-      "$ref": "./SubjectIdSettings.json"
+      "$ref": "./SubjectNumberSettings.json"
     },
     "timezone": {
       "type": "string",
