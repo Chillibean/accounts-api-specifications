@@ -716,7 +716,7 @@
             "$ref": "#/components/schemas/PlanOptions"
           },
           "subject_number_requirements": {
-            "$ref": "#/components/schemas/SubjectIdSettings"
+            "$ref": "#/components/schemas/SubjectNumberSettings"
           },
           "timezone": {
             "type": "string",
@@ -1549,7 +1549,7 @@
         ],
         "additionalProperties": false
       },
-      "SubjectIdSettings": {
+      "SubjectNumberSettings": {
         "type": "object",
         "properties": {
           "length": {
