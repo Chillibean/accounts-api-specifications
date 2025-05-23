@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "3.1.0",
+    "version": "3.2.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -715,8 +715,8 @@
           "plan_options": {
             "$ref": "#/components/schemas/PlanOptions"
           },
-          "subject_id_settings": {
-            "$ref": "#/components/schemas/SubjectIdSettings"
+          "subject_number_requirements": {
+            "$ref": "#/components/schemas/SubjectNumberSettings"
           },
           "timezone": {
             "type": "string",
@@ -730,7 +730,7 @@
           "name",
           "permissions",
           "plan_options",
-          "subject_id_settings",
+          "subject_number_requirements",
           "timezone"
         ]
       },
@@ -1365,12 +1365,17 @@
             "type": "string",
             "description": "The identifier of the site",
             "example": "0123"
+          },
+          "number": {
+            "type": "string",
+            "description": "The number of the site",
+            "example": 1
           }
         },
         "required": [
           "id",
           "name",
-          "identifier"
+          "number"
         ],
         "additionalProperties": false
       },
@@ -1544,7 +1549,7 @@
         ],
         "additionalProperties": false
       },
-      "SubjectIdSettings": {
+      "SubjectNumberSettings": {
         "type": "object",
         "properties": {
           "length": {
