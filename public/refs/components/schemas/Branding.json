@@ -1,0 +1,20 @@
+{
+  "description": "The branding of the account",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "The branding id",
+      "example": 1,
+      "nullable": true
+    },
+    "presigned_url": {
+      "type": "string",
+      "description": "The presigned URL for the branding thumbnail",
+      "example": "/branding/thumbnail/path",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "required": ["id", "presigned_url"]
+}
