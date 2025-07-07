@@ -122,9 +122,6 @@
       "Account": {
         "$ref": "refs/components/schemas/Account.json"
       },
-      "AssetLocation": {
-        "$ref": "refs/components/schemas/AssetLocation.json"
-      },
       "BasicAccount": {
         "$ref": "refs/components/schemas/BasicAccount.json"
       },
