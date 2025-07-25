@@ -19,6 +19,10 @@
       "description": "Endpoints for accounts"
     },
     {
+      "name": "Assets",
+      "description": "Endpoints for assets"
+    },
+    {
       "name": "Branding",
       "description": "Endpoints for account branding"
     },
@@ -67,6 +71,9 @@
     },
     "/accounts/{account_id}": {
       "$ref": "refs/paths/accounts_{account_id}.json"
+    },
+    "/accounts/{account_id}/assets/{asset_id}/location": {
+      "$ref": "refs/paths/accounts_{account_id}_assets_{asset_id}_location.json"
     },
     "/accounts/{account_id}/branding": {
       "$ref": "refs/paths/accounts_{account_id}_brandings.json"
