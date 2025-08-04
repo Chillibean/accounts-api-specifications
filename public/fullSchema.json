@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "3.4.0",
+    "version": "3.5.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -39,6 +39,10 @@
     {
       "name": "Accounts",
       "description": "Endpoints for accounts"
+    },
+    {
+      "name": "Assets",
+      "description": "Endpoints for assets"
     },
     {
       "name": "Branding",
@@ -156,6 +160,187 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/assets/{asset_id}/location": {
+      "get": {
+        "summary": "Gets location for an asset",
+        "description": "Gets location for an asset",
+        "operationId": "getAssetLocation",
+        "tags": [
+          "Assets"
+        ],
+        "security": [
+          {
+            "userSessionKey": [],
+            "chillipharmSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The account id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "asset_id",
+            "in": "path",
+            "description": "The asset id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "An asset location",
+                  "type": "object",
+                  "properties": {
+                    "account": {
+                      "type": "object",
+                      "description": "The account data",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "The name of the account",
+                          "example": "Test Trial"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "name"
+                      ]
+                    },
+                    "site": {
+                      "type": "object",
+                      "description": "The site data",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "The name of the site",
+                          "example": "0123 Hospital London St Thomas"
+                        },
+                        "number": {
+                          "type": "string",
+                          "description": "The number of the site",
+                          "example": 1
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "name",
+                        "number"
+                      ]
+                    },
+                    "subject": {
+                      "type": "object",
+                      "description": "The subject data",
+                      "properties": {
+                        "number": {
+                          "type": "string",
+                          "description": "The serial number of the subject",
+                          "example": "E001004"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "number"
+                      ]
+                    },
+                    "study_event": {
+                      "type": "object",
+                      "description": "The study event data",
+                      "properties": {
+                        "display_name": {
+                          "type": "string",
+                          "description": "The display name of a study event",
+                          "example": "Visit 1"
+                        },
+                        "identifier": {
+                          "type": "string",
+                          "description": "The identifier of a study event",
+                          "example": "VIS1"
+                        },
+                        "label": {
+                          "$ref": "#/components/schemas/DisplayName"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "display_name",
+                        "identifier",
+                        "label"
+                      ]
+                    },
+                    "study_procedure": {
+                      "type": "object",
+                      "description": "The study procedure data",
+                      "properties": {
+                        "display_name": {
+                          "type": "string",
+                          "description": "The display name of a study procedure",
+                          "example": "North Star"
+                        },
+                        "identifier": {
+                          "type": "string",
+                          "description": "The identifier of a study procedure",
+                          "example": "NSTAR"
+                        },
+                        "label": {
+                          "$ref": "#/components/schemas/DisplayName"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "display_name",
+                        "identifier",
+                        "label"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "account",
+                    "site",
+                    "study_event",
+                    "study_procedure",
+                    "subject"
+                  ],
+                  "nullable": true
                 }
               }
             }
