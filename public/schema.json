@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "3.4.0",
+    "version": "3.5.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -17,6 +17,10 @@
     {
       "name": "Accounts",
       "description": "Endpoints for accounts"
+    },
+    {
+      "name": "Assets",
+      "description": "Endpoints for assets"
     },
     {
       "name": "Branding",
@@ -67,6 +71,9 @@
     },
     "/accounts/{account_id}": {
       "$ref": "refs/paths/accounts_{account_id}.json"
+    },
+    "/accounts/{account_id}/assets/{asset_id}/location": {
+      "$ref": "refs/paths/accounts_{account_id}_assets_{asset_id}_location.json"
     },
     "/accounts/{account_id}/branding": {
       "$ref": "refs/paths/accounts_{account_id}_brandings.json"
