@@ -1724,7 +1724,8 @@
         "required": [
           "id",
           "name",
-          "number"
+          "number",
+          "country"
         ],
         "additionalProperties": false
       },

@@ -28,6 +28,6 @@
       "example": "South Korea"
     }
   },
-  "required": ["id", "name", "number"],
+  "required": ["id", "name", "number", "country"],
   "additionalProperties": false
 }
