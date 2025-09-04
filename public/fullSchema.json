@@ -1714,12 +1714,18 @@
             "type": "string",
             "description": "The number of the site",
             "example": 1
+          },
+          "country": {
+            "type": "string",
+            "description": "The country of the site",
+            "example": "South Korea"
           }
         },
         "required": [
           "id",
           "name",
-          "number"
+          "number",
+          "country"
         ],
         "additionalProperties": false
       },
