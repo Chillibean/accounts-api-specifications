@@ -62,7 +62,7 @@
     },
     {
       "name": "Protocols",
-      "description": "Endpoints for protocols"
+      "description": "Endpoints for trial configurations"
     }
   ],
   "paths": {
@@ -648,9 +648,9 @@
         }
       }
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/study_arms": {
+    "/accounts/{account_id}/trial_configurations/{trial_configuration_id}/study_arms": {
       "get": {
-        "summary": "Get the study arms of a protocol",
+        "summary": "Get the study arms of a trial configuration",
         "description": "Get account form template",
         "operationId": "getStudyArms",
         "tags": [
@@ -674,14 +674,14 @@
             "description": "The account id"
           },
           {
-            "name": "study_protocol_id",
+            "name": "trial_configuration_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "example": "1"
             },
-            "description": "The study protocol id"
+            "description": "The trial configuration id"
           }
         ],
         "responses": {
@@ -719,10 +719,10 @@
         }
       }
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/study_procedure_definitions": {
+    "/accounts/{account_id}/trial_configurations/{trial_configuration_id}/study_procedure_definitions": {
       "get": {
-        "summary": "Get the study procedure definitions of a protocol",
-        "description": "Get the study procedure definitions of a protocol",
+        "summary": "Get the study procedure definitions of a trial configuration",
+        "description": "Get the study procedure definitions of a trial configuration",
         "operationId": "getStudyProcedureDefinitions",
         "tags": [
           "Protocols"
@@ -745,14 +745,14 @@
             "description": "The account id"
           },
           {
-            "name": "study_protocol_id",
+            "name": "trial_configuration_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "example": "1"
             },
-            "description": "The study protocol id"
+            "description": "The trial configuration id"
           }
         ],
         "responses": {
@@ -790,11 +790,11 @@
         }
       }
     },
-    "/accounts/{account_id}/protocols": {
+    "/accounts/{account_id}/trial_configurations": {
       "get": {
-        "summary": "Get protocols",
-        "description": "Get protocols",
-        "operationId": "getStudyProtocols",
+        "summary": "Get trial configurations",
+        "description": "Get trial configurations",
+        "operationId": "getTrialConfigurations",
         "tags": [
           "Protocols"
         ],
@@ -851,10 +851,10 @@
         }
       }
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting": {
+    "/accounts/{account_id}/trial_configurations/{trial_configuration_id}/site_reporting": {
       "get": {
-        "summary": "Get report for the protocol",
-        "description": "Get protocols reporting",
+        "summary": "Get report for the trial configuration",
+        "description": "Get trial configurations reporting",
         "operationId": "getProtocolsReporting",
         "tags": [
           "Protocols"
@@ -877,14 +877,14 @@
             "description": "The account id"
           },
           {
-            "name": "study_protocol_id",
+            "name": "trial_configuration_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "example": "1"
             },
-            "description": "The study protocol id"
+            "description": "The trial configuration id"
           },
           {
             "name": "page",
@@ -929,10 +929,10 @@
         }
       }
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting/export": {
+    "/accounts/{account_id}/trial_configurations/{trial_configuration_id}/site_reporting/export": {
       "get": {
-        "summary": "Get report export for the protocol",
-        "description": "Get protocols reporting export",
+        "summary": "Get report export for the trial configuration",
+        "description": "Get trial configurations reporting export",
         "operationId": "getProtocolsReportingExport",
         "tags": [
           "Protocols"
@@ -955,14 +955,14 @@
             "description": "The account id"
           },
           {
-            "name": "study_protocol_id",
+            "name": "trial_configuration_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
               "example": "1"
             },
-            "description": "The study protocol id"
+            "description": "The trial configuration id"
           }
         ],
         "responses": {
@@ -1481,22 +1481,22 @@
         "additionalProperties": false
       },
       "Protocol": {
-        "description": "A protocol",
+        "description": "A trial configuration",
         "type": "object",
         "properties": {
           "id": {
             "type": "number",
-            "description": "The id of the protocol",
+            "description": "The id of the trial configuration",
             "example": 1
           },
           "name": {
             "type": "string",
-            "description": "The name of the protocol",
+            "description": "The name of the trial configuration",
             "example": "Protocol v1"
           },
           "number_of_study_procedures": {
             "type": "number",
-            "description": "The number of study procedures in the protocol",
+            "description": "The number of study procedures in the trial configuration",
             "example": 2
           },
           "study_procedure_display_name": {
@@ -1517,7 +1517,7 @@
         "description": "Protocols reporting",
         "type": "object",
         "properties": {
-          "study_protocol": {
+          "trial_configuration": {
             "$ref": "#/components/schemas/Protocol"
           },
           "hits": {
@@ -1543,7 +1543,7 @@
           }
         },
         "required": [
-          "study_protocol",
+          "trial_configuration",
           "hits",
           "per_page",
           "page",
@@ -1557,7 +1557,7 @@
         "properties": {
           "id": {
             "type": "number",
-            "description": "The id of the protocol",
+            "description": "The id of the trial configuration",
             "example": 1
           },
           "created_at": {
@@ -1567,27 +1567,27 @@
           },
           "identifier": {
             "type": "string",
-            "description": "The indentifier of the protocol",
+            "description": "The indentifier of the trial configuration",
             "example": "NSTAR"
           },
           "display_name": {
             "type": "string",
-            "description": "The display name of the protocol",
+            "description": "The display name of the trial configuration",
             "example": "North Star"
           },
           "date": {
             "type": "string",
-            "description": "The protocol date",
+            "description": "The trial configuration date",
             "example": "2020-01-01"
           },
           "status": {
             "type": "string",
-            "description": "The protocol status",
+            "description": "The trial configuration status",
             "example": "completed"
           },
           "status_change_date": {
             "type": "string",
-            "description": "The protocol status change date",
+            "description": "The trial configuration status change date",
             "example": "2022-08-10T10:00:00.000Z"
           },
           "clinical_evaluator": {
@@ -1600,12 +1600,12 @@
             "description": "The account trial",
             "example": "Trial 1"
           },
-          "study_protocol": {
+          "trial_configuration": {
             "type": "object",
             "properties": {
               "name": {
                 "type": "string",
-                "description": "The name of the protocol",
+                "description": "The name of the trial configuration",
                 "example": "Protocol v1"
               },
               "study_procedure_display_name": {
@@ -1687,7 +1687,7 @@
           "tasks",
           "completed_forms",
           "assets",
-          "study_protocol"
+          "trial_configuration"
         ],
         "additionalProperties": false
       },
@@ -1748,7 +1748,7 @@
             "description": "The date the study arm was created",
             "example": "2021-06-01T00:00:00Z"
           },
-          "study_protocol_id": {
+          "trial_configuration_id": {
             "type": "number",
             "description": "The id of the study arm",
             "example": 1
@@ -1765,7 +1765,7 @@
         "required": [
           "id",
           "display_name",
-          "study_protocol_id"
+          "trial_configuration_id"
         ]
       },
       "StudyEvent": {

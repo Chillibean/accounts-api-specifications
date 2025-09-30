@@ -1,8 +1,8 @@
 {
   "get": {
-    "summary": "Get protocols",
-    "description": "Get protocols",
-    "operationId": "getStudyProtocols",
+    "summary": "Get trial configurations",
+    "description": "Get trial configurations",
+    "operationId": "getTrialConfigurations",
     "tags": [
       "Protocols"
     ],

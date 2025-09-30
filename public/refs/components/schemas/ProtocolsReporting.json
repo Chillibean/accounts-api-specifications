@@ -2,7 +2,7 @@
   "description": "Protocols reporting",
   "type": "object",
   "properties": {
-    "study_protocol": {
+    "trial_configuration": {
       "$ref": "./Protocol.json"
     },
     "hits": {
@@ -28,7 +28,7 @@
     }
   },
   "required": [
-    "study_protocol",
+    "trial_configuration",
     "hits",
     "per_page",
     "page",

@@ -1,8 +1,8 @@
 {
   "get": {
-    "summary": "Get the study procedure definitions of a protocol",
-    "description": "Get the study procedure definitions of a protocol",
-    "operationId": "getStudyProcedureDefinitions",
+    "summary": "Get the study arms of a trial configuration",
+    "description": "Get account form template",
+    "operationId": "getStudyArms",
     "tags": [
       "Protocols"
     ],
@@ -24,14 +24,14 @@
         "description": "The account id"
       },
       {
-        "name": "study_protocol_id",
+        "name": "trial_configuration_id",
         "in": "path",
         "required": true,
         "schema": {
           "type": "string",
           "example": "1"
         },
-        "description": "The study protocol id"
+        "description": "The trial configuration id"
       }
     ],
     "responses": {
@@ -42,7 +42,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "../components/schemas/StudyProcedureDefinition.json"
+                "$ref": "../components/schemas/StudyArm.json"
               }
             }
           }

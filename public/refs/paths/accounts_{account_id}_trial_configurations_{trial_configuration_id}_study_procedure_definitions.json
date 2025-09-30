@@ -1,8 +1,8 @@
 {
   "get": {
-    "summary": "Get report export for the protocol",
-    "description": "Get protocols reporting export",
-    "operationId": "getProtocolsReportingExport",
+    "summary": "Get the study procedure definitions of a trial configuration",
+    "description": "Get the study procedure definitions of a trial configuration",
+    "operationId": "getStudyProcedureDefinitions",
     "tags": [
       "Protocols"
     ],
@@ -24,25 +24,26 @@
         "description": "The account id"
       },
       {
-        "name": "study_protocol_id",
+        "name": "trial_configuration_id",
         "in": "path",
         "required": true,
         "schema": {
           "type": "string",
           "example": "1"
         },
-        "description": "The study protocol id"
+        "description": "The trial configuration id"
       }
     ],
     "responses": {
       "200": {
-        "description": "Successful export",
+        "description": "OK",
         "content": {
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+          "application/json": {
             "schema": {
-              "type": "string",
-              "format": "binary",
-              "example": "PK!�E�@J,[Content_Types].xml���"
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/StudyProcedureDefinition.json"
+              }
             }
           }
         }

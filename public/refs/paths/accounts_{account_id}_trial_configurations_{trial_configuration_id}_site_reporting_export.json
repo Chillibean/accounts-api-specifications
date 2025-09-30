@@ -1,8 +1,8 @@
 {
   "get": {
-    "summary": "Get the study arms of a protocol",
-    "description": "Get account form template",
-    "operationId": "getStudyArms",
+    "summary": "Get report export for the trial configuration",
+    "description": "Get trial configurations reporting export",
+    "operationId": "getProtocolsReportingExport",
     "tags": [
       "Protocols"
     ],
@@ -24,26 +24,25 @@
         "description": "The account id"
       },
       {
-        "name": "study_protocol_id",
+        "name": "trial_configuration_id",
         "in": "path",
         "required": true,
         "schema": {
           "type": "string",
           "example": "1"
         },
-        "description": "The study protocol id"
+        "description": "The trial configuration id"
       }
     ],
     "responses": {
       "200": {
-        "description": "OK",
+        "description": "Successful export",
         "content": {
-          "application/json": {
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "../components/schemas/StudyArm.json"
-              }
+              "type": "string",
+              "format": "binary",
+              "example": "PK!�E�@J,[Content_Types].xml���"
             }
           }
         }
