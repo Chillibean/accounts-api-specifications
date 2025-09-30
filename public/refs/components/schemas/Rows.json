@@ -4,7 +4,7 @@
   "properties": {
     "id": {
       "type": "number",
-      "description": "The id of the protocol",
+      "description": "The id of the trial configuration",
       "example": 1
     },
     "created_at": {
@@ -14,27 +14,27 @@
     },
     "identifier": {
       "type": "string",
-      "description": "The indentifier of the protocol",
+      "description": "The indentifier of the trial configuration",
       "example": "NSTAR"
     },
     "display_name": {
       "type": "string",
-      "description": "The display name of the protocol",
+      "description": "The display name of the trial configuration",
       "example": "North Star"
     },
     "date": {
       "type": "string",
-      "description": "The protocol date",
+      "description": "The trial configuration date",
       "example": "2020-01-01"
     },
     "status": {
       "type": "string",
-      "description": "The protocol status",
+      "description": "The trial configuration status",
       "example": "completed"
     },
     "status_change_date": {
       "type": "string",
-      "description": "The protocol status change date",
+      "description": "The trial configuration status change date",
       "example": "2022-08-10T10:00:00.000Z"
     },
     "clinical_evaluator": {
@@ -47,13 +47,13 @@
       "description": "The account trial",
       "example": "Trial 1"
     },
-    "study_protocol": {
+    "trial_configuration": {
       "type": "object",
       "properties": {
         "name": {
           "type": "string",
-          "description": "The name of the protocol",
-          "example": "Protocol v1"
+          "description": "The name of the trial configuration",
+          "example": "Trial Configuration v1"
         },
         "study_procedure_display_name": {
           "$ref": "./DisplayName.json"
@@ -134,7 +134,7 @@
     "tasks",
     "completed_forms",
     "assets",
-    "study_protocol"
+    "trial_configuration"
   ],
   "additionalProperties": false
 }
