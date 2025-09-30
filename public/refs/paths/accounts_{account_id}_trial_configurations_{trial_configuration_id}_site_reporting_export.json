@@ -1,10 +1,10 @@
 {
   "get": {
-    "summary": "Get report export for the protocol",
-    "description": "Get protocols reporting export",
-    "operationId": "getProtocolsReportingExport",
+    "summary": "Get report export for the trial configuration",
+    "description": "Get trial configurations reporting export",
+    "operationId": "getTrialConfigurationsReportingExport",
     "tags": [
-      "Protocols"
+      "Trial Configurations"
     ],
     "security": [
       {
@@ -24,14 +24,14 @@
         "description": "The account id"
       },
       {
-        "name": "study_protocol_id",
+        "name": "trial_configuration_id",
         "in": "path",
         "required": true,
         "schema": {
           "type": "string",
           "example": "1"
         },
-        "description": "The study protocol id"
+        "description": "The trial configuration id"
       }
     ],
     "responses": {
