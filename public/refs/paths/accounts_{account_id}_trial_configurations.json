@@ -4,7 +4,7 @@
     "description": "Get trial configurations",
     "operationId": "getTrialConfigurations",
     "tags": [
-      "Protocols"
+      "Trial Configurations"
     ],
     "security": [
       {
@@ -32,7 +32,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "../components/schemas/Protocol.json"
+                "$ref": "../components/schemas/TrialConfiguration.json"
               }
             }
           }

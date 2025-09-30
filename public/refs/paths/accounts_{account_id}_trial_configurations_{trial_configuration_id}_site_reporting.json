@@ -2,9 +2,9 @@
   "get": {
     "summary": "Get report for the trial configuration",
     "description": "Get trial configurations reporting",
-    "operationId": "getProtocolsReporting",
+    "operationId": "getTrialConfigurationsReporting",
     "tags": [
-      "Protocols"
+      "Trial Configurations"
     ],
     "security": [
       {
@@ -50,7 +50,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../components/schemas/ProtocolsReporting.json"
+              "$ref": "../components/schemas/TrialConfigurationsReporting.json"
             }
           }
         }

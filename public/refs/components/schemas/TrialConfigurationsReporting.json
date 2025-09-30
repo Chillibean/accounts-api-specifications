@@ -1,9 +1,9 @@
 {
-  "description": "Protocols reporting",
+  "description": "Trial Configurations reporting",
   "type": "object",
   "properties": {
     "trial_configuration": {
-      "$ref": "./Protocol.json"
+      "$ref": "./TrialConfiguration.json"
     },
     "hits": {
       "type": "number",

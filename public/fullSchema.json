@@ -61,7 +61,7 @@
       "description": "Endpoints for form templates"
     },
     {
-      "name": "Protocols",
+      "name": "Trial Configurations",
       "description": "Endpoints for trial configurations"
     }
   ],
@@ -654,7 +654,7 @@
         "description": "Get account form template",
         "operationId": "getStudyArms",
         "tags": [
-          "Protocols"
+          "Trial Configurations"
         ],
         "security": [
           {
@@ -725,7 +725,7 @@
         "description": "Get the study procedure definitions of a trial configuration",
         "operationId": "getStudyProcedureDefinitions",
         "tags": [
-          "Protocols"
+          "Trial Configurations"
         ],
         "security": [
           {
@@ -796,7 +796,7 @@
         "description": "Get trial configurations",
         "operationId": "getTrialConfigurations",
         "tags": [
-          "Protocols"
+          "Trial Configurations"
         ],
         "security": [
           {
@@ -824,7 +824,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Protocol"
+                    "$ref": "#/components/schemas/TrialConfiguration"
                   }
                 }
               }
@@ -855,9 +855,9 @@
       "get": {
         "summary": "Get report for the trial configuration",
         "description": "Get trial configurations reporting",
-        "operationId": "getProtocolsReporting",
+        "operationId": "getTrialConfigurationsReporting",
         "tags": [
-          "Protocols"
+          "Trial Configurations"
         ],
         "security": [
           {
@@ -903,7 +903,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProtocolsReporting"
+                  "$ref": "#/components/schemas/TrialConfigurationsReporting"
                 }
               }
             }
@@ -933,9 +933,9 @@
       "get": {
         "summary": "Get report export for the trial configuration",
         "description": "Get trial configurations reporting export",
-        "operationId": "getProtocolsReportingExport",
+        "operationId": "getTrialConfigurationsReportingExport",
         "tags": [
-          "Protocols"
+          "Trial Configurations"
         ],
         "security": [
           {
@@ -1480,7 +1480,7 @@
         ],
         "additionalProperties": false
       },
-      "Protocol": {
+      "TrialConfiguration": {
         "description": "A trial configuration",
         "type": "object",
         "properties": {
@@ -1492,7 +1492,7 @@
           "name": {
             "type": "string",
             "description": "The name of the trial configuration",
-            "example": "Protocol v1"
+            "example": "Trial Configuration v1"
           },
           "number_of_study_procedures": {
             "type": "number",
@@ -1513,12 +1513,12 @@
           "number_of_study_procedures"
         ]
       },
-      "ProtocolsReporting": {
-        "description": "Protocols reporting",
+      "TrialConfigurationsReporting": {
+        "description": "Trial Configurations reporting",
         "type": "object",
         "properties": {
           "trial_configuration": {
-            "$ref": "#/components/schemas/Protocol"
+            "$ref": "#/components/schemas/TrialConfiguration"
           },
           "hits": {
             "type": "number",
@@ -1606,7 +1606,7 @@
               "name": {
                 "type": "string",
                 "description": "The name of the trial configuration",
-                "example": "Protocol v1"
+                "example": "Trial Configuration v1"
               },
               "study_procedure_display_name": {
                 "$ref": "#/components/schemas/DisplayName"

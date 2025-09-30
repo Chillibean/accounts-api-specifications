@@ -39,7 +39,7 @@
       "description": "Endpoints for form templates"
     },
     {
-      "name": "Protocols",
+      "name": "Trial Configurations",
       "description": "Endpoints for trial configurations"
     }
   ],
@@ -155,11 +155,11 @@
       "PlanOptions": {
         "$ref": "refs/components/schemas/PlanOptions.json"
       },
-      "Protocol": {
-        "$ref": "refs/components/schemas/Protocol.json"
+      "TrialConfiguration": {
+        "$ref": "refs/components/schemas/TrialConfiguration.json"
       },
-      "ProtocolsReporting": {
-        "$ref": "refs/components/schemas/ProtocolsReporting.json"
+      "TrialConfigurationsReporting": {
+        "$ref": "refs/components/schemas/TrialConfigurationsReporting.json"
       },
       "Rows": {
         "$ref": "refs/components/schemas/Rows.json"

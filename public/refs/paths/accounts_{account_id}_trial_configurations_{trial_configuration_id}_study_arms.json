@@ -4,7 +4,7 @@
     "description": "Get account form template",
     "operationId": "getStudyArms",
     "tags": [
-      "Protocols"
+      "Trial Configurations"
     ],
     "security": [
       {

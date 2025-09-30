@@ -4,7 +4,7 @@
     "description": "Get the study procedure definitions of a trial configuration",
     "operationId": "getStudyProcedureDefinitions",
     "tags": [
-      "Protocols"
+      "Trial Configurations"
     ],
     "security": [
       {

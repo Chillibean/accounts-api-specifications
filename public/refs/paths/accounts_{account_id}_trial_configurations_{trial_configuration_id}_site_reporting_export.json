@@ -2,9 +2,9 @@
   "get": {
     "summary": "Get report export for the trial configuration",
     "description": "Get trial configurations reporting export",
-    "operationId": "getProtocolsReportingExport",
+    "operationId": "getTrialConfigurationsReportingExport",
     "tags": [
-      "Protocols"
+      "Trial Configurations"
     ],
     "security": [
       {
