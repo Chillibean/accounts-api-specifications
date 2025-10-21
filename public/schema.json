@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "3.6.0",
+    "version": "4.0.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -39,8 +39,8 @@
       "description": "Endpoints for form templates"
     },
     {
-      "name": "Protocols",
-      "description": "Endpoints for protocols"
+      "name": "Trial Configurations",
+      "description": "Endpoints for trial configurations"
     }
   ],
   "servers": [
@@ -87,20 +87,20 @@
     "/accounts/{account_id}/form_templates/{form_template_id}": {
       "$ref": "refs/paths/accounts_{account_id}_form_templates_{form_template_id}.json"
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/study_arms": {
-      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_study_arms.json"
+    "/accounts/{account_id}/trial_configurations/{trial_configuration_id}/study_arms": {
+      "$ref": "refs/paths/accounts_{account_id}_trial_configurations_{trial_configuration_id}_study_arms.json"
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/study_procedure_definitions": {
-      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_study_procedure_definitions.json"
+    "/accounts/{account_id}/trial_configurations/{trial_configuration_id}/study_procedure_definitions": {
+      "$ref": "refs/paths/accounts_{account_id}_trial_configurations_{trial_configuration_id}_study_procedure_definitions.json"
     },
-    "/accounts/{account_id}/protocols": {
-      "$ref": "refs/paths/accounts_{account_id}_protocols.json"
+    "/accounts/{account_id}/trial_configurations": {
+      "$ref": "refs/paths/accounts_{account_id}_trial_configurations.json"
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting": {
-      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_site_reporting.json"
+    "/accounts/{account_id}/trial_configurations/{trial_configuration_id}/site_reporting": {
+      "$ref": "refs/paths/accounts_{account_id}_trial_configurations_{trial_configuration_id}_site_reporting.json"
     },
-    "/accounts/{account_id}/protocols/{study_protocol_id}/site_reporting/export": {
-      "$ref": "refs/paths/accounts_{account_id}_protocols_{study_protocol_id}_site_reporting_export.json"
+    "/accounts/{account_id}/trial_configurations/{trial_configuration_id}/site_reporting/export": {
+      "$ref": "refs/paths/accounts_{account_id}_trial_configurations_{trial_configuration_id}_site_reporting_export.json"
     }
   },
   "components": {
@@ -155,11 +155,11 @@
       "PlanOptions": {
         "$ref": "refs/components/schemas/PlanOptions.json"
       },
-      "Protocol": {
-        "$ref": "refs/components/schemas/Protocol.json"
+      "TrialConfiguration": {
+        "$ref": "refs/components/schemas/TrialConfiguration.json"
       },
-      "ProtocolsReporting": {
-        "$ref": "refs/components/schemas/ProtocolsReporting.json"
+      "TrialConfigurationsReporting": {
+        "$ref": "refs/components/schemas/TrialConfigurationsReporting.json"
       },
       "Rows": {
         "$ref": "refs/components/schemas/Rows.json"

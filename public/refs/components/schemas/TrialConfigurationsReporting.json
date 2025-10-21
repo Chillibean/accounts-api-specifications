@@ -1,9 +1,9 @@
 {
-  "description": "Protocols reporting",
+  "description": "Trial Configurations reporting",
   "type": "object",
   "properties": {
-    "study_protocol": {
-      "$ref": "./Protocol.json"
+    "trial_configuration": {
+      "$ref": "./TrialConfiguration.json"
     },
     "hits": {
       "type": "number",
@@ -28,7 +28,7 @@
     }
   },
   "required": [
-    "study_protocol",
+    "trial_configuration",
     "hits",
     "per_page",
     "page",
