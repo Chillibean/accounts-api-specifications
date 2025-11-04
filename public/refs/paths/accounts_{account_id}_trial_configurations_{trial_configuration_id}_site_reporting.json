@@ -1,10 +1,10 @@
 {
   "get": {
-    "summary": "Get the study arms of a protocol",
-    "description": "Get account form template",
-    "operationId": "getStudyArms",
+    "summary": "Get report for the trial configuration",
+    "description": "Get trial configurations reporting",
+    "operationId": "getTrialConfigurationsReporting",
     "tags": [
-      "Protocols"
+      "Trial Configurations"
     ],
     "security": [
       {
@@ -24,14 +24,24 @@
         "description": "The account id"
       },
       {
-        "name": "study_protocol_id",
+        "name": "trial_configuration_id",
         "in": "path",
         "required": true,
         "schema": {
           "type": "string",
           "example": "1"
         },
-        "description": "The study protocol id"
+        "description": "The trial configuration id"
+      },
+      {
+        "name": "page",
+        "in": "query",
+        "description": "The page number",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "example": 1
+        }
       }
     ],
     "responses": {
@@ -40,10 +50,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "../components/schemas/StudyArm.json"
-              }
+              "$ref": "../components/schemas/TrialConfigurationsReporting.json"
             }
           }
         }

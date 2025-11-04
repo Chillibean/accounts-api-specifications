@@ -1,20 +1,20 @@
 {
-  "description": "A protocol",
+  "description": "A trial configuration",
   "type": "object",
   "properties": {
     "id": {
       "type": "number",
-      "description": "The id of the protocol",
+      "description": "The id of the trial configuration",
       "example": 1
     },
     "name": {
       "type": "string",
-      "description": "The name of the protocol",
-      "example": "Protocol v1"
+      "description": "The name of the trial configuration",
+      "example": "Trial Configuration v1"
     },
     "number_of_study_procedures": {
       "type": "number",
-      "description": "The number of study procedures in the protocol",
+      "description": "The number of study procedures in the trial configuration",
       "example": 2
     },
     "study_procedure_display_name": {
