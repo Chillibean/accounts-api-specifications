@@ -1,10 +1,10 @@
 {
   "get": {
-    "summary": "Get protocols",
-    "description": "Get protocols",
-    "operationId": "getStudyProtocols",
+    "summary": "Get the study procedure definitions of a trial configuration",
+    "description": "Get the study procedure definitions of a trial configuration",
+    "operationId": "getStudyProcedureDefinitions",
     "tags": [
-      "Protocols"
+      "Trial Configurations"
     ],
     "security": [
       {
@@ -22,6 +22,16 @@
           "example": "1"
         },
         "description": "The account id"
+      },
+      {
+        "name": "trial_configuration_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "1"
+        },
+        "description": "The trial configuration id"
       }
     ],
     "responses": {
@@ -32,7 +42,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "../components/schemas/Protocol.json"
+                "$ref": "../components/schemas/StudyProcedureDefinition.json"
               }
             }
           }
