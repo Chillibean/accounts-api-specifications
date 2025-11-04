@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "3.7.0",
+    "version": "4.0.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -59,6 +59,10 @@
     {
       "name": "Form Templates",
       "description": "Endpoints for form templates"
+    },
+    {
+      "name": "Study Arms",
+      "description": "Endpoints for study arms"
     },
     {
       "name": "Trial Configurations",
@@ -648,13 +652,13 @@
         }
       }
     },
-    "/accounts/{account_id}/trial_configurations/{trial_configuration_id}/study_arms": {
+    "/accounts/{account_id}/study_arms": {
       "get": {
-        "summary": "Get the study arms of a trial configuration",
-        "description": "Get account form template",
+        "summary": "Get account study arms",
+        "description": "Get account study arms",
         "operationId": "getStudyArms",
         "tags": [
-          "Trial Configurations"
+          "Study Arms"
         ],
         "security": [
           {
@@ -675,8 +679,8 @@
           },
           {
             "name": "trial_configuration_id",
-            "in": "path",
-            "required": true,
+            "in": "query",
+            "required": false,
             "schema": {
               "type": "string",
               "example": "1"
@@ -1730,43 +1734,25 @@
         "additionalProperties": false
       },
       "StudyArm": {
-        "description": "An account",
+        "description": "The study arm",
         "type": "object",
         "properties": {
+          "display_name": {
+            "type": "string",
+            "description": "The display name of the study arm",
+            "example": "Post-Treatment Monitoring Arm"
+          },
           "id": {
             "type": "number",
             "description": "The id of the study arm",
             "example": 1
-          },
-          "display_name": {
-            "type": "string",
-            "description": "The display name of the study arm",
-            "example": "LoremB6H7E"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The date the study arm was created",
-            "example": "2021-06-01T00:00:00Z"
-          },
-          "trial_configuration_id": {
-            "type": "number",
-            "description": "The id of the study arm",
-            "example": 1
-          },
-          "subjects": {
-            "type": "array",
-            "description": "The subjects of the study arm",
-            "items": {
-              "$ref": "#/components/schemas/Subject"
-            }
           }
         },
-        "additionalProperties": false,
         "required": [
-          "id",
           "display_name",
-          "trial_configuration_id"
-        ]
+          "id"
+        ],
+        "additionalProperties": false
       },
       "StudyEvent": {
         "description": "A study event",

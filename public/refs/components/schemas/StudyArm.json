@@ -1,39 +1,21 @@
 {
-  "description": "An account",
+  "description": "The study arm",
   "type": "object",
   "properties": {
+    "display_name": {
+      "type": "string",
+      "description": "The display name of the study arm",
+      "example": "Post-Treatment Monitoring Arm"
+    },
     "id": {
       "type": "number",
       "description": "The id of the study arm",
       "example": 1
-    },
-    "display_name": {
-      "type": "string",
-      "description": "The display name of the study arm",
-      "example": "LoremB6H7E"
-    },
-    "created_at": {
-      "type": "string",
-      "description": "The date the study arm was created",
-      "example": "2021-06-01T00:00:00Z"
-    },
-    "trial_configuration_id": {
-      "type": "number",
-      "description": "The id of the study arm",
-      "example": 1
-    },
-    "subjects": {
-      "type": "array",
-      "description": "The subjects of the study arm",
-      "items": {
-        "$ref": "./Subject.json"
-      }
     }
   },
-  "additionalProperties": false,
   "required": [
-    "id",
     "display_name",
-    "trial_configuration_id"
-  ]
+    "id"
+  ],
+  "additionalProperties": false
 }
