@@ -39,6 +39,10 @@
       "description": "Endpoints for form templates"
     },
     {
+      "name": "Study Arms",
+      "description": "Endpoints for study arms"
+    },
+    {
       "name": "Trial Configurations",
       "description": "Endpoints for trial configurations"
     }
@@ -87,8 +91,8 @@
     "/accounts/{account_id}/form_templates/{form_template_id}": {
       "$ref": "refs/paths/accounts_{account_id}_form_templates_{form_template_id}.json"
     },
-    "/accounts/{account_id}/trial_configurations/{trial_configuration_id}/study_arms": {
-      "$ref": "refs/paths/accounts_{account_id}_trial_configurations_{trial_configuration_id}_study_arms.json"
+    "/accounts/{account_id}/study_arms": {
+      "$ref": "refs/paths/accounts_{account_id}_study_arms.json"
     },
     "/accounts/{account_id}/trial_configurations/{trial_configuration_id}/study_procedure_definitions": {
       "$ref": "refs/paths/accounts_{account_id}_trial_configurations_{trial_configuration_id}_study_procedure_definitions.json"
