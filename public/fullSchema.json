@@ -1923,13 +1923,13 @@
           "results": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/StudyProcedureTaskDefinition"
+              "$ref": "#/components/schemas/Rows"
             }
           },
           "study_procedure_task_definitions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Rows"
+              "$ref": "#/components/schemas/StudyProcedureTaskDefinition"
             }
           },
           "trial_configuration": {

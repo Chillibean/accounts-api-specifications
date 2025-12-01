@@ -20,13 +20,13 @@
     "results": {
       "type": "array",
       "items": {
-        "$ref": "./StudyProcedureTaskDefinition.json"
+        "$ref": "./Rows.json"
       }
     },
     "study_procedure_task_definitions": {
       "type": "array",
       "items": {
-        "$ref": "./Rows.json"
+        "$ref": "./StudyProcedureTaskDefinition.json"
       }
     },
     "trial_configuration": {
