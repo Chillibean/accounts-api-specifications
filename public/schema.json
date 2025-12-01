@@ -159,11 +159,8 @@
       "PlanOptions": {
         "$ref": "refs/components/schemas/PlanOptions.json"
       },
-      "TrialConfiguration": {
-        "$ref": "refs/components/schemas/TrialConfiguration.json"
-      },
-      "TrialConfigurationsReporting": {
-        "$ref": "refs/components/schemas/TrialConfigurationsReporting.json"
+      "Role": {
+        "$ref": "refs/components/schemas/Role.json"
       },
       "Rows": {
         "$ref": "refs/components/schemas/Rows.json"
@@ -180,14 +177,20 @@
       "StudyProcedureDefinition": {
         "$ref": "refs/components/schemas/StudyProcedureDefinition.json"
       },
-      "Subject": {
-        "$ref": "refs/components/schemas/Subject.json"
+      "StudyProcedureTaskDefinition": {
+        "$ref": "refs/components/schemas/StudyProcedureTaskDefinition.json"
       },
       "SubjectNumberSettings": {
         "$ref": "refs/components/schemas/SubjectNumberSettings.json"
       },
       "Task": {
         "$ref": "refs/components/schemas/Task.json"
+      },
+      "TrialConfiguration": {
+        "$ref": "refs/components/schemas/TrialConfiguration.json"
+      },
+      "TrialConfigurationsReporting": {
+        "$ref": "refs/components/schemas/TrialConfigurationsReporting.json"
       }
     }
   }
