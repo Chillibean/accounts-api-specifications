@@ -2,37 +2,44 @@
   "description": "Trial Configurations reporting",
   "type": "object",
   "properties": {
-    "trial_configuration": {
-      "$ref": "./TrialConfiguration.json"
-    },
     "hits": {
       "type": "number",
       "description": "The total number of rows",
       "example": 100
-    },
-    "per_page": {
-      "type": "number",
-      "description": "Numeber of rows per page",
-      "example": 50
     },
     "page": {
       "type": "number",
       "description": "The current page number",
       "example": 1
     },
+    "per_page": {
+      "type": "number",
+      "description": "Numeber of rows per page",
+      "example": 50
+    },
     "results": {
       "type": "array",
       "items": {
         "$ref": "./Rows.json"
       }
+    },
+    "study_procedure_task_definitions": {
+      "type": "array",
+      "items": {
+        "$ref": "./StudyProcedureTaskDefinition.json"
+      }
+    },
+    "trial_configuration": {
+      "$ref": "./TrialConfiguration.json"
     }
   },
   "required": [
-    "trial_configuration",
     "hits",
-    "per_page",
     "page",
-    "results"
+    "per_page",
+    "results",
+    "study_procedure_task_definitions",
+    "trial_configuration"
   ],
   "additionalProperties": false
 }
