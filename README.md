@@ -81,7 +81,7 @@ Remember to edit the **`/public/schema.json`** file as needed to reflect the cor
 
 ## **`/public/schema.json` - IMPORTANT**
 
-This file is the cornerstone of our repository. It contains all the specs for the Accounts API API.
+This file is the cornerstone of our repository. It contains all the specs for the Accounts API.
 
 Key elements within the JSON file:
 
@@ -124,7 +124,7 @@ You can run **`npm run lint`** to check the contents of **`/public/schema.json`*
 
 ## **Bundling**
 
-You can run **`npm run bunlde`** to bundle the **`/public/schema.json`** file into the full schema that outputs to **`/public/fullSchema.json`**.
+You can run **`npm run bundle`** to bundle the **`/public/schema.json`** file into the full schema that outputs to **`/public/fullSchema.json`**.
 
 _Note: This check is automatically performed before each commit._
 
