@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "3.7.0",
+    "version": "4.0.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -59,6 +59,10 @@
     {
       "name": "Form Templates",
       "description": "Endpoints for form templates"
+    },
+    {
+      "name": "Study Arms",
+      "description": "Endpoints for study arms"
     },
     {
       "name": "Trial Configurations",
@@ -648,13 +652,13 @@
         }
       }
     },
-    "/accounts/{account_id}/trial_configurations/{trial_configuration_id}/study_arms": {
+    "/accounts/{account_id}/study_arms": {
       "get": {
-        "summary": "Get the study arms of a trial configuration",
-        "description": "Get account form template",
+        "summary": "Get account study arms",
+        "description": "Get account study arms",
         "operationId": "getStudyArms",
         "tags": [
-          "Trial Configurations"
+          "Study Arms"
         ],
         "security": [
           {
@@ -675,8 +679,8 @@
           },
           {
             "name": "trial_configuration_id",
-            "in": "path",
-            "required": true,
+            "in": "query",
+            "required": false,
             "schema": {
               "type": "string",
               "example": "1"
@@ -1480,74 +1484,24 @@
         ],
         "additionalProperties": false
       },
-      "TrialConfiguration": {
-        "description": "A trial configuration",
+      "Role": {
+        "description": "A role",
         "type": "object",
         "properties": {
           "id": {
             "type": "number",
-            "description": "The id of the trial configuration",
+            "description": "The id of role",
             "example": 1
           },
           "name": {
             "type": "string",
-            "description": "The name of the trial configuration",
-            "example": "Trial Configuration v1"
-          },
-          "number_of_study_procedures": {
-            "type": "number",
-            "description": "The number of study procedures in the trial configuration",
-            "example": 2
-          },
-          "study_procedure_display_name": {
-            "$ref": "#/components/schemas/DisplayName"
-          },
-          "study_event_display_name": {
-            "$ref": "#/components/schemas/DisplayName"
+            "description": "The name of role",
+            "example": "Guest"
           }
         },
-        "additionalProperties": false,
         "required": [
           "id",
-          "name",
-          "number_of_study_procedures"
-        ]
-      },
-      "TrialConfigurationsReporting": {
-        "description": "Trial Configurations reporting",
-        "type": "object",
-        "properties": {
-          "trial_configuration": {
-            "$ref": "#/components/schemas/TrialConfiguration"
-          },
-          "hits": {
-            "type": "number",
-            "description": "The total number of rows",
-            "example": 100
-          },
-          "per_page": {
-            "type": "number",
-            "description": "Numeber of rows per page",
-            "example": 50
-          },
-          "page": {
-            "type": "number",
-            "description": "The current page number",
-            "example": 1
-          },
-          "results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Rows"
-            }
-          }
-        },
-        "required": [
-          "trial_configuration",
-          "hits",
-          "per_page",
-          "page",
-          "results"
+          "name"
         ],
         "additionalProperties": false
       },
@@ -1730,43 +1684,25 @@
         "additionalProperties": false
       },
       "StudyArm": {
-        "description": "An account",
+        "description": "The study arm",
         "type": "object",
         "properties": {
+          "display_name": {
+            "type": "string",
+            "description": "The display name of the study arm",
+            "example": "Post-Treatment Monitoring Arm"
+          },
           "id": {
             "type": "number",
             "description": "The id of the study arm",
             "example": 1
-          },
-          "display_name": {
-            "type": "string",
-            "description": "The display name of the study arm",
-            "example": "LoremB6H7E"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The date the study arm was created",
-            "example": "2021-06-01T00:00:00Z"
-          },
-          "trial_configuration_id": {
-            "type": "number",
-            "description": "The id of the study arm",
-            "example": 1
-          },
-          "subjects": {
-            "type": "array",
-            "description": "The subjects of the study arm",
-            "items": {
-              "$ref": "#/components/schemas/Subject"
-            }
           }
         },
-        "additionalProperties": false,
         "required": [
-          "id",
           "display_name",
-          "trial_configuration_id"
-        ]
+          "id"
+        ],
+        "additionalProperties": false
       },
       "StudyEvent": {
         "description": "A study event",
@@ -1820,6 +1756,16 @@
             "description": "The identifier of the study procedure definition",
             "example": "EXPROC"
           },
+          "position": {
+            "type": "number",
+            "description": "The position of the study procedure definition",
+            "example": 1
+          },
+          "study_procedures_exist": {
+            "type": "boolean",
+            "description": "The study procedures exist of the study procedure definition",
+            "example": true
+          },
           "required_form_templates": {
             "type": "array",
             "description": "The required form templates of the study procedure definition",
@@ -1833,75 +1779,49 @@
           "id",
           "display_name",
           "identifier",
+          "position",
+          "study_procedures_exist",
           "required_form_templates"
         ]
       },
-      "Subject": {
-        "description": "A subject",
+      "StudyProcedureTaskDefinition": {
+        "description": "A study procedure task definition",
         "type": "object",
         "properties": {
-          "active": {
-            "type": "boolean",
-            "description": "Indicates if the subject is active",
-            "example": true
-          },
-          "any_study_events_exist": {
-            "type": "boolean",
-            "description": "Indicates if any study events exist for the subject",
-            "example": true
-          },
-          "any_study_events_completed": {
-            "type": "boolean",
-            "description": "Indicates if any study events have been completed for the subject",
-            "example": true
-          },
-          "cohort": {
+          "display_name": {
             "type": "string",
-            "description": "The study cohort of the subject",
-            "example": "Cohort 1",
-            "nullable": true
+            "description": "The display name of study procedure task definition",
+            "example": "Please complete something first"
           },
-          "contains_incomplete_flagged_tasks": {
+          "enabled": {
             "type": "boolean",
-            "description": "Indicates if the subject contains flagged tasks",
-            "example": false
-          },
-          "created_at": {
-            "type": "string",
-            "description": "Date time for when the subject was created",
-            "example": "2024-01-02T11:06:48.566Z"
-          },
-          "created_by": {
-            "type": "string",
-            "description": "Full name of subject creator",
-            "example": "John Doe"
+            "description": "The enabled status of study procedure task definition",
+            "example": true
           },
           "id": {
             "type": "number",
-            "description": "The subject id",
+            "description": "The id of study procedure task definition",
             "example": 1
           },
-          "number": {
-            "type": "string",
-            "description": "The serial number of the subject",
-            "example": "E001004"
+          "roles": {
+            "type": "array",
+            "description": "The role ids of study procedure task definition",
+            "items": {
+              "$ref": "#/components/schemas/Role"
+            }
           },
-          "study_arm": {
-            "type": "string",
-            "description": "The study arm the subject is currently in",
-            "example": "Arm 1",
-            "nullable": true
+          "study_procedure_tasks_exist": {
+            "type": "boolean",
+            "description": "The usage status of study procedure task definition",
+            "example": false
           }
         },
         "required": [
-          "active",
-          "any_study_events_completed",
-          "any_study_events_exist",
-          "contains_incomplete_flagged_tasks",
-          "created_at",
-          "created_by",
+          "display_name",
+          "enabled",
           "id",
-          "number"
+          "roles",
+          "study_procedure_tasks_exist"
         ],
         "additionalProperties": false
       },
@@ -1957,6 +1877,84 @@
           "status",
           "completed_date",
           "completed_by"
+        ],
+        "additionalProperties": false
+      },
+      "TrialConfiguration": {
+        "description": "A trial configuration",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The id of the trial configuration",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the trial configuration",
+            "example": "Trial Configuration v1"
+          },
+          "number_of_study_procedures": {
+            "type": "number",
+            "description": "The number of study procedures in the trial configuration",
+            "example": 2
+          },
+          "study_procedure_display_name": {
+            "$ref": "#/components/schemas/DisplayName"
+          },
+          "study_event_display_name": {
+            "$ref": "#/components/schemas/DisplayName"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "number_of_study_procedures"
+        ]
+      },
+      "TrialConfigurationsReporting": {
+        "description": "Trial Configurations reporting",
+        "type": "object",
+        "properties": {
+          "hits": {
+            "type": "number",
+            "description": "The total number of rows",
+            "example": 100
+          },
+          "page": {
+            "type": "number",
+            "description": "The current page number",
+            "example": 1
+          },
+          "per_page": {
+            "type": "number",
+            "description": "Numeber of rows per page",
+            "example": 50
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Rows"
+            }
+          },
+          "study_procedure_task_definitions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyProcedureTaskDefinition"
+            }
+          },
+          "trial_configuration": {
+            "$ref": "#/components/schemas/TrialConfiguration"
+          }
+        },
+        "required": [
+          "hits",
+          "page",
+          "per_page",
+          "results",
+          "study_procedure_task_definitions",
+          "trial_configuration"
         ],
         "additionalProperties": false
       }

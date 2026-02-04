@@ -17,6 +17,16 @@
       "description": "The identifier of the study procedure definition",
       "example": "EXPROC"
     },
+    "position": {
+      "type": "number",
+      "description": "The position of the study procedure definition",
+      "example": 1
+    },
+    "study_procedures_exist": {
+      "type": "boolean",
+      "description": "The study procedures exist of the study procedure definition",
+      "example": true
+    },
     "required_form_templates": {
       "type": "array",
       "description": "The required form templates of the study procedure definition",
@@ -30,6 +40,8 @@
     "id",
     "display_name",
     "identifier",
+    "position",
+    "study_procedures_exist",
     "required_form_templates"
   ]
 }

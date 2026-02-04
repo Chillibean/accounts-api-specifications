@@ -1,10 +1,10 @@
 {
   "get": {
-    "summary": "Get the study arms of a trial configuration",
-    "description": "Get account form template",
+    "summary": "Get account study arms",
+    "description": "Get account study arms",
     "operationId": "getStudyArms",
     "tags": [
-      "Trial Configurations"
+      "Study Arms"
     ],
     "security": [
       {
@@ -25,8 +25,8 @@
       },
       {
         "name": "trial_configuration_id",
-        "in": "path",
-        "required": true,
+        "in": "query",
+        "required": false,
         "schema": {
           "type": "string",
           "example": "1"
