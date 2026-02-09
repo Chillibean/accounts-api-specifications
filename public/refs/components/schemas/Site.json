@@ -22,12 +22,17 @@
       "description": "The number of the site",
       "example": 1
     },
+    "principal_investigator": {
+      "type": "string",
+      "description": "The name of principal investigator",
+      "example": "Test Name"
+    },
     "country": {
       "type": "string",
       "description": "The country of the site",
       "example": "South Korea"
     }
   },
-  "required": ["id", "name", "number", "country"],
+  "required": ["id", "name", "number", "principal_investigator", "country"],
   "additionalProperties": false
 }
