@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "4.0.0",
+    "version": "4.1.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -1669,6 +1669,11 @@
             "description": "The number of the site",
             "example": 1
           },
+          "principal_investigator": {
+            "type": "string",
+            "description": "The name of principal investigator",
+            "example": "Test Name"
+          },
           "country": {
             "type": "string",
             "description": "The country of the site",
@@ -1679,6 +1684,7 @@
           "id",
           "name",
           "number",
+          "principal_investigator",
           "country"
         ],
         "additionalProperties": false
