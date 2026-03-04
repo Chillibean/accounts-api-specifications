@@ -180,6 +180,9 @@
       "StudyProcedureTaskDefinition": {
         "$ref": "refs/components/schemas/StudyProcedureTaskDefinition.json"
       },
+      "StudySubjectNumberCharacter": {
+        "$ref": "refs/components/schemas/StudySubjectNumberCharacter.json"
+      },
       "SubjectNumberSettings": {
         "$ref": "refs/components/schemas/SubjectNumberSettings.json"
       },
