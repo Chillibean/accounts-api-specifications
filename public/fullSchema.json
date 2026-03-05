@@ -1850,6 +1850,11 @@
               "$ref": "#/components/schemas/StudySubjectNumberCharacter"
             }
           },
+          "length": {
+            "type": "integer",
+            "description": "The length of the subject id",
+            "example": 8
+          },
           "include_site_prefix": {
             "type": "boolean",
             "description": "Whether the site prefix is included",
@@ -1858,6 +1863,7 @@
         },
         "required": [
           "characters",
+          "length",
           "include_site_prefix"
         ],
         "additionalProperties": false
