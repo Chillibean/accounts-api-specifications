@@ -1832,13 +1832,30 @@
         ],
         "additionalProperties": false
       },
+      "StudySubjectNumberCharacter": {
+        "description": "Subject requirements character for an account",
+        "type": "object",
+        "properties": {
+          "character_type": {
+            "type": "string",
+            "description": "Character type",
+            "example": "ABC"
+          }
+        },
+        "required": [
+          "character_type"
+        ],
+        "additionalProperties": false
+      },
       "SubjectNumberSettings": {
         "type": "object",
         "properties": {
-          "length": {
-            "type": "integer",
-            "description": "The length of the subject id",
-            "example": 8
+          "characters": {
+            "type": "array",
+            "description": "The characters for subject number",
+            "items": {
+              "$ref": "#/components/schemas/StudySubjectNumberCharacter"
+            }
           },
           "include_site_prefix": {
             "type": "boolean",
@@ -1847,7 +1864,7 @@
           }
         },
         "required": [
-          "length",
+          "characters",
           "include_site_prefix"
         ],
         "additionalProperties": false
