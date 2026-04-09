@@ -18,20 +18,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Generate GitHub App Token
-        id: app-token
-        uses: actions/create-github-app-token@v2
-        with:
-          app-id: 2786925
-          private-key: ${{ secrets.API_SPEC_APP_PRIVATE_KEY }}
-          owner: ${{ github.repository_owner }}
       - name: Retrieve Version
         id: version
         run: echo "value=$(node -pe 'require("./package.json").version')-dev.${{ github.run_number }}" >> $GITHUB_OUTPUT
       - name: Create Release
         uses: actions/github-script@v7
         with:
-          github-token: ${{ steps.app-token.outputs.token }}
+          github-token: ${{ github.token }}
           script: |
             const fs = require('fs').promises;
 
@@ -83,7 +76,6 @@ jobs:
     needs: create-pre-release
     if: ${{ !github.event.pull_request.draft }}
     permissions:
-      contents: read
       pull-requests: write
     steps:
       - name: Generate GitHub App Token
@@ -104,7 +96,7 @@ jobs:
       - name: Pull Request Comment
         uses: actions/github-script@v7
         with:
-          github-token: ${{ steps.app-token.outputs.token }}
+          github-token: ${{ github.token }}
           script: |
             const { repo: { owner, repo } } = context;
 
