@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "4.1.0",
+    "version": "4.2.0",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -1543,6 +1543,11 @@
             "type": "string",
             "description": "The trial configuration status change date",
             "example": "2022-08-10T10:00:00.000Z"
+          },
+          "status_reason_for_change": {
+            "type": "string",
+            "description": "The reason for change of assessment status",
+            "example": "Assessment finished"
           },
           "clinical_evaluator": {
             "type": "string",
