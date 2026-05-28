@@ -37,6 +37,11 @@
       "description": "The trial configuration status change date",
       "example": "2022-08-10T10:00:00.000Z"
     },
+    "status_reason_for_change": {
+      "type": "string",
+      "description": "The reason for change of assessment status",
+      "example": "Assessment finished"
+    },
     "clinical_evaluator": {
       "type": "string",
       "description": "The clinical evaluator",
