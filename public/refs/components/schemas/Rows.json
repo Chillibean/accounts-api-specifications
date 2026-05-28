@@ -40,7 +40,8 @@
     "status_reason_for_change": {
       "type": "string",
       "description": "The reason for change of assessment status",
-      "example": "Assessment finished"
+      "example": "Assessment finished",
+      "nullable": true
     },
     "clinical_evaluator": {
       "type": "string",
