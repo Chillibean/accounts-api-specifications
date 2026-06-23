@@ -1419,11 +1419,6 @@
       "PlanOptions": {
         "type": "object",
         "properties": {
-          "admin_user_report_enabled": {
-            "type": "boolean",
-            "description": "Whether the account has user reporting enabled for administrators",
-            "example": true
-          },
           "asset_chapters_enabled": {
             "type": "boolean",
             "description": "Whether the account has asset chapters enabled",
@@ -1437,21 +1432,6 @@
           "form_templates_enabled": {
             "type": "boolean",
             "description": "Whether the account has forms enabled",
-            "example": true
-          },
-          "hd_transcodes_enabled": {
-            "type": "boolean",
-            "description": "Whether the account has HD transcodes enabled",
-            "example": true
-          },
-          "pdf_previews_enabled": {
-            "type": "boolean",
-            "description": "Whether the account has PDF previews enabled",
-            "example": true
-          },
-          "reporting_enabled": {
-            "type": "boolean",
-            "description": "Whether the account has reporting enabled",
             "example": true
           },
           "signatures_enabled": {
@@ -1471,13 +1451,9 @@
           }
         },
         "required": [
-          "admin_user_report_enabled",
           "asset_chapters_enabled",
           "check_trial_name_on_upload_enabled",
           "form_templates_enabled",
-          "hd_transcodes_enabled",
-          "pdf_previews_enabled",
-          "reporting_enabled",
           "signatures_enabled",
           "sites_enabled",
           "video_timecode_enabled"
