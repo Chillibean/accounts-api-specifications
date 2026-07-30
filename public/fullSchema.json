@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "4.2.0",
+    "version": "4.2.1",
     "title": "Accounts API",
     "description": "These are all the APIs related to accounts",
     "contact": {
@@ -1532,7 +1532,8 @@
           "date": {
             "type": "string",
             "description": "The trial configuration date",
-            "example": "2020-01-01"
+            "example": "2020-01-01",
+            "nullable": true
           },
           "status": {
             "type": "string",
@@ -1553,7 +1554,8 @@
           "clinical_evaluator": {
             "type": "string",
             "description": "The clinical evaluator",
-            "example": "Mark Smith"
+            "example": "Mark Smith",
+            "nullable": true
           },
           "account_trial_name": {
             "type": "string",
