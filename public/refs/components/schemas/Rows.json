@@ -25,7 +25,8 @@
     "date": {
       "type": "string",
       "description": "The trial configuration date",
-      "example": "2020-01-01"
+      "example": "2020-01-01",
+      "nullable": true
     },
     "status": {
       "type": "string",
