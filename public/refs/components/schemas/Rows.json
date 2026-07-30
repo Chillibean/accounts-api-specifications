@@ -46,7 +46,8 @@
     "clinical_evaluator": {
       "type": "string",
       "description": "The clinical evaluator",
-      "example": "Mark Smith"
+      "example": "Mark Smith",
+      "nullable": true
     },
     "account_trial_name": {
       "type": "string",
