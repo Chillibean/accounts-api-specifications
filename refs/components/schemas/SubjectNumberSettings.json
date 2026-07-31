@@ -1,10 +1,12 @@
 {
   "type": "object",
   "properties": {
-    "length": {
-      "type": "integer",
-      "description": "The length of the subject id",
-      "example": 8
+    "characters": {
+      "type": "array",
+      "description": "The characters for subject number",
+      "items": {
+        "$ref": "./StudySubjectNumberCharacter.json"
+      }
     },
     "include_site_prefix": {
       "type": "boolean",
@@ -13,7 +15,7 @@
     }
   },
   "required": [
-    "length",
+    "characters",
     "include_site_prefix"
   ],
   "additionalProperties": false
