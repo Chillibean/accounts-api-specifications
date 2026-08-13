@@ -1076,7 +1076,7 @@
           "activated": {
             "type": "boolean",
             "description": "Whether the account is activated",
-            "example": "Test Trial"
+            "example": "true"
           }
         },
         "additionalProperties": false,
