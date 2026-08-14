@@ -15,7 +15,7 @@
       "suspended": {
         "type": "boolean",
         "description": "Whether the account is suspended",
-        "example": "true"
+        "example": true
       }
     },
     "additionalProperties": false,
