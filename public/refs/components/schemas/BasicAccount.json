@@ -12,9 +12,9 @@
         "description": "The name of account",
         "example": "Test Trial"
       },
-      "activated": {
+      "suspended": {
         "type": "boolean",
-        "description": "Whether the account is activated",
+        "description": "Whether the account is suspended",
         "example": "true"
       }
     },
