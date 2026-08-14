@@ -11,6 +11,11 @@
         "type": "string",
         "description": "The name of account",
         "example": "Test Trial"
+      },
+      "suspended": {
+        "type": "boolean",
+        "description": "Whether the account is suspended",
+        "example": true
       }
     },
     "additionalProperties": false,
